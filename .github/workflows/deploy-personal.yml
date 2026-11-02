@@ -1,4 +1,5 @@
 name: Publish personal research build
+# Includes the owner-requested day-one leveling companion.
 on:
   workflow_dispatch:
   push:
