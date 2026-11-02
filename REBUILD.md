@@ -50,11 +50,22 @@ Python and JavaScript event replay connect the Blast/Precision/Accelerant helper
 to Barrage, Heating Up, personal Fire effects, Winter's Chill, Ice Lance and Barrier
 state. See `CURRENT-MECHANICS.md` for commands, evidence and unresolved behavior.
 
-The event layer is not a full cast scheduler or DPS engine. Generated traces are
-synthetic mechanic fixtures, not current raid comparisons. The old page and its
-share links remain historical. Full spell data, server behavior, damage/mana,
-rotations, racials, leveling and AoE migration remain unfinished. All affected
-ledger entries remain partial; none has been promoted to fully validated.
+A new experimental layer now runs full cast schedules in `sim_engine.py` and
+`sim-engine.js`: damage, mana, procs, cooldowns, rank selection and multi-target
+throughput. `python lab.py experiment` compares all three schools with matched
+settings. `current-experiments.json` contains a finite policy search and 31
+sensitivity scenarios evaluated on held-out seeds. `current.html` runs the
+JavaScript model in a local worker and exposes versioned build/settings links.
+See `SIMULATION.md` for reproducibility, coverage and explicit hypotheses.
+
+This advances the migration but does not certify current rankings. The full
+70707 spell snapshot, server behavior, wider rotation/talent optimization and
+realistic leveling survival remain unresolved. All mechanic entries remain
+partial. The original page and its engines remain a labeled historical archive.
+
+The owner explicitly requested a personal deployment in the current session.
+Only `zhengw88/forever-mage-lab` may be published; no upstream write or automatic
+PR merge is authorized. Subsequent routine maintenance must not auto-deploy.
 
 ## Updating the fork
 

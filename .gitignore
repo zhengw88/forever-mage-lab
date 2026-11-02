@@ -17,3 +17,6 @@ src/artifact.html
 
 # Local reproducible run outputs
 results/
+
+# Personal Pages build output
+_site/

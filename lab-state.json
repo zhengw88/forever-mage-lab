@@ -3,7 +3,7 @@
   "repository": "zhengw88/forever-mage-lab",
   "upstream": "opitaru-sys/forever-mage-lab",
   "baseline_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "model": "upstream-v1.3-historical",
+  "model": "70707-experimental-event-sim + historical archive",
   "model_current": false,
   "source_review_date": "2026-11-01",
   "model_data_build": "1.60.1.69893 with selected fixes through 1 October",
@@ -66,6 +66,16 @@
       "url": "https://ladderly.gg/forever/ranks?class=mage&spell=arcane-wrath",
       "kind": "community client extraction for older build 70532; current hotfix coverage unconfirmed",
       "retrieved_utc": "2026-11-02"
+    },
+    "coefficient_snapshot": {
+      "url": "https://wowforeverhelper.com/spells/mage",
+      "kind": "first-hand client extraction for older 70532 build; current server hotfix coverage unconfirmed",
+      "retrieved_utc": "2026-11-02"
+    },
+    "racial_cache": {
+      "url": "https://wowforevertalents.com/racials/",
+      "kind": "70707 client/hotfix extraction; conflicts with announced Troll duration retained",
+      "retrieved_utc": "2026-11-02"
     }
   },
   "changes": [
@@ -80,9 +90,10 @@
       ],
       "implementation": "partial",
       "implemented_components": [
-        "Eight-second cooldown and frozen multiplier in current_combat.py/current-combat.js replay"
+        "Eight-second cooldown and frozen multiplier in current_combat.py/current-combat.js replay",
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
       ],
-      "remaining": "Full cast scheduler, Fingers of Frost charge and boss validation, coefficient and DPS integration remain pending."
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Winter's Chill",
@@ -94,9 +105,10 @@
       ],
       "implementation": "partial",
       "implemented_components": [
-        "Eligible-hit stacking, five-stack cap, range and Cone consumption with explicit miss-policy sensitivity in both replay ports"
+        "Eligible-hit stacking, five-stack cap, range and Cone consumption with explicit miss-policy sensitivity in both replay ports",
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
       ],
-      "remaining": "Actual duration, proc phase, damage formula ordering and full combat integration remain pending."
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Ice Barrier",
@@ -108,9 +120,10 @@
       ],
       "implementation": "partial",
       "implemented_components": [
-        "One-minute offensive aura, separate shield-break transition and tooltip bonus components in both replay ports"
+        "One-minute offensive aura, separate shield-break transition and tooltip bonus components in both replay ports",
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
       ],
-      "remaining": "Absorb amount, cast/resource cost, refresh legality, stacking order and full combat integration remain pending."
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Arcane Blast and Arcane Wrath",
@@ -125,9 +138,10 @@
       "implemented_components": [
         "Blast stack primitives integrated into explicit event replay",
         "Barrage eligibility and single-channel consumption in both languages",
-        "Latest Blast/Wrath rank facts and separately dated Wrath coefficient candidate recorded"
+        "Latest Blast/Wrath rank facts and separately dated Wrath coefficient candidate recorded",
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
       ],
-      "remaining": "Damage/mana scheduler, complete current coefficients, Wrath rotation and server aura/proc timing remain pending."
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Fire rotation",
@@ -141,9 +155,10 @@
       "implementation": "partial",
       "implemented_components": [
         "Heating Up stack/cap/expiry, Pyroblast consumption and Presence of Mind interaction in both replay ports",
-        "Unique personal Fire effect tracking and Fire Power cap with mixed-school exclusion"
+        "Unique personal Fire effect tracking and Fire Power cap with mixed-school exclusion",
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
       ],
-      "remaining": "GCD/cooldown/resource scheduling, damage, Ignite/Scorch implementation and full rotation optimization remain pending."
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Talent legality and hit",
@@ -162,19 +177,24 @@
         "All 53 current talent nodes with rank limits, tier requirements, named prerequisite edges and source URLs",
         "Three 51-point builds checked under conservative full-rank prerequisites in both languages",
         "Explicit versioned keyed build codec; historical digit links rejected by new decoder",
-        "Precision and Accelerant integrated into current event replay"
+        "Precision and Accelerant integrated into current event replay",
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
       ],
-      "remaining": "Server prerequisite conditions, full talent effect implementation, current UI/share links, hit cap and DPS engine integration remain pending."
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Race rankings",
       "old": "Human sword crit, 1% Skyborne haste, charge-based Eureka!, frequent Undead procs.",
-      "current": "Human: 1% crit, 10% Spirit. Skyborne: 2% haste; raid attunement removed. Eureka!: eight seconds. Undead: 30% caster proc chance, 15-second internal cooldown. Troll: 15-second Berserking.",
+      "current": "Human: 1% crit, 10% Spirit. Skyborne: 2% haste; raid attunement removed. Eureka!: eight seconds. Undead: 30% caster proc chance, 15-second internal cooldown. Troll: 15-second Berserking. Troll extracted tooltip still says 10 seconds versus announced 15; both durations are tested.",
       "impact": "Withdraw old racial percentages. New rankings depend on the rebuilt rotations and mana model.",
       "sources": [
         "blizzard"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
+      ],
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Dungeon leveling and AoE",
@@ -184,7 +204,11 @@
       "sources": [
         "blizzard"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
+      ],
+      "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
     {
       "topic": "Later hotfixes override earlier notes",
@@ -210,7 +234,7 @@
   ],
   "last_checked_utc": "2026-11-02",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "Upstream remains a331552; checked official notes and dated extraction still target October 30 hotfix. Added 53-node talent contract, versioned builds, cross-school event replay and generated mechanic traces. Current rankings remain blocked; complete combat integration and server validation are unfinished.",
+  "maintenance_note": "Added runnable independent Python/JavaScript event simulators, matched held-out experiments, finite policy search, sensitivity archive and personal interactive page. Current rankings remain blocked by incomplete current spell extraction and server validation. Personal deployment explicitly requested; PR remains unmerged.",
   "current_research_layer": {
     "version": "70707-20261030",
     "talent_nodes": 53,
@@ -218,5 +242,25 @@
     "status": "source-contract legal builds and explicit-outcome event replay; no current DPS engine",
     "documentation": "CURRENT-MECHANICS.md",
     "artifact": "current-replay-report.json"
+  },
+  "experimental_simulation": {
+    "files": [
+      "sim_engine.py",
+      "sim-engine.js",
+      "sim-data.json",
+      "sim-defaults.json",
+      "sim_report.py",
+      "current-experiments.json"
+    ],
+    "model_current": false,
+    "rankings_blocked": true,
+    "source_hotfix": "2026-10-30",
+    "source_review_utc": "2026-11-02",
+    "comparisons": "31 matched scenarios; 200 held-out fights per school; 26 finite policy candidates trained on disjoint seeds",
+    "remaining": [
+      "Complete 70707 spell/rank coefficient snapshot",
+      "Server validation of talent prerequisites, resource/proc timing, charge consumption, Ignite and mixed-school rules",
+      "Broader talent and rotation search, movement, survival and party leveling validation"
+    ]
   }
 }

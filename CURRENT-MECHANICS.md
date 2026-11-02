@@ -114,3 +114,12 @@ optimize and compare the three legal builds at identical gear, buffs, target,
 ranks, encounter durations and uncertainty settings. Historical output cannot
 become current merely by editing the ledger: `lab.py compare` explicitly requires
 `--historical` until a separately validated current engine is wired in.
+
+## Runnable experimental integration
+
+The replay fixtures now have a separate full event scheduler in `sim_engine.py`
+and `sim-engine.js`, with generated data, matched experiments, targeted tests
+and a personal browser interface. See `SIMULATION.md` for the complete contract,
+source ages, per-mechanic alternatives and remaining limits. Replay fixtures
+remain unit-level references; new DPS outputs are explicitly experimental.
+No ledger entry has been promoted to server-validated.
