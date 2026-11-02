@@ -539,7 +539,7 @@
     text: {
       title: 'Forever Mage Lab',
       eyebrow: 'WoW: Forever · Mage · beta data · v1.3 · 4 Oct 2026',
-      lede: 'What to press, which talents to take and which race to play, at every level from 1 to 60. **The short answer:** level as Frost, and at 60 play Frost with Missile Barrage in groups, a close call over Fire.',
+      lede: 'What to press, which talents to take and which race to play, at every level from 1 to 60. **Historical baseline:** the old model preferred Frost. Current Fire, Arcane and Frost comparisons are pending the rebuild.',
       trust: 'Built with Claude, with separate Claude sessions reviewing the models. Open source. [How it was checked](#method) · [What changed](#changelog)',
       navYou: 'Your {name}',
       youTitle: 'Your {name}',
