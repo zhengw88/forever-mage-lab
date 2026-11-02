@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "snapshot": "1.60.1.70707-hotfix-2026-10-30",
+  "status": "datamined rules, tested in isolation, not integrated or server validated",
+  "retrieved_utc": "2026-11-02",
+  "arcane_blast": {
+    "cast_seconds": 1.5,
+    "base_mana_fraction": 0.15,
+    "intellect_fraction_per_stack": 0.12,
+    "cost_increase_per_stack": 1.0,
+    "max_stacks": 4,
+    "duration_seconds": 18,
+    "refresh_duration": false,
+    "source": "https://wowforevertalents.com/mage/talents/arcane-blast/",
+    "evidence": "Community extraction of client tables and hotfix cache; no combat-log validation."
+  },
+  "precision": {
+    "max_rank": 3,
+    "hit_fraction_per_rank": 0.02,
+    "schools": "all",
+    "source": "https://wowforevertalents.com/mage/talents/precision/"
+  },
+  "accelerant": {
+    "max_rank": 5,
+    "seconds_per_rank": 0.1,
+    "spells": ["fireball", "frostfire", "arcaneWrath"],
+    "source": "https://wowforevertalents.com/mage/talents/accelerant/"
+  },
+  "integration_limits": [
+    "The complete current talent tree is not yet loaded or validated.",
+    "Arcane Blast aura application timing must be supplied by a combat engine.",
+    "Damage coefficients, rank damage, proc timing and mana discounts are not implemented here.",
+    "Accelerant modifies base cast time before haste; it does not set the global cooldown.",
+    "Precision returns an additive hit bonus; the engine must apply its independently validated hit cap.",
+    "No current DPS, rotation optimization or school ranking can be inferred from these primitives."
+  ]
+}

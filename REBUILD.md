@@ -44,7 +44,12 @@ outputs are historical too. Baseline presets are not optimized for the new tree.
    survival, and both mana-limited and unlimited-mana diagnostics. Re-run
    leveling and AoE separately; raid winners do not imply leveling winners.
 
-Every item is pending in `lab-state.json`; a source review is not an implementation.
+Arcane Blast, Precision and Accelerant now have isolated Python and JavaScript
+primitives in `patch_rules.py` and `patch-rules.js`, backed by `patch-rules.json`.
+Boundary tests cover stack caps, no duration refresh, exact expiration, next-cast
+mana cost, talent ranks and spell scope. They are **not connected to the combat
+engines**. Those migration entries are partial, not validated. All other items
+remain pending; a source review is not an implementation.
 When complete, replace the historical presets and banner, update model identity,
 and set the status current only with supporting tests and reproducible reports.
 
@@ -67,7 +72,9 @@ Follow `AGENTS.md` for maintenance. Open PRs against **this fork**, not upstream
 Python 3.12+ and Node 22+ are sufficient for numerical checks; no third-party
 simulation dependency is required. `python lab.py validate` runs the existing
 parity, option, weights, talent-builder and AoE checks, checks the current-version
-guard and seeded reproducibility, and rebuilds the page.
+guard and seeded reproducibility, tests the new mechanic primitives, and rebuilds
+the page. The AoE suite skips an optional assumption-register check because that
+external sibling-project file was never included upstream.
 
 Browser testing additionally needs Python Playwright and Chromium:
 

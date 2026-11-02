@@ -13,8 +13,9 @@
   "sources": {
     "blizzard": {
       "label": "Blizzard development notes, including 27 October supplement",
-      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-updated-october-26/2360696",
-      "kind": "official notes"
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696",
+      "kind": "official notes",
+      "retrieved_utc": "2026-11-02"
     },
     "datamine": {
       "label": "Talents Forever: first-hand client and hotfix-cache comparison",
@@ -40,6 +41,16 @@
       "label": "Current Mage spellbook",
       "url": "https://wowforevertalents.com/abilities/mage/",
       "kind": "community client extraction"
+    },
+    "precision": {
+      "url": "https://wowforevertalents.com/mage/talents/precision/",
+      "kind": "community client/hotfix extraction",
+      "retrieved_utc": "2026-11-02"
+    },
+    "accelerant": {
+      "url": "https://wowforevertalents.com/mage/talents/accelerant/",
+      "kind": "community client/hotfix extraction",
+      "retrieved_utc": "2026-11-02"
     }
   },
   "changes": [
@@ -83,7 +94,11 @@
         "arcane",
         "blizzard"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "Arcane Blast stack lifetime, cap, Intellect bonus and next-cast base mana cost in patch_rules.py and patch-rules.js"
+      ],
+      "remaining": "Not integrated into raid, dice, leveling or AoE engines. Wrath, damage ranks/coefficients, aura timing, proc and mana interactions remain pending."
     },
     {
       "topic": "Fire rotation",
@@ -102,9 +117,15 @@
       "current": "Arcane Focus and Piercing Ice are gone; Precision gives all-school hit (2/4/6%). Missile Barrage has two ranks on row 2; Incineration has five and Critical Mass three. Other nodes move.",
       "impact": "Rebuild talent data and presets before comparing trees. Old share links represent historical builds; do not silently reinterpret their points.",
       "sources": [
-        "datamine"
+        "datamine",
+        "precision",
+        "accelerant"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "Isolated Precision hit bonus and Accelerant cast-time modifiers with rank validation in both languages"
+      ],
+      "remaining": "Full tree, prerequisites, legality, presets, share-link versioning, hit cap and engine integration remain pending."
     },
     {
       "topic": "Race rankings",
@@ -147,5 +168,8 @@
       ],
       "implementation": "pending"
     }
-  ]
+  ],
+  "last_checked_utc": "2026-11-02",
+  "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
+  "maintenance_note": "No newer upstream commit or newer Mage patch found in the checked official forum listing and client extraction sources. Current source snapshot remains October 30 hotfix, read October 31 by the extractor."
 }

@@ -4,7 +4,6 @@ import argparse
 import hashlib
 import json
 import math
-import os
 from pathlib import Path
 import subprocess
 import sys
@@ -59,6 +58,7 @@ def report(fights, seed, seconds):
 
 
 def validate():
+    subprocess.run([sys.executable, 'patch_rules_test.py'], cwd=ROOT, check=True)
     # Test the release guard independently of the ledger's current state.
     assert not current_allowed({'model_current': True, 'changes': []})
     assert not current_allowed({'model_current': True, 'changes': [{'implementation': 'pending'}]})
