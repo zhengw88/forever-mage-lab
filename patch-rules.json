@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "snapshot": "1.60.1.70707-hotfix-2026-10-30",
-  "status": "datamined rules, tested in isolation, not integrated or server validated",
+  "status": "Integrated into current event replay; historical DPS engines unchanged; not server validated",
   "retrieved_utc": "2026-11-02",
   "arcane_blast": {
     "cast_seconds": 1.5,
@@ -23,11 +23,15 @@
   "accelerant": {
     "max_rank": 5,
     "seconds_per_rank": 0.1,
-    "spells": ["fireball", "frostfire", "arcaneWrath"],
+    "spells": [
+      "fireball",
+      "frostfire",
+      "arcaneWrath"
+    ],
     "source": "https://wowforevertalents.com/mage/talents/accelerant/"
   },
   "integration_limits": [
-    "The complete current talent tree is not yet loaded or validated.",
+    "Current talent contract is checked separately in current-talents.json; full DPS integration remains pending.",
     "Arcane Blast aura application timing must be supplied by a combat engine.",
     "Damage coefficients, rank damage, proc timing and mana discounts are not implemented here.",
     "Accelerant modifies base cast time before haste; it does not set the global cooldown.",

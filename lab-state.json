@@ -51,6 +51,21 @@
       "url": "https://wowforevertalents.com/mage/talents/accelerant/",
       "kind": "community client/hotfix extraction",
       "retrieved_utc": "2026-11-02"
+    },
+    "talent_tree": {
+      "url": "https://wowforevertalents.com/mage/",
+      "kind": "community client/hotfix extraction; all 53 individual talent pages checked",
+      "retrieved_utc": "2026-11-02"
+    },
+    "client_diff": {
+      "url": "https://foreverdb.net/changelog/1.60.1.70707",
+      "kind": "community client comparison, extracted 2026-10-31",
+      "retrieved_utc": "2026-11-02"
+    },
+    "wrath_coefficient_candidate": {
+      "url": "https://ladderly.gg/forever/ranks?class=mage&spell=arcane-wrath",
+      "kind": "community client extraction for older build 70532; current hotfix coverage unconfirmed",
+      "retrieved_utc": "2026-11-02"
     }
   },
   "changes": [
@@ -63,7 +78,11 @@
         "spells",
         "datamine"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "Eight-second cooldown and frozen multiplier in current_combat.py/current-combat.js replay"
+      ],
+      "remaining": "Full cast scheduler, Fingers of Frost charge and boss validation, coefficient and DPS integration remain pending."
     },
     {
       "topic": "Winter's Chill",
@@ -73,7 +92,11 @@
       "sources": [
         "winter"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "Eligible-hit stacking, five-stack cap, range and Cone consumption with explicit miss-policy sensitivity in both replay ports"
+      ],
+      "remaining": "Actual duration, proc phase, damage formula ordering and full combat integration remain pending."
     },
     {
       "topic": "Ice Barrier",
@@ -83,7 +106,11 @@
       "sources": [
         "barrier"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "One-minute offensive aura, separate shield-break transition and tooltip bonus components in both replay ports"
+      ],
+      "remaining": "Absorb amount, cast/resource cost, refresh legality, stacking order and full combat integration remain pending."
     },
     {
       "topic": "Arcane Blast and Arcane Wrath",
@@ -96,9 +123,11 @@
       ],
       "implementation": "partial",
       "implemented_components": [
-        "Arcane Blast stack lifetime, cap, Intellect bonus and next-cast base mana cost in patch_rules.py and patch-rules.js"
+        "Blast stack primitives integrated into explicit event replay",
+        "Barrage eligibility and single-channel consumption in both languages",
+        "Latest Blast/Wrath rank facts and separately dated Wrath coefficient candidate recorded"
       ],
-      "remaining": "Not integrated into raid, dice, leveling or AoE engines. Wrath, damage ranks/coefficients, aura timing, proc and mana interactions remain pending."
+      "remaining": "Damage/mana scheduler, complete current coefficients, Wrath rotation and server aura/proc timing remain pending."
     },
     {
       "topic": "Fire rotation",
@@ -109,7 +138,12 @@
         "blizzard",
         "datamine"
       ],
-      "implementation": "pending"
+      "implementation": "partial",
+      "implemented_components": [
+        "Heating Up stack/cap/expiry, Pyroblast consumption and Presence of Mind interaction in both replay ports",
+        "Unique personal Fire effect tracking and Fire Power cap with mixed-school exclusion"
+      ],
+      "remaining": "GCD/cooldown/resource scheduling, damage, Ignite/Scorch implementation and full rotation optimization remain pending."
     },
     {
       "topic": "Talent legality and hit",
@@ -119,13 +153,18 @@
       "sources": [
         "datamine",
         "precision",
-        "accelerant"
+        "accelerant",
+        "talent_tree",
+        "client_diff"
       ],
       "implementation": "partial",
       "implemented_components": [
-        "Isolated Precision hit bonus and Accelerant cast-time modifiers with rank validation in both languages"
+        "All 53 current talent nodes with rank limits, tier requirements, named prerequisite edges and source URLs",
+        "Three 51-point builds checked under conservative full-rank prerequisites in both languages",
+        "Explicit versioned keyed build codec; historical digit links rejected by new decoder",
+        "Precision and Accelerant integrated into current event replay"
       ],
-      "remaining": "Full tree, prerequisites, legality, presets, share-link versioning, hit cap and engine integration remain pending."
+      "remaining": "Server prerequisite conditions, full talent effect implementation, current UI/share links, hit cap and DPS engine integration remain pending."
     },
     {
       "topic": "Race rankings",
@@ -171,5 +210,13 @@
   ],
   "last_checked_utc": "2026-11-02",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "No newer upstream commit or newer Mage patch found in the checked official forum listing and client extraction sources. Current source snapshot remains October 30 hotfix, read October 31 by the extractor."
+  "maintenance_note": "Upstream remains a331552; checked official notes and dated extraction still target October 30 hotfix. Added 53-node talent contract, versioned builds, cross-school event replay and generated mechanic traces. Current rankings remain blocked; complete combat integration and server validation are unfinished.",
+  "current_research_layer": {
+    "version": "70707-20261030",
+    "talent_nodes": 53,
+    "candidate_builds": 3,
+    "status": "source-contract legal builds and explicit-outcome event replay; no current DPS engine",
+    "documentation": "CURRENT-MECHANICS.md",
+    "artifact": "current-replay-report.json"
+  }
 }

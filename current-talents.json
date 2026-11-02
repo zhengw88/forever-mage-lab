@@ -1,0 +1,541 @@
+{
+  "schema": 1,
+  "version": "70707-20261030",
+  "client_build": "1.60.1.70707",
+  "hotfix_date": "2026-10-30",
+  "retrieved_utc": "2026-11-02",
+  "evidence": "Community extraction of client and hotfix cache; not server validation.",
+  "prerequisite_rank_policy": "Require the full rank of each named prerequisite (conservative Classic convention; exact multi-rank server requirement not independently confirmed).",
+  "talents": [
+    {
+      "name": "Arcane Resilience",
+      "tree": "Arcane",
+      "required_points": 0,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-resilience/",
+      "key": "arcaneresilience",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Improved Channeling",
+      "tree": "Arcane",
+      "required_points": 0,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/improved-channeling/",
+      "key": "improvedchanneling",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Wand Specialization",
+      "tree": "Arcane",
+      "required_points": 0,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/wand-specialization/",
+      "key": "wandspecialization",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Concentration",
+      "tree": "Arcane",
+      "required_points": 5,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-concentration/",
+      "key": "arcaneconcentration",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Subtlety",
+      "tree": "Arcane",
+      "required_points": 5,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-subtlety/",
+      "key": "arcanesubtlety",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Magic Absorption",
+      "tree": "Arcane",
+      "required_points": 5,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/magic-absorption/",
+      "key": "magicabsorption",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Missile Barrage",
+      "tree": "Arcane",
+      "required_points": 5,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/missile-barrage/",
+      "key": "missilebarrage",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Blast",
+      "tree": "Arcane",
+      "required_points": 10,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-blast/",
+      "key": "arcaneblast",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Geometry",
+      "tree": "Arcane",
+      "required_points": 10,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-geometry/",
+      "key": "arcanegeometry",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Impact",
+      "tree": "Arcane",
+      "required_points": 10,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-impact/",
+      "key": "arcaneimpact",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Meditation",
+      "tree": "Arcane",
+      "required_points": 15,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-meditation/",
+      "key": "arcanemeditation",
+      "requires": "arcaneconcentration",
+      "requires_rank": 5
+    },
+    {
+      "name": "Arcane Shielding",
+      "tree": "Arcane",
+      "required_points": 15,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-shielding/",
+      "key": "arcaneshielding",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Wrath",
+      "tree": "Arcane",
+      "required_points": 15,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-wrath/",
+      "key": "arcanewrath",
+      "requires": "arcaneblast",
+      "requires_rank": 1
+    },
+    {
+      "name": "Improved Counterspell",
+      "tree": "Arcane",
+      "required_points": 15,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/improved-counterspell/",
+      "key": "improvedcounterspell",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Mind",
+      "tree": "Arcane",
+      "required_points": 20,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-mind/",
+      "key": "arcanemind",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Presence of Mind",
+      "tree": "Arcane",
+      "required_points": 20,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/presence-of-mind/",
+      "key": "presenceofmind",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Instability",
+      "tree": "Arcane",
+      "required_points": 25,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-instability/",
+      "key": "arcaneinstability",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arcane Power",
+      "tree": "Arcane",
+      "required_points": 30,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/arcane-power/",
+      "key": "arcanepower",
+      "requires": "presenceofmind",
+      "requires_rank": 1
+    },
+    {
+      "name": "Accelerant",
+      "tree": "Fire",
+      "required_points": 0,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/accelerant/",
+      "key": "accelerant",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Incineration",
+      "tree": "Fire",
+      "required_points": 0,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/incineration/",
+      "key": "incineration",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Flame Throwing",
+      "tree": "Fire",
+      "required_points": 5,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/flame-throwing/",
+      "key": "flamethrowing",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Ignite",
+      "tree": "Fire",
+      "required_points": 5,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/ignite/",
+      "key": "ignite",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Impact",
+      "tree": "Fire",
+      "required_points": 5,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/impact/",
+      "key": "impact",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Burning Soul",
+      "tree": "Fire",
+      "required_points": 10,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/burning-soul/",
+      "key": "burningsoul",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Improved Fire Blast",
+      "tree": "Fire",
+      "required_points": 10,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/improved-fire-blast/",
+      "key": "improvedfireblast",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Improved Flamestrike",
+      "tree": "Fire",
+      "required_points": 10,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/improved-flamestrike/",
+      "key": "improvedflamestrike",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Pyroblast",
+      "tree": "Fire",
+      "required_points": 10,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/pyroblast/",
+      "key": "pyroblast",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Heating Up",
+      "tree": "Fire",
+      "required_points": 15,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/heating-up/",
+      "key": "heatingup",
+      "requires": "pyroblast",
+      "requires_rank": 1
+    },
+    {
+      "name": "Improved Fire Ward",
+      "tree": "Fire",
+      "required_points": 15,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/improved-fire-ward/",
+      "key": "improvedfireward",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Improved Scorch",
+      "tree": "Fire",
+      "required_points": 15,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/improved-scorch/",
+      "key": "improvedscorch",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Master of Elements",
+      "tree": "Fire",
+      "required_points": 15,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/master-of-elements/",
+      "key": "masterofelements",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Blast Wave",
+      "tree": "Fire",
+      "required_points": 20,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/blast-wave/",
+      "key": "blastwave",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Critical Mass",
+      "tree": "Fire",
+      "required_points": 20,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/critical-mass/",
+      "key": "criticalmass",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Fire Power",
+      "tree": "Fire",
+      "required_points": 25,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/fire-power/",
+      "key": "firepower",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Combustion",
+      "tree": "Fire",
+      "required_points": 30,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/combustion/",
+      "key": "combustion",
+      "requires": "criticalmass",
+      "requires_rank": 3
+    },
+    {
+      "name": "Frost Warding",
+      "tree": "Frost",
+      "required_points": 0,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/frost-warding/",
+      "key": "frostwarding",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Improved Frostbolt",
+      "tree": "Frost",
+      "required_points": 0,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/improved-frostbolt/",
+      "key": "improvedfrostbolt",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Precision",
+      "tree": "Frost",
+      "required_points": 0,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/precision/",
+      "key": "precision",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Frostbite",
+      "tree": "Frost",
+      "required_points": 5,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/frostbite/",
+      "key": "frostbite",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Ice Shards",
+      "tree": "Frost",
+      "required_points": 5,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/ice-shards/",
+      "key": "iceshards",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Improved Frost Nova",
+      "tree": "Frost",
+      "required_points": 5,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/improved-frost-nova/",
+      "key": "improvedfrostnova",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Permafrost",
+      "tree": "Frost",
+      "required_points": 5,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/permafrost/",
+      "key": "permafrost",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Frost Channeling",
+      "tree": "Frost",
+      "required_points": 10,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/frost-channeling/",
+      "key": "frostchanneling",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Ice Lance",
+      "tree": "Frost",
+      "required_points": 10,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/ice-lance/",
+      "key": "icelance",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Improved Blizzard",
+      "tree": "Frost",
+      "required_points": 10,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/improved-blizzard/",
+      "key": "improvedblizzard",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Arctic Reach",
+      "tree": "Frost",
+      "required_points": 15,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/arctic-reach/",
+      "key": "arcticreach",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Ice Block",
+      "tree": "Frost",
+      "required_points": 15,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/ice-block/",
+      "key": "iceblock",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Shatter",
+      "tree": "Frost",
+      "required_points": 15,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/shatter/",
+      "key": "shatter",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Cold Snap",
+      "tree": "Frost",
+      "required_points": 20,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/cold-snap/",
+      "key": "coldsnap",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Fingers of Frost",
+      "tree": "Frost",
+      "required_points": 20,
+      "max_rank": 2,
+      "source": "https://wowforevertalents.com/mage/talents/fingers-of-frost/",
+      "key": "fingersoffrost",
+      "requires": "icelance",
+      "requires_rank": 1
+    },
+    {
+      "name": "Improved Cone of Cold",
+      "tree": "Frost",
+      "required_points": 20,
+      "max_rank": 3,
+      "source": "https://wowforevertalents.com/mage/talents/improved-cone-of-cold/",
+      "key": "improvedconeofcold",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Winter's Chill",
+      "tree": "Frost",
+      "required_points": 25,
+      "max_rank": 5,
+      "source": "https://wowforevertalents.com/mage/talents/winter-s-chill/",
+      "key": "winterschill",
+      "requires": null,
+      "requires_rank": 0
+    },
+    {
+      "name": "Ice Barrier",
+      "tree": "Frost",
+      "required_points": 30,
+      "max_rank": 1,
+      "source": "https://wowforevertalents.com/mage/talents/ice-barrier/",
+      "key": "icebarrier",
+      "requires": "coldsnap",
+      "requires_rank": 1
+    }
+  ]
+}

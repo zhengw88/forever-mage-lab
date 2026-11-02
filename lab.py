@@ -48,8 +48,7 @@ def report(fights, seed, seconds):
                                              cwd=ROOT, text=True).strip())
     except (OSError, subprocess.CalledProcessError):
         commit, dirty = None, None
-    s = state()
-    return dict(schema=1, model=s['model'], model_current=current_allowed(s),
+    return dict(schema=1, model='upstream-v1.3-historical', model_current=False,
                 caveat='Historical baseline; no current Fire/Arcane/Frost ranking. '
                        'Confidence intervals quantify sampling error only.',
                 commit=commit, tracked_worktree_dirty=dirty, input_sha256=hashes,
@@ -59,6 +58,8 @@ def report(fights, seed, seconds):
 
 def validate():
     subprocess.run([sys.executable, 'patch_rules_test.py'], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, 'current_model_test.py'], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, 'generate_current_replay.py', '--check'], cwd=ROOT, check=True)
     # Test the release guard independently of the ledger's current state.
     assert not current_allowed({'model_current': True, 'changes': []})
     assert not current_allowed({'model_current': True, 'changes': [{'implementation': 'pending'}]})
@@ -87,6 +88,10 @@ def main():
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('status')
     commands.add_parser('validate')
+    commands.add_parser('builds', help='Check current research builds and print versioned links')
+    replay_cmd = commands.add_parser('replay', help='Replay explicit current mechanic events; never reports DPS')
+    replay_cmd.add_argument('input', type=Path)
+    replay_cmd.add_argument('--output', type=Path)
     compare = commands.add_parser('compare')
     compare.add_argument('--historical', action='store_true', help='Explicitly allow the old baseline rules')
     compare.add_argument('--fights', type=int, default=1000)
@@ -98,8 +103,27 @@ def main():
         print(json.dumps(state(), indent=2))
     elif args.command == 'validate':
         validate()
+    elif args.command == 'builds':
+        import current_talents as talents
+        data = json.loads((ROOT / 'current-builds.json').read_text())
+        rows = {}
+        for key, build in data['builds'].items():
+            problems = talents.errors(build, require_full=True)
+            if problems:
+                parser.error('; '.join(problems))
+            rows[key] = dict(points=sum(build.values()), share_fragment=talents.encode(build))
+        print(json.dumps(dict(version=data['version'], status=data['status'], builds=rows), indent=2))
+    elif args.command == 'replay':
+        from current_combat import replay
+        request = json.loads(args.input.read_text())
+        payload = json.dumps(replay(request['talents'], request['events'], request['options']), indent=2, allow_nan=False) + '\n'
+        if args.output:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(payload)
+        else:
+            print(payload, end='')
     else:
-        if not current_allowed(state()) and not args.historical:
+        if not args.historical:
             parser.error('Current mechanics migration is incomplete. Use --historical only for baseline research.')
         if args.fights < 2 or not math.isfinite(args.seconds) or args.seconds <= 0:
             parser.error('--fights must be >= 2 and --seconds must be finite and positive')

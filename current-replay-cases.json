@@ -1,0 +1,256 @@
+{
+  "schema": 1,
+  "version": "70707-20261030",
+  "purpose": "Deterministic outcome fixtures, not legal cast schedules, gear sets, DPS comparisons or game logs. Equal Intellect and base mana are hand-checkable test inputs.",
+  "cases": {
+    "arcane": {
+      "talents": {
+        "improvedchanneling": 5,
+        "arcanesubtlety": 1,
+        "arcaneconcentration": 5,
+        "missilebarrage": 2,
+        "arcaneimpact": 3,
+        "arcaneblast": 1,
+        "arcanemeditation": 3,
+        "arcanewrath": 1,
+        "presenceofmind": 1,
+        "arcanemind": 5,
+        "arcaneinstability": 3,
+        "arcanepower": 1,
+        "accelerant": 5,
+        "incineration": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "heatingup": 1,
+        "precision": 3
+      },
+      "options": {
+        "intellect": 300,
+        "base_mana": 1000,
+        "heating_refresh": "refresh",
+        "cone_consumption": "hit"
+      },
+      "events": [
+        {
+          "at": 0,
+          "kind": "blast_aura"
+        },
+        {
+          "at": 4,
+          "kind": "blast_aura"
+        },
+        {
+          "at": 8,
+          "kind": "blast_aura"
+        },
+        {
+          "at": 12,
+          "kind": "blast_aura"
+        },
+        {
+          "at": 16,
+          "kind": "blast_aura"
+        },
+        {
+          "at": 17,
+          "kind": "barrage_roll",
+          "spell": "arcaneblast",
+          "roll": 0.39,
+          "expires_at": 30
+        },
+        {
+          "at": 17,
+          "kind": "missiles_cast"
+        },
+        {
+          "at": 18,
+          "kind": "observe"
+        },
+        {
+          "at": 20,
+          "kind": "missiles_cast"
+        }
+      ]
+    },
+    "fire": {
+      "talents": {
+        "improvedchanneling": 5,
+        "arcanesubtlety": 1,
+        "arcaneconcentration": 5,
+        "missilebarrage": 2,
+        "arcaneimpact": 3,
+        "arcaneblast": 1,
+        "accelerant": 5,
+        "incineration": 4,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improvedfireblast": 2,
+        "improvedscorch": 3,
+        "heatingup": 1,
+        "masterofelements": 3,
+        "criticalmass": 3,
+        "firepower": 3,
+        "combustion": 1,
+        "precision": 3
+      },
+      "options": {
+        "intellect": 300,
+        "base_mana": 1000,
+        "heating_refresh": "refresh",
+        "cone_consumption": "hit"
+      },
+      "events": [
+        {
+          "at": 0,
+          "kind": "fire_hit",
+          "spell": "fireblast",
+          "crit": true,
+          "periodic": false
+        },
+        {
+          "at": 1,
+          "kind": "fire_hit",
+          "spell": "fireblast",
+          "crit": false,
+          "periodic": false
+        },
+        {
+          "at": 2,
+          "kind": "pyro_cast",
+          "presence_of_mind": false
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "effect": "fireball",
+          "owner": "self",
+          "expires_at": 10
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "effect": "ignite",
+          "owner": "self",
+          "expires_at": 10
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "effect": "improvedscorch",
+          "owner": "self",
+          "expires_at": 10
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "effect": "pyroblast",
+          "owner": "self",
+          "expires_at": 10
+        },
+        {
+          "at": 10,
+          "kind": "observe"
+        }
+      ]
+    },
+    "frost": {
+      "talents": {
+        "improvedchanneling": 5,
+        "arcanesubtlety": 1,
+        "arcaneconcentration": 5,
+        "missilebarrage": 2,
+        "arcaneimpact": 3,
+        "arcaneblast": 1,
+        "improvedfrostbolt": 5,
+        "precision": 3,
+        "iceshards": 5,
+        "frostchanneling": 3,
+        "icelance": 1,
+        "arcticreach": 2,
+        "shatter": 3,
+        "fingersoffrost": 2,
+        "coldsnap": 1,
+        "winterschill": 5,
+        "icebarrier": 1,
+        "incineration": 3
+      },
+      "options": {
+        "intellect": 300,
+        "base_mana": 1000,
+        "heating_refresh": "refresh",
+        "cone_consumption": "hit"
+      },
+      "events": [
+        {
+          "at": 0,
+          "kind": "barrier_apply"
+        },
+        {
+          "at": 0,
+          "kind": "lance_cast",
+          "frozen": true
+        },
+        {
+          "at": 1,
+          "kind": "frost_hit",
+          "spell": "frostbolt",
+          "fingers_empowered": false,
+          "roll": 0.99
+        },
+        {
+          "at": 2,
+          "kind": "frost_hit",
+          "spell": "frostbolt",
+          "fingers_empowered": false,
+          "roll": 0.99
+        },
+        {
+          "at": 3,
+          "kind": "frost_hit",
+          "spell": "frostbolt",
+          "fingers_empowered": false,
+          "roll": 0.99
+        },
+        {
+          "at": 4,
+          "kind": "frost_hit",
+          "spell": "frostbolt",
+          "fingers_empowered": false,
+          "roll": 0.99
+        },
+        {
+          "at": 5,
+          "kind": "frost_hit",
+          "spell": "frostbolt",
+          "fingers_empowered": false,
+          "roll": 0.99
+        },
+        {
+          "at": 6,
+          "kind": "cone",
+          "hit": true,
+          "in_range": false
+        },
+        {
+          "at": 8,
+          "kind": "lance_cast",
+          "frozen": false
+        },
+        {
+          "at": 9,
+          "kind": "cone",
+          "hit": true,
+          "in_range": true
+        },
+        {
+          "at": 10,
+          "kind": "shield_break"
+        },
+        {
+          "at": 60,
+          "kind": "observe"
+        }
+      ]
+    }
+  }
+}

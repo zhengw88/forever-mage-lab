@@ -44,14 +44,17 @@ outputs are historical too. Baseline presets are not optimized for the new tree.
    survival, and both mana-limited and unlimited-mana diagnostics. Re-run
    leveling and AoE separately; raid winners do not imply leveling winners.
 
-Arcane Blast, Precision and Accelerant now have isolated Python and JavaScript
-primitives in `patch_rules.py` and `patch-rules.js`, backed by `patch-rules.json`.
-Boundary tests cover stack caps, no duration refresh, exact expiration, next-cast
-mana cost, talent ranks and spell scope. They are **not connected to the combat
-engines**. Those migration entries are partial, not validated. All other items
-remain pending; a source review is not an implementation.
-When complete, replace the historical presets and banner, update model identity,
-and set the status current only with supporting tests and reproducible reports.
+A separate current research layer now loads all 53 talent nodes with source URLs,
+checks three 51-point candidate builds, and provides a versioned keyed build codec.
+Python and JavaScript event replay connect the Blast/Precision/Accelerant helpers
+to Barrage, Heating Up, personal Fire effects, Winter's Chill, Ice Lance and Barrier
+state. See `CURRENT-MECHANICS.md` for commands, evidence and unresolved behavior.
+
+The event layer is not a full cast scheduler or DPS engine. Generated traces are
+synthetic mechanic fixtures, not current raid comparisons. The old page and its
+share links remain historical. Full spell data, server behavior, damage/mana,
+rotations, racials, leveling and AoE migration remain unfinished. All affected
+ledger entries remain partial; none has been promoted to fully validated.
 
 ## Updating the fork
 

@@ -1,0 +1,828 @@
+{
+  "schema": 1,
+  "version": "70707-20261030",
+  "purpose": "Deterministic outcome fixtures, not legal cast schedules, gear sets, DPS comparisons or game logs. Equal Intellect and base mana are hand-checkable test inputs.",
+  "model_current": false,
+  "input_sha256": {
+    "current-replay-cases.json": "a5af34f525786f47e02418d18f2ee2b5131a545d981df701fcd0ad1823621fff",
+    "current-talents.json": "b8e4995b9c5e65f0b9b02856b73e066073d5552914a8931d5a88f10e7b9a02a1",
+    "current_talents.py": "a15375d03a1198ddc7df32c92fd3cbb6121d7a9539c577c0ced40045fdef4541",
+    "current-talents.js": "088075212a9cbca514fff4bd8fd6f235262eca73bf7cb402adf69be2641cc26e",
+    "current_combat.py": "663d495f1fb0440230346c151da15fd4827dcce3c8ce6ffa2612b9175e89563a",
+    "current-combat.js": "8e03178fd8815e92b942011c4a7c33eee6a4c24dae39574fabafbc7ce9a1c4b8",
+    "patch_rules.py": "a1d85b4fc72721ac9361cfc291f6e50db0c5244fe2fd0881c8b21b47da1ec6ee",
+    "patch-rules.js": "22f6f6ce8dd25aa9d8a4d4e58817f252b2f95243cfd3058629d680a67179dc56",
+    "patch-rules.json": "57965d1df48ec6839cc3c0fa9fd3ce546307740b6931136b45d1288e53f1c43b"
+  },
+  "results": {
+    "arcane": {
+      "share_fragment": "#mage-70707-20261030:accelerant=5,arcaneblast=1,arcaneconcentration=5,arcaneimpact=3,arcaneinstability=3,arcanemeditation=3,arcanemind=5,arcanepower=1,arcanesubtlety=1,arcanewrath=1,heatingup=1,ignite=5,improvedchanneling=5,incineration=5,missilebarrage=2,precision=3,presenceofmind=1,pyroblast=1",
+      "schema": 1,
+      "model": "current-mechanics-replay",
+      "model_current": false,
+      "options": {
+        "intellect": 300,
+        "base_mana": 1000,
+        "heating_refresh": "refresh",
+        "cone_consumption": "hit"
+      },
+      "talents": {
+        "improvedchanneling": 5,
+        "arcanesubtlety": 1,
+        "arcaneconcentration": 5,
+        "missilebarrage": 2,
+        "arcaneimpact": 3,
+        "arcaneblast": 1,
+        "arcanemeditation": 3,
+        "arcanewrath": 1,
+        "presenceofmind": 1,
+        "arcanemind": 5,
+        "arcaneinstability": 3,
+        "arcanepower": 1,
+        "accelerant": 5,
+        "incineration": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "heatingup": 1,
+        "precision": 3
+      },
+      "events": [
+        {
+          "at": 0,
+          "kind": "blast_aura",
+          "detail": {},
+          "blast": {
+            "stacks": 1,
+            "expires_at": 18,
+            "spell_damage_bonus": 36.0,
+            "mana_cost": 300.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 4,
+          "kind": "blast_aura",
+          "detail": {},
+          "blast": {
+            "stacks": 2,
+            "expires_at": 18,
+            "spell_damage_bonus": 72.0,
+            "mana_cost": 450.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 8,
+          "kind": "blast_aura",
+          "detail": {},
+          "blast": {
+            "stacks": 3,
+            "expires_at": 18,
+            "spell_damage_bonus": 108.0,
+            "mana_cost": 600.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 12,
+          "kind": "blast_aura",
+          "detail": {},
+          "blast": {
+            "stacks": 4,
+            "expires_at": 18,
+            "spell_damage_bonus": 144.0,
+            "mana_cost": 750.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 16,
+          "kind": "blast_aura",
+          "detail": {},
+          "blast": {
+            "stacks": 4,
+            "expires_at": 18,
+            "spell_damage_bonus": 144.0,
+            "mana_cost": 750.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 17,
+          "kind": "barrage_roll",
+          "detail": {
+            "chance": 0.4,
+            "triggered": true
+          },
+          "blast": {
+            "stacks": 4,
+            "expires_at": 18,
+            "spell_damage_bonus": 144.0,
+            "mana_cost": 750.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": true
+        },
+        {
+          "at": 17,
+          "kind": "missiles_cast",
+          "detail": {
+            "empowered": true,
+            "channel_seconds": 2.5,
+            "mana_multiplier": 0,
+            "tick_offsets": [
+              0.5,
+              1.0,
+              1.5,
+              2.0,
+              2.5
+            ]
+          },
+          "blast": {
+            "stacks": 4,
+            "expires_at": 18,
+            "spell_damage_bonus": 144.0,
+            "mana_cost": 750.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 18,
+          "kind": "observe",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 20,
+          "kind": "missiles_cast",
+          "detail": {
+            "empowered": false,
+            "channel_seconds": 5,
+            "mana_multiplier": 1,
+            "tick_offsets": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        }
+      ],
+      "caveat": "Explicit outcome replay, not DPS or a spec ranking. See CURRENT-MECHANICS.md."
+    },
+    "fire": {
+      "share_fragment": "#mage-70707-20261030:accelerant=5,arcaneblast=1,arcaneconcentration=5,arcaneimpact=3,arcanesubtlety=1,combustion=1,criticalmass=3,firepower=3,heatingup=1,ignite=5,improvedchanneling=5,improvedfireblast=2,improvedscorch=3,incineration=4,masterofelements=3,missilebarrage=2,precision=3,pyroblast=1",
+      "schema": 1,
+      "model": "current-mechanics-replay",
+      "model_current": false,
+      "options": {
+        "intellect": 300,
+        "base_mana": 1000,
+        "heating_refresh": "refresh",
+        "cone_consumption": "hit"
+      },
+      "talents": {
+        "improvedchanneling": 5,
+        "arcanesubtlety": 1,
+        "arcaneconcentration": 5,
+        "missilebarrage": 2,
+        "arcaneimpact": 3,
+        "arcaneblast": 1,
+        "accelerant": 5,
+        "incineration": 4,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improvedfireblast": 2,
+        "improvedscorch": 3,
+        "heatingup": 1,
+        "masterofelements": 3,
+        "criticalmass": 3,
+        "firepower": 3,
+        "combustion": 1,
+        "precision": 3
+      },
+      "events": [
+        {
+          "at": 0,
+          "kind": "fire_hit",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 2,
+          "heating_expires_at": 20,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 1,
+          "kind": "fire_hit",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 3,
+          "heating_expires_at": 21,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 2,
+          "kind": "pyro_cast",
+          "detail": {
+            "cast_seconds": 1.5,
+            "consumed": 3
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [
+            "fireball"
+          ],
+          "fire_power_multiplier": 1.03,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [
+            "fireball",
+            "ignite"
+          ],
+          "fire_power_multiplier": 1.06,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [
+            "fireball",
+            "ignite",
+            "improvedscorch"
+          ],
+          "fire_power_multiplier": 1.09,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 3,
+          "kind": "effect_apply",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [
+            "fireball",
+            "ignite",
+            "improvedscorch",
+            "pyroblast"
+          ],
+          "fire_power_multiplier": 1.12,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 10,
+          "kind": "observe",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.0,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        }
+      ],
+      "caveat": "Explicit outcome replay, not DPS or a spec ranking. See CURRENT-MECHANICS.md."
+    },
+    "frost": {
+      "share_fragment": "#mage-70707-20261030:arcaneblast=1,arcaneconcentration=5,arcaneimpact=3,arcanesubtlety=1,arcticreach=2,coldsnap=1,fingersoffrost=2,frostchanneling=3,icebarrier=1,icelance=1,iceshards=5,improvedchanneling=5,improvedfrostbolt=5,incineration=3,missilebarrage=2,precision=3,shatter=3,winterschill=5",
+      "schema": 1,
+      "model": "current-mechanics-replay",
+      "model_current": false,
+      "options": {
+        "intellect": 300,
+        "base_mana": 1000,
+        "heating_refresh": "refresh",
+        "cone_consumption": "hit"
+      },
+      "talents": {
+        "improvedchanneling": 5,
+        "arcanesubtlety": 1,
+        "arcaneconcentration": 5,
+        "missilebarrage": 2,
+        "arcaneimpact": 3,
+        "arcaneblast": 1,
+        "improvedfrostbolt": 5,
+        "precision": 3,
+        "iceshards": 5,
+        "frostchanneling": 3,
+        "icelance": 1,
+        "arcticreach": 2,
+        "shatter": 3,
+        "fingersoffrost": 2,
+        "coldsnap": 1,
+        "winterschill": 5,
+        "icebarrier": 1,
+        "incineration": 3
+      },
+      "events": [
+        {
+          "at": 0,
+          "kind": "barrier_apply",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 0,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 0,
+          "kind": "lance_cast",
+          "detail": {
+            "damage_multiplier": 4
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 8,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 1,
+          "kind": "frost_hit",
+          "detail": {
+            "triggered": true
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 1,
+          "lance_ready_at": 8,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 2,
+          "kind": "frost_hit",
+          "detail": {
+            "triggered": true
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 2,
+          "lance_ready_at": 8,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 3,
+          "kind": "frost_hit",
+          "detail": {
+            "triggered": true
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 3,
+          "lance_ready_at": 8,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 4,
+          "kind": "frost_hit",
+          "detail": {
+            "triggered": true
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 4,
+          "lance_ready_at": 8,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 5,
+          "kind": "frost_hit",
+          "detail": {
+            "triggered": true
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 5,
+          "lance_ready_at": 8,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 6,
+          "kind": "cone",
+          "detail": {
+            "landed": false,
+            "stacks_used": 0,
+            "damage_taken_multiplier": 1,
+            "extra_sp_coefficient": 0
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 5,
+          "lance_ready_at": 8,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 8,
+          "kind": "lance_cast",
+          "detail": {
+            "damage_multiplier": 1
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 5,
+          "lance_ready_at": 16,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 9,
+          "kind": "cone",
+          "detail": {
+            "landed": true,
+            "stacks_used": 5,
+            "damage_taken_multiplier": 2.0,
+            "extra_sp_coefficient": 0.35000000000000003
+          },
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 16,
+          "barrier_damage_bonus": 0.2,
+          "barrage_active": false
+        },
+        {
+          "at": 10,
+          "kind": "shield_break",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 16,
+          "barrier_damage_bonus": 0.15,
+          "barrage_active": false
+        },
+        {
+          "at": 60,
+          "kind": "observe",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 16,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        }
+      ],
+      "caveat": "Explicit outcome replay, not DPS or a spec ranking. See CURRENT-MECHANICS.md."
+    }
+  }
+}
