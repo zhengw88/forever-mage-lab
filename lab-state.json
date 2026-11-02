@@ -262,5 +262,12 @@
       "Server validation of talent prerequisites, resource/proc timing, charge consumption, Ignite and mixed-school rules",
       "Broader talent and rotation search, movement, survival and party leveling validation"
     ]
+  },
+  "day_one_companion": {
+    "status": "practical authored recommendation, not validated optimum",
+    "file": "leveling-plan.json",
+    "point_order_checked": "Python and JavaScript; 51 consecutive full-budget allocations",
+    "scope": "first-character Frost solo questing; no Legacy bonus points; Barrier at 40; no required respec",
+    "remaining": "User race/faction and group plan needed for an exact zone route; survival and launch-server mechanics unvalidated"
   }
 }

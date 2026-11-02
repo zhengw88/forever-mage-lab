@@ -11,7 +11,9 @@ def summary(school,options,fights=200,seed=10001,policy=None):
     parts={k:statistics.mean(r['damage_by_spell'].get(k,0)/r['elapsed'] for r in rows) for k in sorted(set().union(*(r['damage_by_spell'] for r in rows)))}
     return dict(school=school,mean_dps=mean,standard_error=se,ci95_sampling=[mean-1.96*se,mean+1.96*se],fights=fights,seed_start=seed,
                 mean_mana_downtime=statistics.mean(r['mana_downtime'] for r in rows),mean_evocations=statistics.mean(r['evocations'] for r in rows),
-                mean_mana_end=statistics.mean(r['mana_end'] for r in rows),damage_by_spell_dps=parts,talents=rows[0]['talents'],
+                mean_mana_end=statistics.mean(r['mana_end'] for r in rows),mean_mana_spent=statistics.mean(r['mana_spent'] for r in rows),
+                mean_recovery_seconds=statistics.mean(r['recovery_seconds'] for r in rows),
+                mean_kill_seconds=statistics.mean(r['elapsed'] for r in rows) if all(r['killed'] for r in rows) else None,damage_by_spell_dps=parts,talents=rows[0]['talents'],
                 rotation=policy or {},killed_fraction=statistics.mean(int(r['killed']) for r in rows),
                 safe_target_xp_per_hour=statistics.mean(r['safe_target_xp_per_hour'] for r in rows) if all(r['killed'] for r in rows) else None)
 

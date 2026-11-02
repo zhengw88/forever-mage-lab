@@ -1,0 +1,150 @@
+{
+  "version": "70707-20261030",
+  "reviewed_local_date": "2026-11-01",
+  "reviewed_utc": "2026-11-02",
+  "status": "Authored practical recommendation; every point checked against the extracted tree, not a simulation-certified optimum. Verify launch tooltips.",
+  "assumptions": [
+    "First character; mostly solo questing with occasional dungeons",
+    "One normal talent point per level from 10; no bonus Legacy points",
+    "No mandatory respec; Barrier at 40; Missile Barrage comes later to preserve that milestone",
+    "Frostbite intentionally omitted for predictable pack control; emergency/control utility is not scored by the damage sim"
+  ],
+  "segments": [
+    {
+      "start": 10,
+      "end": 14,
+      "talent": "improvedfrostbolt",
+      "why": "Reach 5/5. Faster core casts."
+    },
+    {
+      "start": 15,
+      "end": 16,
+      "talent": "precision",
+      "why": "Reach 2/3. General hit support; not a raid hit-cap target."
+    },
+    {
+      "start": 17,
+      "end": 19,
+      "talent": "permafrost",
+      "why": "Reach 3/3. More reliable spacing while questing."
+    },
+    {
+      "start": 20,
+      "end": 20,
+      "talent": "icelance",
+      "why": "Unlock. Use on frozen targets or with Fingers of Frost, not every time it is ready."
+    },
+    {
+      "start": 21,
+      "end": 23,
+      "talent": "frostchanneling",
+      "why": "Reach 3/3. Reduce Frost spell mana costs."
+    },
+    {
+      "start": 24,
+      "end": 24,
+      "talent": "iceshards",
+      "why": "First point, 1/5."
+    },
+    {
+      "start": 25,
+      "end": 25,
+      "talent": "iceblock",
+      "why": "Unlock emergency immunity. It is not a guaranteed escape or threat reset."
+    },
+    {
+      "start": 26,
+      "end": 28,
+      "talent": "shatter",
+      "why": "Reach 3/3. Improve crit chance against frozen targets."
+    },
+    {
+      "start": 29,
+      "end": 29,
+      "talent": "arcticreach",
+      "why": "First point, 1/2."
+    },
+    {
+      "start": 30,
+      "end": 31,
+      "talent": "fingersoffrost",
+      "why": "Reach 2/2. Learn to spend frozen charges."
+    },
+    {
+      "start": 32,
+      "end": 32,
+      "talent": "coldsnap",
+      "why": "Unlock a Frost cooldown reset. Keep it available for danger while learning."
+    },
+    {
+      "start": 33,
+      "end": 33,
+      "talent": "arcticreach",
+      "why": "Finish 2/2."
+    },
+    {
+      "start": 34,
+      "end": 34,
+      "talent": "iceshards",
+      "why": "Second point, 2/5."
+    },
+    {
+      "start": 35,
+      "end": 39,
+      "talent": "winterschill",
+      "why": "Reach 5/5. Builds toward Cone of Cold; do not run into a dangerous pack just to use it."
+    },
+    {
+      "start": 40,
+      "end": 40,
+      "talent": "icebarrier",
+      "why": "Unlock the shield and the current offensive Frost aura."
+    },
+    {
+      "start": 41,
+      "end": 45,
+      "talent": "improvedchanneling",
+      "why": "Reach 5/5 in Arcane, opening the next tier for Barrage."
+    },
+    {
+      "start": 46,
+      "end": 47,
+      "talent": "missilebarrage",
+      "why": "Reach 2/2. Use the free, faster Missiles channel when safe to stand still."
+    },
+    {
+      "start": 48,
+      "end": 52,
+      "talent": "arcaneconcentration",
+      "why": "Reach 5/5 for Clearcasting."
+    },
+    {
+      "start": 53,
+      "end": 55,
+      "talent": "iceshards",
+      "why": "Finish 5/5."
+    },
+    {
+      "start": 56,
+      "end": 58,
+      "talent": "improvedblizzard",
+      "why": "Reach 3/3. Add controlled pack/dungeon slows; this does not make large pulls safe."
+    },
+    {
+      "start": 59,
+      "end": 60,
+      "talent": "improvedconeofcold",
+      "why": "Reach 2/3. Finish at 12 Arcane / 0 Fire / 39 Frost."
+    }
+  ],
+  "sources": [
+    "https://wowforevertalents.com/mage/",
+    "https://wowforevertalents.com/patch-notes/",
+    "https://wowforevertalents.com/mage/talents/permafrost/",
+    "https://wowforevertalents.com/mage/talents/ice-block/",
+    "https://wowforevertalents.com/mage/talents/fingers-of-frost/",
+    "https://wowforevertalents.com/mage/talents/frost-channeling/",
+    "https://wowforevertalents.com/mage/talents/missile-barrage/",
+    "https://wowforevertalents.com/mage/talents/improved-blizzard/"
+  ]
+}

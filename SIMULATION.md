@@ -140,3 +140,18 @@ owner in this session. The Pages artifact is built in `_site` with a current
 research homepage and a historical archive. Publishing does not merge the open
 PR or write upstream. Future maintenance still requires explicit deployment
 approval; automatic merging and routine automatic publishing remain disabled.
+
+## Day-one companion
+
+`leveling.html` is an authored solo-questing recommendation with 51 sequential
+allocations checked in both languages. It deliberately prioritizes control and
+Ice Barrier at 40 rather than a simulated raid winner. It assumes no bonus
+Legacy points and requires no respec. `leveling-plan.json` is the single source
+for its point order; run `python build_leveling_guide.py` after edits.
+
+The guide loads the exact Frost build and manually entered stats into a shared
+experiment. Other schools retain the research presets. Finite-target results
+show mean kill time only when every trial kills its targets, mana spent and
+modeled full-refill recovery. Every trial starts at full mana. These metrics do
+not model root breaks, incoming damage, movement, deaths or continuous farming.
+The guide does not use their omission to declare control talents inferior.

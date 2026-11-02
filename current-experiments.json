@@ -10,7 +10,7 @@
     "sim-defaults.json": "5d408b793f3a6cd0488ac8774f0831ea19369e3b7da1581d9649c61e39ad97ec",
     "current-builds.json": "6520ab18ceb7961af14943bbeffec2a5d18511335c7f23dfdcc987e1955360b4",
     "current-talents.json": "b8e4995b9c5e65f0b9b02856b73e066073d5552914a8931d5a88f10e7b9a02a1",
-    "sim_report.py": "663bd6a57901500f773ee1de41149223a48a340837ec2e06865eef19c672f55c"
+    "sim_report.py": "ea39e3a68c8ccb39c3a8d494daae2d0787687400df4359acd550b37ba6c397c4"
   },
   "search": {
     "note": "Finite policy search, not global talent/rotation optimization. Selected using 60 training seeds; comparisons use 200 disjoint held-out seeds. Policies stay fixed across sensitivity scenarios.",
@@ -327,6 +327,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -373,6 +376,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -425,6 +431,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 297.2730175204169,
@@ -537,6 +546,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2919.474204295575,
+          "mean_mana_spent": 7919.498149999999,
+          "mean_recovery_seconds": 29.635257957044253,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 98.29245125866962,
             "arcanemissiles": 276.20063704673333,
@@ -582,6 +594,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2211.118878821656,
+          "mean_mana_spent": 8217.225,
+          "mean_recovery_seconds": 32.21881121178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 46.497295833333325,
             "fireball": 181.17773919332583,
@@ -633,6 +648,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 3838.1062560969917,
+          "mean_mana_spent": 4408.61,
+          "mean_recovery_seconds": 15.948937439030082,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 93.82645249999997,
             "frostbolt": 290.65292678405444,
@@ -745,6 +763,9 @@
           "mean_mana_downtime": 14.86,
           "mean_evocations": 1,
           "mean_mana_end": 383.6280283619816,
+          "mean_mana_spent": 19849.892400000004,
+          "mean_recovery_seconds": 54.993719716380184,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 87.75977662167267,
             "arcanemissiles": 221.22517734252446,
@@ -791,6 +812,9 @@
           "mean_mana_downtime": 31.0225,
           "mean_evocations": 1,
           "mean_mana_end": 301.8912902497314,
+          "mean_mana_spent": 19306.025,
+          "mean_recovery_seconds": 51.311087097502686,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 35.83623361111109,
             "fireball": 140.35379198700326,
@@ -843,6 +867,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0.27,
           "mean_mana_end": 1584.5862840065058,
+          "mean_mana_spent": 12823.78,
+          "mean_recovery_seconds": 38.484137159934946,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.33290694444437,
             "frostbolt": 297.6142858483855,
@@ -955,6 +982,9 @@
           "mean_mana_downtime": 90.465,
           "mean_evocations": 1,
           "mean_mana_end": 339.6137643534199,
+          "mean_mana_spent": 26383.746400000007,
+          "mean_recovery_seconds": 55.4338623564658,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 82.67817625527586,
             "arcanemissiles": 155.348414107944,
@@ -1001,6 +1031,9 @@
           "mean_mana_downtime": 108.7575,
           "mean_evocations": 1,
           "mean_mana_end": 268.32147663396785,
+          "mean_mana_spent": 25729.825,
+          "mean_recovery_seconds": 51.646785233660324,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 24.68267666666665,
             "fireball": 98.77008374988058,
@@ -1053,6 +1086,9 @@
           "mean_mana_downtime": 3.2275,
           "mean_evocations": 1,
           "mean_mana_end": 1040.6475609647903,
+          "mean_mana_spent": 20740.255,
+          "mean_recovery_seconds": 43.9235243903521,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 94.1591968333333,
             "frostbolt": 291.27345104998204,
@@ -1166,6 +1202,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 74.26396010941994,
             "arcanemissiles": 204.0527848100599,
@@ -1212,6 +1251,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 35.60916224999999,
             "fireball": 130.16018204076892,
@@ -1264,6 +1306,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 78.28012149999995,
             "frostbolt": 237.0785179537502,
@@ -1376,6 +1421,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 116.01876069691995,
             "arcanemissiles": 303.37835520172666,
@@ -1422,6 +1470,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 55.20927849999998,
             "fireball": 216.82958224910223,
@@ -1474,6 +1525,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 121.36733233333331,
             "frostbolt": 387.56476687041686,
@@ -1586,6 +1640,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -1632,6 +1689,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -1684,6 +1744,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0.45,
           "mean_mana_end": 1459.337395884632,
+          "mean_mana_spent": 10747.63375,
+          "mean_recovery_seconds": 39.73662604115368,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 83.81308291666662,
             "coneofcold": 86.57584338474669,
@@ -1797,6 +1860,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -1843,6 +1909,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -1895,6 +1964,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 295.69420174023804,
@@ -2007,6 +2079,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -2053,6 +2128,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -2105,6 +2183,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 308.29188983398745,
@@ -2217,6 +2298,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -2263,6 +2347,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -2315,6 +2402,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 297.2730175204169,
@@ -2427,6 +2517,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -2473,6 +2566,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -2525,6 +2621,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 297.2730175204169,
@@ -2637,6 +2736,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 96.77221313236166,
             "arcanemissiles": 259.3436308156667,
@@ -2683,6 +2785,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 46.2225625,
             "fireball": 175.34887460010876,
@@ -2735,6 +2840,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 101.61170833333334,
             "frostbolt": 316.24789097916687,
@@ -2847,6 +2955,9 @@
           "mean_mana_downtime": 0.6925,
           "mean_evocations": 0.995,
           "mean_mana_end": 1209.2411106887491,
+          "mean_mana_spent": 14283.198900000001,
+          "mean_recovery_seconds": 46.73758889311251,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 92.07994476809252,
             "arcanemissiles": 246.86596100505335,
@@ -2893,6 +3004,9 @@
           "mean_mana_downtime": 4.6275,
           "mean_evocations": 1,
           "mean_mana_end": 462.9371260076668,
+          "mean_mana_spent": 14591.325,
+          "mean_recovery_seconds": 49.70062873992333,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.39954541666665,
             "fireball": 167.65476880444675,
@@ -2945,6 +3059,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2605.8561543989463,
+          "mean_mana_spent": 8634.64,
+          "mean_recovery_seconds": 28.27143845601054,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 98.83624124999993,
             "frostbolt": 299.6544350259002,
@@ -3057,6 +3174,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -3103,6 +3223,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -3155,6 +3278,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 297.2730175204169,
@@ -3267,6 +3393,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -3313,6 +3442,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -3365,6 +3497,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 297.2730175204169,
@@ -3477,6 +3612,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -3523,6 +3661,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -3575,6 +3716,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2724.580613029166,
+          "mean_mana_spent": 8495.75,
+          "mean_recovery_seconds": 27.08419386970834,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 102.39958541666658,
             "frostbolt": 305.287857630863
@@ -3686,6 +3830,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -3732,6 +3879,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.44920874999998,
             "fireball": 164.82794212410224,
@@ -3784,6 +3934,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0.45,
           "mean_mana_end": 1459.337395884632,
+          "mean_mana_spent": 10747.63375,
+          "mean_recovery_seconds": 39.73662604115368,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 83.81308291666662,
             "coneofcold": 73.57040484308003,
@@ -3897,6 +4050,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 5883.0,
+          "mean_mana_spent": 0.0,
+          "mean_recovery_seconds": 0.0,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 91.14993242763268,
             "arcanemissiles": 267.15345542661333,
@@ -3942,6 +4098,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 5433.0,
+          "mean_mana_spent": 0.0,
+          "mean_recovery_seconds": 0.0,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 50.43311499999998,
             "fireball": 198.04166661664613,
@@ -3993,6 +4152,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 5433.0,
+          "mean_mana_spent": 0.0,
+          "mean_recovery_seconds": 0.0,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 96.94282666666659,
             "frostbolt": 299.8016307363024,
@@ -4105,6 +4267,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.96588034441996,
             "arcanemissiles": 243.7830129667267,
@@ -4151,6 +4316,9 @@
           "mean_mana_downtime": 4.6,
           "mean_evocations": 1,
           "mean_mana_end": 447.3262324042665,
+          "mean_mana_spent": 14514.65,
+          "mean_recovery_seconds": 49.85673767595733,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.01465458333332,
             "fireball": 164.80049293419918,
@@ -4203,6 +4371,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.51500583333326,
             "frostbolt": 297.2730175204169,
@@ -4315,6 +4486,9 @@
           "mean_mana_downtime": 0.58,
           "mean_evocations": 0.97,
           "mean_mana_end": 1374.6249479647881,
+          "mean_mana_spent": 14077.5691,
+          "mean_recovery_seconds": 45.08375052035212,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 91.35102808316583,
             "arcanemissiles": 252.80916230210667,
@@ -4361,6 +4535,9 @@
           "mean_mana_downtime": 2.53,
           "mean_evocations": 1,
           "mean_mana_end": 615.4120471499581,
+          "mean_mana_spent": 14314.325,
+          "mean_recovery_seconds": 48.17587952850042,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 35.844510833333324,
             "fireball": 150.18297264728608,
@@ -4413,6 +4590,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2377.575472693406,
+          "mean_mana_spent": 8851.39,
+          "mean_recovery_seconds": 30.554245273065938,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 93.23049249999994,
             "frostbolt": 295.9108252646629,
@@ -4525,6 +4705,9 @@
           "mean_mana_downtime": 0.35,
           "mean_evocations": 0.975,
           "mean_mana_end": 1272.2913686947459,
+          "mean_mana_spent": 14160.518150000002,
+          "mean_recovery_seconds": 46.10708631305254,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 110.72556357550216,
             "arcanemissiles": 230.28331677471974,
@@ -4571,6 +4754,9 @@
           "mean_mana_downtime": 2.53,
           "mean_evocations": 1,
           "mean_mana_end": 615.4120471499581,
+          "mean_mana_spent": 14314.325,
+          "mean_recovery_seconds": 48.17587952850042,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 35.844510833333324,
             "fireball": 150.18297264728608,
@@ -4623,6 +4809,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2377.575472693406,
+          "mean_mana_spent": 8851.39,
+          "mean_recovery_seconds": 30.554245273065938,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 93.23049249999994,
             "frostbolt": 295.9108252646629,
@@ -4735,6 +4924,9 @@
           "mean_mana_downtime": 48.305,
           "mean_evocations": 1,
           "mean_mana_end": 293.3562180074368,
+          "mean_mana_spent": 15151.025400000002,
+          "mean_recovery_seconds": 55.89643781992563,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 84.22464140009819,
             "arcaneexplosion": 356.77267727469206,
@@ -4780,6 +4972,9 @@
           "mean_mana_downtime": 33.2075,
           "mean_evocations": 1,
           "mean_mana_end": 603.0668726645829,
+          "mean_mana_spent": 16433.7,
+          "mean_recovery_seconds": 48.29933127335417,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "blizzard": 265.28311833333305,
             "flamestrike": 158.50786884378772,
@@ -4828,6 +5023,9 @@
           "mean_mana_downtime": 21.27,
           "mean_evocations": 1,
           "mean_mana_end": 420.76240165509284,
+          "mean_mana_spent": 13963.05625,
+          "mean_recovery_seconds": 50.122375983449075,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "blizzard": 450.802409375,
             "coneofcold": 139.32541124860316,
@@ -4940,6 +5138,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 243.5,
+          "mean_mana_spent": 757.4,
+          "mean_recovery_seconds": 7.4750000000000005,
+          "mean_kill_seconds": 21.515,
           "damage_by_spell_dps": {
             "arcanemissiles": 37.27006793359196
           },
@@ -4968,6 +5169,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0.03,
           "mean_mana_end": 207.15,
+          "mean_mana_spent": 809.4,
+          "mean_recovery_seconds": 7.8385,
+          "mean_kill_seconds": 21.4975,
           "damage_by_spell_dps": {
             "fireball": 36.04069644797058,
             "fireball_dot": 0.9922790638603541,
@@ -4999,6 +5203,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 319.225,
+          "mean_mana_spent": 671.775,
+          "mean_recovery_seconds": 6.71775,
+          "mean_kill_seconds": 21.703500000000005,
           "damage_by_spell_dps": {
             "frostbolt": 37.05820105820105
           },
@@ -5094,6 +5301,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0.27,
           "mean_mana_end": 815.7265928734049,
+          "mean_mana_spent": 3778.0129,
+          "mean_recovery_seconds": 22.32273407126595,
+          "mean_kill_seconds": 22.68,
           "damage_by_spell_dps": {
             "arcaneblast": 41.78273340373906,
             "arcaneexplosion": 235.8802822047966
@@ -5132,6 +5342,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0.02,
           "mean_mana_end": 1193.6591007591132,
+          "mean_mana_spent": 3167.3,
+          "mean_recovery_seconds": 16.293408992408867,
+          "mean_kill_seconds": 23.545,
           "damage_by_spell_dps": {
             "blizzard": 110.51799055263163,
             "flamestrike": 85.03430315994991,
@@ -5172,6 +5385,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 1188.746743366858,
+          "mean_mana_spent": 2612.73,
+          "mean_recovery_seconds": 16.34253256633142,
+          "mean_kill_seconds": 27.09,
           "damage_by_spell_dps": {
             "blizzard": 178.11666693178222,
             "coneofcold": 43.56598578542522
@@ -5276,6 +5492,9 @@
           "mean_mana_downtime": 0.2775,
           "mean_evocations": 0.99,
           "mean_mana_end": 1530.2734473082771,
+          "mean_mana_spent": 14320.73665,
+          "mean_recovery_seconds": 43.527265526917226,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 91.47253744495227,
             "arcanemissiles": 247.50668962710003,
@@ -5322,6 +5541,9 @@
           "mean_mana_downtime": 3.46,
           "mean_evocations": 1,
           "mean_mana_end": 571.2150634198077,
+          "mean_mana_spent": 14738.0,
+          "mean_recovery_seconds": 48.61784936580192,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 44.00792124999998,
             "fireball": 167.7770646340622,
@@ -5374,6 +5596,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2700.8091948116107,
+          "mean_mana_spent": 8649.855,
+          "mean_recovery_seconds": 27.321908051883895,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 96.7193416666666,
             "frostbolt": 299.1098198248779,
@@ -5486,6 +5711,9 @@
           "mean_mana_downtime": 0.2025,
           "mean_evocations": 0.97,
           "mean_mana_end": 1487.3934415940575,
+          "mean_mana_spent": 14225.009685,
+          "mean_recovery_seconds": 46.89756558405943,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 92.63603000614366,
             "arcanemissiles": 245.3983749143067,
@@ -5532,6 +5760,9 @@
           "mean_mana_downtime": 3.0675,
           "mean_evocations": 1,
           "mean_mana_end": 653.1122300300054,
+          "mean_mana_spent": 14642.135,
+          "mean_recovery_seconds": 50.515377699699954,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 44.957732499999985,
             "fireball": 167.35081643243134,
@@ -5584,6 +5815,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2842.233118253419,
+          "mean_mana_spent": 8653.1105,
+          "mean_recovery_seconds": 28.62416881746582,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.00657745833327,
             "frostbolt": 298.51655006007337,
@@ -5696,6 +5930,9 @@
           "mean_mana_downtime": 0.76,
           "mean_evocations": 0.99,
           "mean_mana_end": 1246.141204295575,
+          "mean_mana_spent": 14255.20615,
+          "mean_recovery_seconds": 46.36858795704425,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 91.90221538405996,
             "arcanemissiles": 245.98666289387202,
@@ -5742,6 +5979,9 @@
           "mean_mana_downtime": 4.7,
           "mean_evocations": 1,
           "mean_mana_end": 500.6463788216561,
+          "mean_mana_spent": 14505.8,
+          "mean_recovery_seconds": 49.32353621178344,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.50997779166665,
             "fireball": 165.57682739493558,
@@ -5794,6 +6034,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2581.429696593564,
+          "mean_mana_spent": 8667.705,
+          "mean_recovery_seconds": 28.51570303406436,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.9591519166666,
             "frostbolt": 299.1645568037502,
@@ -5906,6 +6149,9 @@
           "mean_mana_downtime": 0.5325,
           "mean_evocations": 0.995,
           "mean_mana_end": 1306.5574925764083,
+          "mean_mana_spent": 14177.513875,
+          "mean_recovery_seconds": 45.764425074235916,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 90.5108961184309,
             "arcanemissiles": 243.8287891158667,
@@ -5953,6 +6199,9 @@
           "mean_mana_downtime": 5.0825,
           "mean_evocations": 1,
           "mean_mana_end": 425.1312615835294,
+          "mean_mana_spent": 14525.875,
+          "mean_recovery_seconds": 50.07868738416471,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 40.55011166666665,
             "fireball": 166.5963127217052,
@@ -6006,6 +6255,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2499.885118603199,
+          "mean_mana_spent": 8701.195,
+          "mean_recovery_seconds": 29.331148813968014,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 96.28478749999992,
             "frostbolt": 297.9611641225447,
@@ -6119,6 +6371,9 @@
           "mean_mana_downtime": 0.7972058823529434,
           "mean_evocations": 1,
           "mean_mana_end": 1112.6321845325285,
+          "mean_mana_spent": 14559.636900000001,
+          "mean_recovery_seconds": 47.70367815467472,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 89.93030810606454,
             "arcanemissiles": 246.29685212385334,
@@ -6165,6 +6420,9 @@
           "mean_mana_downtime": 3.9257352941176786,
           "mean_evocations": 1,
           "mean_mana_end": 510.0866642660322,
+          "mean_mana_spent": 14561.35,
+          "mean_recovery_seconds": 49.22913335733968,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 48.60177958333331,
             "fireball": 180.27431610196066,
@@ -6217,6 +6475,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2493.9701536013185,
+          "mean_mana_spent": 8880.8,
+          "mean_recovery_seconds": 29.390298463986813,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 97.51395499999992,
             "frostbolt": 303.25369558537034,
@@ -6329,6 +6590,9 @@
           "mean_mana_downtime": 1.2811363636363644,
           "mean_evocations": 1,
           "mean_mana_end": 999.6697760943161,
+          "mean_mana_spent": 14465.026150000002,
+          "mean_recovery_seconds": 48.83330223905684,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 89.91766359098133,
             "arcanemissiles": 242.6695390687267,
@@ -6375,6 +6639,9 @@
           "mean_mana_downtime": 5.3647727272727295,
           "mean_evocations": 1,
           "mean_mana_end": 432.0838895118749,
+          "mean_mana_spent": 14537.65,
+          "mean_recovery_seconds": 50.00916110488125,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 43.79685208333331,
             "fireball": 166.6973754836466,
@@ -6427,6 +6694,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2431.857696550884,
+          "mean_mana_spent": 8805.235,
+          "mean_recovery_seconds": 30.01142303449116,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 96.0861341666666,
             "frostbolt": 301.9150851522248,
@@ -6539,6 +6809,9 @@
           "mean_mana_downtime": 1.1965909090909108,
           "mean_evocations": 1,
           "mean_mana_end": 975.0086030973713,
+          "mean_mana_spent": 14483.25415,
+          "mean_recovery_seconds": 49.079913969026286,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcaneblast": 89.84766716861692,
             "arcanemissiles": 241.67840983359335,
@@ -6585,6 +6858,9 @@
           "mean_mana_downtime": 6.007954545454542,
           "mean_evocations": 1,
           "mean_mana_end": 384.19457457530314,
+          "mean_mana_spent": 14580.85,
+          "mean_recovery_seconds": 50.48805425424697,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 41.85377416666665,
             "fireball": 165.4546734698132,
@@ -6637,6 +6913,9 @@
           "mean_mana_downtime": 0.0,
           "mean_evocations": 0,
           "mean_mana_end": 2492.2539482960524,
+          "mean_mana_spent": 8753.725,
+          "mean_recovery_seconds": 29.407460517039475,
+          "mean_kill_seconds": null,
           "damage_by_spell_dps": {
             "arcanemissiles": 95.6019166666666,
             "frostbolt": 300.59437331858095,

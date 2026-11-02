@@ -60,6 +60,7 @@ def validate():
     subprocess.run([sys.executable, 'patch_rules_test.py'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'current_model_test.py'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'sim_test.py'], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, 'build_leveling_guide.py', '--check'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'sim_report.py', '--check'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'generate_current_replay.py', '--check'], cwd=ROOT, check=True)
     # Test the release guard independently of the ledger's current state.
