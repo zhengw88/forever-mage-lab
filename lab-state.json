@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "repository": "zhengw88/forever-mage-lab",
+  "upstream": "opitaru-sys/forever-mage-lab",
+  "baseline_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
+  "model": "upstream-v1.3-historical",
+  "model_current": false,
+  "source_review_date": "2026-11-01",
+  "model_data_build": "1.60.1.69893 with selected fixes through 1 October",
+  "migration_target_reported_client": "1.60.1.70707",
+  "migration_target_hotfix_date": "2026-10-30",
+  "policy": "Compute results locally; do not use external simulator rankings as truth or calibration targets.",
+  "sources": {
+    "blizzard": {
+      "label": "Blizzard development notes, including 27 October supplement",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-updated-october-26/2360696",
+      "kind": "official notes"
+    },
+    "datamine": {
+      "label": "Talents Forever: first-hand client and hotfix-cache comparison",
+      "url": "https://wowforevertalents.com/patch-notes/",
+      "kind": "community client extraction; not independently reproduced here"
+    },
+    "arcane": {
+      "label": "Current Arcane Blast data",
+      "url": "https://wowforevertalents.com/mage/talents/arcane-blast/",
+      "kind": "community client extraction"
+    },
+    "winter": {
+      "label": "Current Winter's Chill data",
+      "url": "https://wowforevertalents.com/mage/talents/winter-s-chill/",
+      "kind": "community client extraction"
+    },
+    "barrier": {
+      "label": "Current Ice Barrier data",
+      "url": "https://wowforevertalents.com/mage/talents/ice-barrier/",
+      "kind": "community client extraction"
+    },
+    "spells": {
+      "label": "Current Mage spellbook",
+      "url": "https://wowforevertalents.com/abilities/mage/",
+      "kind": "community client extraction"
+    }
+  },
+  "changes": [
+    {
+      "topic": "Ice Lance",
+      "old": "No cooldown in the model; cast on successive frozen charges.",
+      "current": "8-second cooldown. Latest cache reports +300% frozen damage (4x total), superseding the mid-October +200% version.",
+      "impact": "Rebuild charge spending and cooldown scheduling; the old Ice Lance contribution cannot carry forward.",
+      "sources": [
+        "spells",
+        "datamine"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Winter's Chill",
+      "old": "Up to +10 percentage points of Frostbolt / Ice Lance crit.",
+      "current": "No crit bonus. Each stack adds 20% damage taken from the next Cone of Cold and 7% spell-damage scaling, up to five stacks.",
+      "impact": "Remove the old crit ramp; model stacking, consumption and whether the target is in Cone of Cold range. This does not prove the net size of Frost's change.",
+      "sources": [
+        "winter"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Ice Barrier",
+      "old": "Defensive shield; absent from the recommended 18/3/30 raid build.",
+      "current": "15% Frost damage for one minute, with another 5% while shielded, according to the hotfix cache.",
+      "impact": "Deep Frost must be re-optimized with barrier uptime and shield breaks. Ignoring this gain would bias the comparison against Frost.",
+      "sources": [
+        "barrier"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Arcane Blast and Arcane Wrath",
+      "old": "2.5-second Blast; +10% damage stacks consumed by other spells; no Wrath rotation.",
+      "current": "Blast: 1.5-second cast, +12% Intellect as spell damage per stack, four stacks, 18 seconds from first application, +100% Blast mana cost per stack. Wrath is a new spell.",
+      "impact": "The old cycle optimizer describes a different ability. Evaluate buff maintenance, Wrath, Missiles and mana together; cheap stacks alone do not establish Arcane as best.",
+      "sources": [
+        "arcane",
+        "blizzard"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Fire rotation",
+      "old": "Static Fire Power and the old Heating Up / Fire Blast behavior.",
+      "current": "Fire Power depends on personal Fire effects, capped at 12%; Fire Blast supplies an extra Heating Up stack. Accelerant also shortens Arcane Wrath.",
+      "impact": "Re-evaluate DoT / Scorch uptime, Pyroblast timing, Fire Blast and Arcane hybrids using our own rotations and matched settings.",
+      "sources": [
+        "blizzard",
+        "datamine"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Talent legality and hit",
+      "old": "54-talent tree, Arcane Focus, Piercing Ice, five-rank Elemental Precision and old positions.",
+      "current": "Arcane Focus and Piercing Ice are gone; Precision gives all-school hit (2/4/6%). Missile Barrage has two ranks on row 2; Incineration has five and Critical Mass three. Other nodes move.",
+      "impact": "Rebuild talent data and presets before comparing trees. Old share links represent historical builds; do not silently reinterpret their points.",
+      "sources": [
+        "datamine"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Race rankings",
+      "old": "Human sword crit, 1% Skyborne haste, charge-based Eureka!, frequent Undead procs.",
+      "current": "Human: 1% crit, 10% Spirit. Skyborne: 2% haste; raid attunement removed. Eureka!: eight seconds. Undead: 30% caster proc chance, 15-second internal cooldown. Troll: 15-second Berserking.",
+      "impact": "Withdraw old racial percentages. New rankings depend on the rebuilt rotations and mana model.",
+      "sources": [
+        "blizzard"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Dungeon leveling and AoE",
+      "old": "Dungeon kill XP treated as unconfirmed; strong negative AoE verdict.",
+      "current": "Blizzard confirms dungeon kill XP and increased it approximately 20% on 8 October. Cone of Cold gained control on its first four targets; wands require 0.5 seconds stationary.",
+      "impact": "The unanswered question is XP per hour, not whether kills award XP. Re-test small packs and group runs; do not multiply open-world XP by 1.2.",
+      "sources": [
+        "blizzard"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Later hotfixes override earlier notes",
+      "old": "Reading only the 15 October notes would give obsolete values.",
+      "current": "Frost Blast is no longer trained. The later Missile Barrage tooltip excludes Arcane Missiles as a proc trigger. Latest Ice Lance and Winter's Chill values differ from mid-October notes.",
+      "impact": "Pin client tables and hotfix cache together. Preserve uncertain server behavior as test cases, not as confirmed implementation.",
+      "sources": [
+        "datamine"
+      ],
+      "implementation": "pending"
+    },
+    {
+      "topic": "Inherited assumptions",
+      "old": "Some coefficients, resistance and proc rules were borrowed from other simulators.",
+      "current": "Independent game-data or combat-log validation is pending.",
+      "impact": "Audit Ice Lance scaling, boss partial resistance, Fingers of Frost, mana regen, ranks and travel time. Keep explicit sensitivity ranges.",
+      "sources": [
+        "spells",
+        "datamine"
+      ],
+      "implementation": "pending"
+    }
+  ]
+}
