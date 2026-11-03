@@ -63,9 +63,13 @@ This advances the migration but does not certify current rankings. The full
 realistic leveling survival remain unresolved. All mechanic entries remain
 partial. The original page and its engines remain a labeled historical archive.
 
-The owner explicitly requested a personal deployment in the current session.
-Only `zhengw88/forever-mage-lab` may be published; no upstream write or automatic
-PR merge is authorized. Subsequent routine maintenance must not auto-deploy.
+The owner authorized personal Pages publication and, on November 3, 2026,
+consolidation of PRs #1–#3 into personal `main`. Only
+`zhengw88/forever-mage-lab` may be changed or published. Future PR merges require
+owner authorization; merged `main` automatically publishes after numerical,
+artifact-freshness and current-page browser gates. The workflow checks out the
+triggering main commit, with no release-branch or older-source pin. Upstream
+remains read-only. Verify the deployed commit and live pages after publication.
 
 ## Updating the fork
 
@@ -119,4 +123,5 @@ with `python ranking_report.py` after changing the mechanics or experiment archi
 `python ranking_report.py --check` checks provenance/derived content and
 `--recompute-check` independently repeats all seeded search/evaluation runs.
 The research homepage shows the provisional estimates, starting with Troll at
-120 seconds. No merge or deployment is authorized by this artifact update.
+120 seconds. The artifact request itself did not authorize merging; the owner
+subsequently authorized merging the three existing PRs into personal `main`.

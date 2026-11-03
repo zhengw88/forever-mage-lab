@@ -33,7 +33,11 @@ For each update:
    uncertainty and scenario dependence, and never mark the model validated merely
    to publish that estimate. Update the ledger, reports and generated page.
 7. Make a focused branch and pull request into this fork. Explain what changed,
-   source evidence, test results and remaining limits. Do not auto-merge or deploy.
+   source evidence, test results and remaining limits. Target personal `main`.
+   The owner authorized merging PRs #1–#3 on November 3, 2026. Future PRs still
+   require merge authorization. The owner has authorized keeping personal Pages
+   updated: merged `main` publishes after the numerical, artifact and current-page
+   browser gates pass. Never publish an unmerged branch or a pinned older source.
 
 Daily maintenance should notify the owner only for material changes or a blocker.
 Never request passwords or verification codes in chat. Use secure authentication
