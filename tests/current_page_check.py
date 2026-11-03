@@ -7,6 +7,16 @@ sys.path.insert(0,str(ROOT))
 from sim_engine import simulate
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
+    def do_GET(self):
+        # Simulate a CDN/browser retaining pre-release assets at bare URLs.
+        # The published HTML, worker and data loaders must all request versions.
+        if self.path.endswith(('.js','.json')):
+            body=(b'throw new Error("Stale pre-release script");' if self.path.endswith('.js') else b'{}')
+            self.send_response(200)
+            self.send_header('Cache-Control','public, max-age=3600')
+            self.send_header('Content-Type','text/javascript' if self.path.endswith('.js') else 'application/json')
+            self.end_headers();self.wfile.write(body);return
+        super().do_GET()
 server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'_site')))
 threading.Thread(target=server.serve_forever,daemon=True).start()
 url=f'http://127.0.0.1:{server.server_port}/'
@@ -16,9 +26,19 @@ try:
   for width in (390,800,1280):
    page=browser.new_page(viewport={'width':width,'height':900});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
    page.goto(url);page.get_by_role('button',name='Run all three schools').wait_for()
+   ranking=json.loads((ROOT/'provisional-rankings.json').read_text())
+   assert page.locator('#ranking-scenario').input_value()=='troll_120'
+   for case in ranking['cases']:
+    page.locator('#ranking-scenario').select_option(case['name'])
+    assert page.locator('#ranking-result tr').count()==4
+    for index,row in enumerate(case['ranking']):
+     assert page.locator('#ranking-result tr').nth(index+1).locator('td').first.inner_text()==f"{row['rank']}. {row['school'].title()}"
+    assert 'Low confidence in live-game ordering' in page.locator('#ranking-uncertainty').inner_text()
+    if case['name']=='troll_300':assert 'arcane/fire' in page.locator('#ranking-uncertainty').inner_text()
+   page.locator('#ranking-scenario').select_option('troll_120')
    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'),width
    page.locator('[name=fights]').fill('10');page.get_by_role('button',name='Run all three schools').click()
-   page.get_by_text('Experiment complete. Current rankings remain blocked.',exact=True).wait_for()
+   page.get_by_text('Experiment complete. Certified rankings remain blocked.',exact=True).wait_for()
    assert page.locator('.result').count()==3
    assert '120s' in page.locator('#result-context').inner_text()
    page.get_by_text('Assumptions, rotations and versioned builds',exact=True).click()
@@ -46,7 +66,7 @@ try:
    assert page.locator('[name=level]').input_value()=='20'
    assert 'icelance=1' in page.locator('#build-frost').input_value()
    page.locator('[name=fights]').fill('10');page.get_by_role('button',name='Run all three schools').click()
-   page.get_by_text('Experiment complete. Current rankings remain blocked.',exact=True).wait_for()
+   page.get_by_text('Experiment complete. Certified rankings remain blocked.',exact=True).wait_for()
    assert 'Mean kill time:' in page.locator('.result.frost').inner_text()
    assert 'Modeled full-refill recovery:' in page.locator('.result.frost').inner_text()
    with page.expect_download() as event:page.get_by_role('button',name='Download results').click()
@@ -55,7 +75,7 @@ try:
    for key,field in [('mean_kill_seconds','elapsed'),('mean_mana_spent','mana_spent'),('mean_recovery_seconds','recovery_seconds')]:
     assert math.isclose(row[key],statistics.mean(r[field] for r in expected),abs_tol=1e-8),(key,row[key])
    page.locator('[name=target_hp]').fill('100000000');page.locator('[name=seconds]').fill('1')
-   page.get_by_role('button',name='Run all three schools').click();page.get_by_text('Experiment complete. Current rankings remain blocked.',exact=True).wait_for()
+   page.get_by_role('button',name='Run all three schools').click();page.get_by_text('Experiment complete. Certified rankings remain blocked.',exact=True).wait_for()
    assert 'not available — some trials timed out' in page.locator('.result.frost').inner_text()
    assert not errors,errors
    page.close();print(f'PASS at {width}px: research page, day-one guide, milestones, exact build handoff, Python-checked kill/recovery metrics, timeout handling')

@@ -1,10 +1,9 @@
 name: Publish personal research build
-# Owner-requested November 3 release, pinned to the tested personal commit.
+# Owner authorized consolidating the personal PRs and publishing from main.
 on:
   workflow_dispatch:
   push:
-    branches: [maintenance/rebuild-foundation-2026-11-02]
-    paths: [.github/workflows/deploy-personal.yml]
+    branches: [main]
 permissions:
   contents: read
 concurrency:
@@ -12,17 +11,14 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    # A normal maintenance commit never publishes. The bootstrap marker is used
-    # only for the owner's explicit deployment request; later runs are manual.
+    # Publish only the personal main commit after numerical and browser gates.
     if: >-
       github.repository == 'zhengw88/forever-mage-lab' &&
       github.actor == 'zhengw88' &&
-      (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[publish-personal]'))
+      github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: 9e62493727da4e81d64e254ceb8bdefdb4ecbd1a
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

@@ -27,10 +27,17 @@ For each update:
 5. Compare all three schools at the same gear, buffs, fight duration, target,
    rank availability and assumptions. Report build legality, spell breakdowns,
    mana downtime, seeds, Monte Carlo sampling error and sensitivity to unknowns.
-6. Keep current rankings blocked until the migration register is complete and
-   validation supports them. Then update the ledger, reports and generated page.
+6. Keep certified in-game rankings blocked until the migration register is complete
+   and validation supports them. The owner explicitly authorized a best-effort
+   provisional ranking on November 3, 2026: label it as a model estimate, retain
+   uncertainty and scenario dependence, and never mark the model validated merely
+   to publish that estimate. Update the ledger, reports and generated page.
 7. Make a focused branch and pull request into this fork. Explain what changed,
-   source evidence, test results and remaining limits. Do not auto-merge or deploy.
+   source evidence, test results and remaining limits. Target personal `main`.
+   The owner authorized merging PRs #1–#3 on November 3, 2026. Future PRs still
+   require merge authorization. The owner has authorized keeping personal Pages
+   updated: merged `main` publishes after the numerical, artifact and current-page
+   browser gates pass. Never publish an unmerged branch or a pinned older source.
 
 Daily maintenance should notify the owner only for material changes or a blocker.
 Never request passwords or verification codes in chat. Use secure authentication

@@ -4,7 +4,7 @@ Personal fork initialized on 2 November 2026 from upstream commit
 `a3315522e2f1b085b6118d62891bc5db4ac6101e` (v1.3).
 The original Python engines, JavaScript ports, source data, tests, and history are
 preserved. This is a runnable foundation; the late-October mechanics migration is
-**not complete**, and no current spec winner is claimed.
+**not complete**, and no certified in-game spec winner is claimed.
 
 ## What runs today
 
@@ -63,9 +63,13 @@ This advances the migration but does not certify current rankings. The full
 realistic leveling survival remain unresolved. All mechanic entries remain
 partial. The original page and its engines remain a labeled historical archive.
 
-The owner explicitly requested a personal deployment in the current session.
-Only `zhengw88/forever-mage-lab` may be published; no upstream write or automatic
-PR merge is authorized. Subsequent routine maintenance must not auto-deploy.
+The owner authorized personal Pages publication and, on November 3, 2026,
+consolidation of PRs #1–#3 into personal `main`. Only
+`zhengw88/forever-mage-lab` may be changed or published. Future PR merges require
+owner authorization; merged `main` automatically publishes after numerical,
+artifact-freshness and current-page browser gates. The workflow checks out the
+triggering main commit, with no release-branch or older-source pin. Upstream
+remains read-only. Verify the deployed commit and live pages after publication.
 
 ## Updating the fork
 
@@ -109,3 +113,15 @@ The original work and historical findings are preserved in `UPSTREAM.md` and
 the repository history. The MIT license remains unchanged. Blizzard's icon art
 is not covered by that license. Original source assumptions borrowed from other
 sims still require independent review; the new runner does not remove that debt.
+
+## Authorized provisional ranking
+
+The owner requested a best-effort ranking on November 3. `PROVISIONAL-RANKING.md`
+and `provisional-rankings.json` now rank the implemented presets per encounter.
+This does not change `model_current=false` or the certification guard. Regenerate
+with `python ranking_report.py` after changing the mechanics or experiment archive;
+`python ranking_report.py --check` checks provenance/derived content and
+`--recompute-check` independently repeats all seeded search/evaluation runs.
+The research homepage shows the provisional estimates, starting with Troll at
+120 seconds. The artifact request itself did not authorize merging; the owner
+subsequently authorized merging the three existing PRs into personal `main`.
