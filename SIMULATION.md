@@ -7,7 +7,7 @@ The historical engines and their share links remain in the historical archive.
 
 **Current rankings remain blocked.** A runnable model is not a verified model of
 the live server. The October 30 hotfix target is 1.60.1.70707; source review is
-November 2, 2026 UTC. No newer upstream commit than `a331552` was found.
+November 3, 2026 UTC (including November 2 official notes). No newer upstream commit than `a331552` was found.
 
 ## Reproduce
 
@@ -52,7 +52,7 @@ talent/ability records. Implemented research mechanics include:
   maximum-mana scaling; one-use Barrage and channel tick scheduling.
 - Fire Blast's Heating Up contribution, Pyro consumption, Presence of Mind,
   personal Fire effects, Scorch, rolling Ignite and cooldowns.
-- Ice Lance's eight-second cooldown and frozen multiplier, Winter's Chill
+- Ice Lance's eight-second cooldown shared with Fire Blast and frozen multiplier, Winter's Chill
   stacking/Cone consumption, separate Barrier and shield-survival windows,
   Fingers of Frost charges and a Cold Snap policy.
 - Rank availability, legal level-adjusted talent presets, cast/GCD timing,
@@ -63,6 +63,8 @@ Important limitations and explicit alternatives:
 
 | Mechanic | Research default | Remaining uncertainty / controls |
 | --- | --- | --- |
+| Shared Blast/Lance cooldown | casting either sets both timers to the casting spell's cooldown (8s, or 6/7s for talented Fire Blast) | `shared_blast_lance_base=true` tests an unreduced 8s category; talent/category interaction unvalidated |
+| Cold Snap | resets Frost spells only, leaving Fire Blast's timer | `cold_snap_resets_fireblast=true` tests resetting the shared category too; unvalidated |
 | Ice Lance coefficient | 0, as extracted | `ice_lance_coef`; 0.143 and 0.429 are sensitivity probes, not calibrated answers |
 | Wrath coefficient | 1 from older 70532 extraction | `wrath_coef`; lower-rank growth unverified |
 | Blast application | cast completion, including a miss | `ab_apply` can defer to impact; snapshots use SP at cast start |
@@ -107,7 +109,7 @@ only impacts/ticks at or before the limit count as damage.
 
 ## Experiments and uncertainty
 
-`current-experiments.json` is generated with input hashes, 31 matched scenarios,
+`current-experiments.json` is generated with input hashes, 35 matched scenarios,
 200 fights per school, seed range 10001–10200 and alphabetical school order.
 Sampling intervals are mean ± 1.96 standard errors, not a bound on mechanic error.
 The same seed range does not imply paired identical proc draws between schools.
@@ -129,7 +131,7 @@ Do not treat this metric as a leveling recommendation.
 The targeted suite uses independent arithmetic for Fireball, Wrath, Cone, Blast
 costs/expiry, Barrier windows and Ignite bank conservation; it also checks 180
 level/build combinations, resource conservation, channel timing, cooldowns,
-Pyro/Presence of Mind and Barrage, rank availability, input rejection and 45
+Pyro/Presence of Mind and Barrage, rank availability, input rejection and 57
 full Python/JavaScript seeded traces. Generated defaults/data/reports must be
 fresh. Browser tests cover desktop/tablet/phone, local runs, input errors,
 versioned sharing and historical redirect. The untouched historical browser
@@ -155,3 +157,16 @@ show mean kill time only when every trial kills its targets, mana spent and
 modeled full-refill recovery. Every trial starts at full mana. These metrics do
 not model root breaks, incoming damage, movement, deaths or continuous farming.
 The guide does not use their omission to declare control talents inferior.
+
+November 3 maintenance evidence and comparison deltas: `MAINTENANCE-2026-11-03.md`.
+
+## Complete November 2 Mage audit
+
+See `MAGE-NOV2-COVERAGE.md` for every Mage bullet, its implementation and tests.
+Flamestrike later critical ticks now contribute to Ignite; periodic criticals
+remain disabled by default. The paired AoE sensitivity cases hold all inputs
+fixed and toggle only `flamestrike_periodic_ignite` with periodic criticals enabled.
+Both engines return `defensive_stats` (Resilience armor and Warding multipliers).
+Incoming damage, shield depletion and Warding negation are executable in both
+replay ports using explicit observed inputs, not in the safe-target scheduler.
+This distinction remains a blocker for survival-aware leveling recommendations.

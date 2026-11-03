@@ -47,6 +47,49 @@ class SimulationTests(unittest.TestCase):
     def test_ignite_rollover_conserves_bank(self):
         f=Fight('fire',{'seconds':10});f.queue=[];f.add_ignite(0,100);f.time=1;f.add_ignite(0,60)
         r=f.run();self.assertEqual(r['damage_by_spell'],{'ignite':160});self.assertIsNone(f.targets[0]['ignite'])
+    def test_flamestrike_later_ticks_and_targets(self):
+        # Two targets, two later critical ticks each: 4 * 150 damage, 40% = 240 Ignite.
+        for enabled, periodic, key, expected in [(True,True,'flamestrike',240),(False,True,'flamestrike',0),
+                (True,False,'flamestrike',0),(True,True,'fireball',0)]:
+            o=dict(seconds=8,targets=2,periodic_crit=periodic,flamestrike_periodic_ignite=enabled,trace=True)
+            f=Fight('fire',o);f.queue=[]
+            for i in range(2):
+                f.targets[i]['dots'][key]=dict(token=7,until=4)
+                for at in (1,3):f.schedule(at,'dot',dict(key=key,target=i,token=7,amount=100,crit=1,bonus=.5,school='fire'))
+                # Stale overwritten tick must not trigger Ignite or damage.
+                f.schedule(2,'dot',dict(key=key,target=i,token=6,amount=999,crit=1,bonus=.5,school='fire'))
+            result=f.run();self.assertAlmostEqual(result['damage_by_spell'].get('ignite',0),expected)
+            script="""const {Fight}=require('./sim-engine.js');const f=new Fight('fire',JSON.parse(process.argv[1])),key=process.argv[2];f.queue=[];
+            for(let i=0;i<2;i++){f.targets[i].dots[key]={token:7,until:4};for(const at of [1,3])f.schedule(at,'dot',{key,target:i,token:7,amount:100,crit:1,bonus:.5,school:'fire'});f.schedule(2,'dot',{key,target:i,token:6,amount:999,crit:1,bonus:.5,school:'fire'});}
+            console.log(JSON.stringify(f.run()));"""
+            equal(result,json.loads(subprocess.check_output(['node','-e',script,json.dumps(o),key],cwd=ROOT)))
+        # A dead target must neither take periodic damage nor create an Ignite bank.
+        f=Fight('fire',dict(seconds=5,targets=2,target_hp=100,periodic_crit=True));f.queue=[];f.targets[0]['hp']=0
+        f.targets[0]['dots']['flamestrike']=dict(token=1)
+        f.schedule(1,'dot',dict(key='flamestrike',target=0,token=1,amount=100,crit=1,bonus=.5,school='fire'))
+        self.assertEqual(f.run()['damage'],0);self.assertIsNone(f.targets[0]['ignite'])
+
+    def test_flamestrike_repeated_direct_hits(self):
+        o=dict(seconds=12,targets=2,sp=0,crit=1,hit=1,miss_floor=0,partial_resist=0,cooldowns=False)
+        f=Fight('fire',o);f.queue=[];f.random=lambda:.5
+        hit=dict(key='flamestrike',sp=0,frozen=False,basecost=f.spells['flamestrike']['mana'])
+        for i in range(2):f.time=i*5;f.hit(dict(hit,id=i+1))
+        self.assertGreater(f.parts['flamestrike'],0)
+        # Per-target banks include BOTH direct instances, independent of periodic crits.
+        self.assertAlmostEqual(sum(t['ignite']['bank'] for t in f.targets),.4*f.parts['flamestrike'])
+        script="""const {Fight}=require('./sim-engine.js');const f=new Fight('fire',JSON.parse(process.argv[1]));f.queue=[];f.random=()=>.5;
+        for(let i=0;i<2;i++){f.time=i*5;f.hit({key:'flamestrike',sp:0,frozen:false,basecost:f.spells.flamestrike.mana,id:i+1});}
+        console.log(JSON.stringify({damage:f.parts.flamestrike,bank:f.targets.reduce((n,t)=>n+t.ignite.bank,0)}));"""
+        equal(dict(damage=f.parts['flamestrike'],bank=sum(t['ignite']['bank'] for t in f.targets)),json.loads(subprocess.check_output(['node','-e',script,json.dumps(o)],cwd=ROOT)))
+
+    def test_removed_spell_and_defensive_stats(self):
+        self.assertNotIn('frostblast',DATA['spells'])
+        build=dict(arcaneresilience=3,frostwarding=2)
+        result=simulate('frost',dict(seconds=1,intellect=300),build)
+        self.assertEqual(result['defensive_stats'],dict(resilience_armor=225,armor_spell_multiplier=1.3,absorb_multiplier=1.2,ward_negate_chance=.2))
+        script="console.log(JSON.stringify(require('./sim-engine.js').simulate('frost',{seconds:1,intellect:300},{arcaneresilience:3,frostwarding:2})))"
+        equal(result,json.loads(subprocess.check_output(['node','-e',script],cwd=ROOT)))
+
     def test_cone_order_and_consumption(self):
         f=Fight('frost',{'sp':100,'crit':0,'hit':1,'miss_floor':0,'partial_resist':0,'cooldowns':False});f.random=lambda:.9
         row=f.spells['coneofcold'];target=f.targets[0];target.update(wc=5,wc_until=15)
@@ -71,6 +114,44 @@ class SimulationTests(unittest.TestCase):
             self.assertEqual(f.trace[0]['spell'],'pyroblast');self.assertEqual(f.hu,3 if pom else 0)
         f=Fight('arcane',{'cooldowns':False,'use_wrath':False,'ab_stacks':0})
         f.cc=True;f.aura['mb']=15;f.act();self.assertTrue(f.cc);self.assertFalse(f.up('mb'))
+    def test_shared_cooldown_boundaries_and_ports(self):
+        cases=[]
+        for school in ('fire','frost'):
+            for first in ('fireblast','icelance'):
+                if first=='icelance' and school=='fire':continue
+                for base in (False,True):
+                    f=Fight(school,{'cooldowns':False,'shared_blast_lance_base':base})
+                    f.choose=lambda:first;f.act()
+                    expected=6 if first=='fireblast' and school=='fire' and not base else 8
+                    self.assertEqual([f.cd[k] for k in ('fireblast','icelance')],[expected,expected])
+                    f.time=expected-.001
+                    self.assertFalse(f.ready('fireblast'));self.assertFalse(f.ready('icelance'))
+                    f.time=expected
+                    self.assertTrue(f.ready('fireblast'));self.assertTrue(f.ready('icelance'))
+                    cases.append(dict(school=school,first=first,base=base,expected=expected))
+        script="""const {Fight}=require('./sim-engine.js');let s='';process.stdin.on('data',d=>s+=d);process.stdin.on('end',()=>console.log(JSON.stringify(JSON.parse(s).map(c=>{const f=new Fight(c.school,{cooldowns:false,shared_blast_lance_base:c.base});f.choose=()=>c.first;f.act();f.time=c.expected-.001;const before=[f.ready('fireblast'),f.ready('icelance')];f.time=c.expected;return [f.cd.fireblast,f.cd.icelance,before,[f.ready('fireblast'),f.ready('icelance')]];}))));"""
+        actual=json.loads(subprocess.check_output(['node','-e',script],input=json.dumps(cases).encode(),cwd=ROOT))
+        self.assertEqual(actual,[[c['expected'],c['expected'],[False,False],[True,True]] for c in cases])
+
+    def test_cold_snap_shared_reset_hypotheses(self):
+        for shared in (False,True):
+            f=Fight('frost',{'cold_snap_resets_fireblast':shared});f.time=1
+            f.fof=1;f.aura['fof']=15;f.cd.update(icelance=8,fireblast=8)
+            f.choose=lambda:None;f.act()
+            self.assertTrue(f.ready('icelance'));self.assertEqual(f.ready('fireblast'),shared)
+            self.assertEqual(f.cd['coldsnap'],601)
+        script="""const {Fight}=require('./sim-engine.js');console.log(JSON.stringify([false,true].map(shared=>{const f=new Fight('frost',{cold_snap_resets_fireblast:shared});f.time=1;f.fof=1;f.aura.fof=15;Object.assign(f.cd,{icelance:8,fireblast:8});f.choose=()=>null;f.act();return [f.ready('icelance'),f.ready('fireblast'),f.cd.coldsnap];})));"""
+        self.assertEqual(json.loads(subprocess.check_output(['node','-e',script],cwd=ROOT)),[[True,False,601],[True,True,601]])
+
+    def test_missiles_clearcasting_proc_and_preservation(self):
+        f=Fight('arcane',{'cooldowns':False,'use_wrath':False,'ab_stacks':0,'hit':1,'miss_floor':0})
+        f.cc=True;f.aura['mb']=15;f.act()
+        self.assertTrue(f.cc);self.assertFalse(f.up('mb'));self.assertEqual(f.spent,0)
+        f.time=2.5;f.act();self.assertFalse(f.cc);self.assertEqual(f.spent,0)
+        f.random=lambda:0
+        f.hit(dict(key='arcanemissiles',id=100,sp=0,frozen=False,basecost=f.spells['arcanemissiles']['mana']))
+        self.assertTrue(f.cc)
+
     def test_range_travel_and_book_availability(self):
         f=Fight('frost',{'distance':30});self.assertFalse(f.in_range('coneofcold'))
         self.assertEqual(f.spells['frostbolt']['rank'],10);self.assertEqual(Fight('frost',{'books':True}).spells['frostbolt']['rank'],11)
@@ -91,7 +172,7 @@ class SimulationTests(unittest.TestCase):
     def test_seeded_javascript_parity(self):
         cases=[]
         for school in ('arcane','fire','frost'):
-            for options in [{},{'seconds':300,'seed':13},{'targets':4,'distance':8,'seed':3},{'race':'human'},{'race':'gnome'},{'race':'orc'},{'race':'undead'},{'race':'troll'},{'race':'skyborne'},{'level':20,'target_hp':1000,'target_level_delta':0},{'level':40,'targets':3,'distance':8,'target_hp':3000,'target_level_delta':0},{'unlimited_mana':True,'periodic_crit':True,'snapshot_sp':False,'ab_apply':'impact','seed':42},{'ice_lance_coef':.429,'shield_lifetime':60,'winter_order':'outside','distance':8},{'cooldowns':False,'distance':100},{'seconds':3.5,'travel_seconds':1}]:
+            for options in [{'targets':4,'distance':8,'periodic_crit':True},{'targets':4,'distance':8,'periodic_crit':True,'flamestrike_periodic_ignite':False},{'shared_blast_lance_base':True},{'cold_snap_resets_fireblast':True},{},{'seconds':300,'seed':13},{'targets':4,'distance':8,'seed':3},{'race':'human'},{'race':'gnome'},{'race':'orc'},{'race':'undead'},{'race':'troll'},{'race':'skyborne'},{'level':20,'target_hp':1000,'target_level_delta':0},{'level':40,'targets':3,'distance':8,'target_hp':3000,'target_level_delta':0},{'unlimited_mana':True,'periodic_crit':True,'snapshot_sp':False,'ab_apply':'impact','seed':42},{'ice_lance_coef':.429,'shield_lifetime':60,'winter_order':'outside','distance':8},{'cooldowns':False,'distance':100},{'seconds':3.5,'travel_seconds':1}]:
                 cases.append(dict(school=school,options=dict(options,trace=True)))
         script="const sim=require('./sim-engine.js');let s='';process.stdin.on('data',d=>s+=d);process.stdin.on('end',()=>console.log(JSON.stringify(JSON.parse(s).map(c=>sim.simulate(c.school,c.options)))));"
         js=json.loads(subprocess.check_output(['node','-e',script],input=json.dumps(cases).encode(),cwd=ROOT))

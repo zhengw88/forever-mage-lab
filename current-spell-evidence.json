@@ -33,5 +33,22 @@
     "client_build": "1.60.1.70532",
     "source": "https://ladderly.gg/forever/ranks?class=mage&spell=arcane-wrath",
     "status": "First-hand client extraction for an older build; later hotfix coverage not established here. Not a simulator-ranking input."
+  },
+  "official_supplement": {
+    "date": "2026-11-02",
+    "posted_utc": "2026-11-03T03:20:00Z",
+    "retrieved_utc": "2026-11-03",
+    "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696",
+    "implemented": "Ice Lance and Fire Blast share cooldown; untalented base 8 seconds.",
+    "unresolved": "Shared category interaction with Improved Fire Blast and Cold Snap needs server evidence."
+  },
+  "november_2_mage_audit": {
+    "coverage": "MAGE-NOV2-COVERAGE.md",
+    "retrieved_utc": "2026-11-03",
+    "defensive_sources": [
+      "https://wowforevertalents.com/mage/talents/frost-warding/",
+      "https://wowforevertalents.com/mage/talents/arcane-resilience/"
+    ],
+    "flamestrike": "Later critical damage eligible for Ignite; periodic critical capability not established; explicit sensitivity retained"
   }
 }

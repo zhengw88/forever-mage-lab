@@ -2419,8 +2419,10 @@
       "build": "1.60.1.70707"
     },
     "official": {
-      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696",
-      "status": "announced rules distinguished from cache"
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696",
+      "reviewed_utc": "2026-11-03",
+      "notes_date": "2026-11-02",
+      "status": "announced rules distinguished from October 30 cache; shared Blast/Lance cooldown confirmed"
     }
   },
   "caveats": [

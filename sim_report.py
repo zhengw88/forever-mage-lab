@@ -3,7 +3,7 @@ import argparse, hashlib, json, math, statistics
 from pathlib import Path
 from sim_engine import simulate, DEFAULTS, config
 ROOT=Path(__file__).resolve().parent
-INPUTS=['sim_engine.py','sim-data.json','sim-defaults.json','current-builds.json','current-talents.json','sim_report.py']
+INPUTS=['sim_engine.py','sim-engine.js','sim-data.json','sim-defaults.json','current-builds.json','current-talents.json','sim_report.py']
 
 def summary(school,options,fights=200,seed=10001,policy=None):
     rows=[simulate(school,dict(options,**(policy or {}),seed=(seed+i)&0xffffffff,trace=False)) for i in range(fights)]
@@ -39,12 +39,15 @@ def archive():
        ('lance_coef_0143',{'ice_lance_coef':.143}),('lance_coef_0429',{'ice_lance_coef':.429}),('no_partial_resist',{'partial_resist':0}),
        ('no_miss_floor',{'miss_floor':0}),('wrath_coef_085',{'wrath_coef':.85}),('wrath_coef_115',{'wrath_coef':1.15}),
        ('fof_boss_disabled',{'fof_on_boss':False}),('cone_outside_order',{'distance':8,'winter_order':'outside'}),('unlimited_mana',{'unlimited_mana':True}),
+       ('shared_cooldown_base8',{'shared_blast_lance_base':True}),('cold_snap_resets_shared',{'cold_snap_resets_fireblast':True}),
        ('periodic_crits',{'periodic_crit':True}),('travel_one_second',{'travel_seconds':1}),('aura_at_impact',{'travel_seconds':1,'ab_apply':'impact'}),
        ('aoe_four_safe_targets',{'targets':4,'distance':8,'target_level_delta':0}),
+       ('aoe_periodic_ignite',{'targets':4,'distance':8,'target_level_delta':0,'periodic_crit':True}),
+       ('aoe_periodic_no_ignite',{'targets':4,'distance':8,'target_level_delta':0,'periodic_crit':True,'flamestrike_periodic_ignite':False}),
        ('level20_safe_target',{'level':20,'sp':30,'intellect':60,'spirit':40,'crit':.05,'hit':0,'mp5':0,'target_hp':800,'target_level_delta':0,'distance':20,'xp_per_target':150}),
        ('level40_safe_pack',{'level':40,'sp':150,'intellect':150,'spirit':80,'crit':.07,'hit':0,'mp5':15,'targets':3,'target_hp':2000,'target_level_delta':0,'distance':8,'xp_per_target':250})]
     scenarios += [('race_'+race,{'race':race}) for race in ('human','gnome','orc','undead','skyborne','troll')]+[('troll_cache_10s',{'race':'troll','berserking_duration':10})]
-    return dict(schema=1,generated_utc='2026-11-02',source_hotfix='2026-10-30',rankings_blocked=True,model_current=False,
+    return dict(schema=1,generated_utc='2026-11-03',source_hotfix='2026-10-30',official_notes_date='2026-11-02',rankings_blocked=True,model_current=False,
        input_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in INPUTS},
        search=dict(note='Finite policy search, not global talent/rotation optimization. Selected using 60 training seeds; comparisons use 200 disjoint held-out seeds. Policies stay fixed across sensitivity scenarios.',schools=search),
        scenarios=[dict(name=name,**experiment(o,200,10001,chosen)) for name,o in scenarios])

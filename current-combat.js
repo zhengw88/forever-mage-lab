@@ -14,7 +14,8 @@ function createCurrentCombat(talents, rules) {
     if (!['cast','hit'].includes(options.cone_consumption)) throw new Error('select cone_consumption');
     number(options.intellect,'intellect'); number(options.base_mana,'base mana');
     const applications = [], output = []; let effects = {};
-    let heating=0, heatingUntil=0, wc=0, barrageUntil=0, barrierUntil=0, shieldUntil=0, lanceReady=0, previous=-1;
+    let heating=0, heatingUntil=0, wc=0, barrageUntil=0, barrierUntil=0, shieldUntil=0, lanceReady=0, fireblastReady=0, previous=-1;
+    let shieldAmount=null, wardAmount=0, wardUntil=0;
     const p = key => build[key] || 0;
     for (const event of events) {
       const now = number(event.at,'event time');
@@ -40,7 +41,8 @@ function createCurrentCombat(talents, rules) {
         barrageUntil=0;
       } else if (kind==='fire_hit') {
         const spell=event.spell,crit=flag('crit'),periodic=flag('periodic');
-        if(!heatingTriggers.has(spell) && !['pyroblast','ignite'].includes(spell)) throw new Error('unsupported fire hit');
+        if(!heatingTriggers.has(spell) && !['pyroblast','ignite','flamestrike'].includes(spell)) throw new Error('unsupported fire hit');
+        if(spell==='flamestrike'){const damage=number(event.damage,'Flamestrike damage');detail={ignite_bank_added:crit?damage*.08*p('ignite'):0};}
         const added=!periodic && heatingTriggers.has(spell) ? Number(crit)+Number(spell==='fireblast') : 0;
         if(p('heatingup') && added) {
           if(heating===0 || options.heating_refresh==='refresh') heatingUntil=now+20;
@@ -66,19 +68,43 @@ function createCurrentCombat(talents, rules) {
         const used=inRange&&(hit||options.cone_consumption==='cast')?wc:0;
         detail={landed:hit&&inRange,stacks_used:used,damage_taken_multiplier:1+(hit&&inRange?0.2*wc:0),extra_sp_coefficient:hit&&inRange?0.07*wc:0};
         if(used) wc=0;
+      } else if(kind==='fireblast_cast') {
+        if(now<fireblastReady)throw new Error('Fire Blast shared cooldown');
+        lanceReady=fireblastReady=now+8-p('improvedfireblast');
       } else if(kind==='lance_cast') {
         requireTalent('icelance');const frozen=flag('frozen');if(now<lanceReady) throw new Error('Ice Lance cooldown');
-        lanceReady=now+8;detail={damage_multiplier:frozen?4:1};
+        lanceReady=fireblastReady=now+8;detail={damage_multiplier:frozen?4:1};
       } else if(kind==='barrier_apply') {
         requireTalent('icebarrier');barrierUntil=now+60;shieldUntil=now+60;
-      } else if(kind==='shield_break') shieldUntil=0;
+        shieldAmount=Object.hasOwn(event,'base_absorb')?number(event.base_absorb,'base absorb')*(1+.1*p('frostwarding')):null;
+        if(shieldAmount===0)shieldUntil=0;
+      } else if(kind==='ward_apply') {
+        wardAmount=number(event.base_absorb,'base absorb')*(1+.1*p('frostwarding'));wardUntil=expiry();
+      } else if(kind==='incoming_damage') {
+        const amount=number(event.damage,'incoming damage'),school=event.school;
+        if(!['physical','arcane','fire','frost','nature','shadow','holy'].includes(school))throw Error('single incoming school required');
+        const wardActive=school==='frost'&&now<wardUntil&&wardAmount>0,barrierActive=now<shieldUntil;
+        if(barrierActive&&shieldAmount===null)throw Error('supply base_absorb before replaying incoming damage');
+        if(wardActive&&barrierActive&&!['ward_first','barrier_first'].includes(event.absorb_order))throw Error('explicit absorb_order required for overlapping shields');
+        const negated=wardActive&&roll()<.1*p('frostwarding');let remaining=negated?0:amount,wardAbsorbed=0,barrierAbsorbed=0;
+        if(!negated){
+          const order=event.absorb_order==='barrier_first'?['barrier','ward']:['ward','barrier'];
+          for(const shield of order){
+            if(shield==='ward'&&wardActive){wardAbsorbed=Math.min(wardAmount,remaining);wardAmount-=wardAbsorbed;remaining-=wardAbsorbed;}
+            else if(shield==='barrier'&&barrierActive){barrierAbsorbed=Math.min(shieldAmount,remaining);shieldAmount-=barrierAbsorbed;remaining-=barrierAbsorbed;}
+          }
+          if(barrierActive&&shieldAmount===0)shieldUntil=0;
+        }
+        detail={negated,reflected_damage:0,ward_absorbed:wardAbsorbed,barrier_absorbed:barrierAbsorbed,damage_taken:remaining};
+      } else if(kind==='shield_break') {shieldUntil=0;shieldAmount=0;}
       else if(kind!=='observe') throw new Error('unknown event kind');
       const blast=rules.arcaneBlastSnapshot(applications,now,options.intellect,options.base_mana);
       output.push({at:now,kind,detail,blast,precision_hit:rules.precisionHit(p('precision')),
+        resilience_armor:.25*p('arcaneresilience')*options.intellect,armor_spell_multiplier:1+.15*p('frostwarding'),absorb_multiplier:1+.1*p('frostwarding'),barrier_remaining:now<shieldUntil?shieldAmount:0,ward_remaining:now<wardUntil?wardAmount:0,
         wrath_cast_seconds:rules.accelerantCastSeconds('arcaneWrath',3.5,p('accelerant')),
         heating_stacks:heating,heating_expires_at:heating?heatingUntil:null,
         fire_effects:Object.keys(effects).sort(),fire_power_multiplier:1+0.01*p('firepower')*Math.min(4,Object.keys(effects).length),
-        winter_stacks:wc,lance_ready_at:lanceReady,
+        winter_stacks:wc,lance_ready_at:lanceReady,fireblast_ready_at:fireblastReady,
         barrier_damage_bonus:(now<barrierUntil?0.15:0)+(now<shieldUntil?0.05:0),barrage_active:now<barrageUntil});
     }
     return {schema:1,model:'current-mechanics-replay',model_current:false,options:JSON.parse(JSON.stringify(options)),

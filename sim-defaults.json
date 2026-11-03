@@ -34,6 +34,8 @@
   "barrage_duration": 15,
   "berserking_duration": 15,
   "berserking_haste": 0.1,
+  "shared_blast_lance_base": false,
+  "cold_snap_resets_fireblast": false,
   "periodic_crit": false,
   "combustion_periodic": true,
   "snapshot_sp": true,
@@ -54,5 +56,6 @@
   "dungeon": false,
   "dungeon_xp_bonus": 0.2,
   "seed": 1,
-  "trace": false
+  "trace": false,
+  "flamestrike_periodic_ignite": true
 }

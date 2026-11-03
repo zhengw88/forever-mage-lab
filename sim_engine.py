@@ -19,7 +19,8 @@ DEFAULTS=dict(level=60,seconds=120,sp=500,intellect=300,spirit=120,crit=.10,hit=
               travel_seconds=0,shield_lifetime=10,barrier_refresh=60,barrier_multiplicative=False,
               winter_duration=15,winter_order='inside',cone_consume_on_miss=False,
               heating_refresh=True,barrage_duration=15,berserking_duration=15,berserking_haste=.10,
-              periodic_crit=False,combustion_periodic=True,snapshot_sp=True,ab_apply='complete',
+              shared_blast_lance_base=False,cold_snap_resets_fireblast=False,
+              periodic_crit=False,flamestrike_periodic_ignite=True,combustion_periodic=True,snapshot_sp=True,ab_apply='complete',
               ab_stacks=2,use_wrath=True,use_barrage=True,use_fireblast=True,use_scorch=True,
               pyro_stacks=3,use_cone=True,filler='auto',wand_dps=60,wand_speed=1.5,
               walk_seconds=8,drink_mps=100,xp_per_target=300,dungeon=False,dungeon_xp_bonus=.20,
@@ -191,6 +192,7 @@ class Fight:
                 lo,hi=gems[self.gem];self.gain(lo+(hi-lo)*self.random());self.gem+=1;self.cd['gem']=self.time+120
         if o['cooldowns'] and r('coldsnap') and self.ready('coldsnap') and self.fof and not self.ready('icelance'):
             for spell in ('icelance','coneofcold','icebarrier'):self.cd[spell]=self.time
+            if o['cold_snap_resets_fireblast']:self.cd['fireblast']=self.time
             self.cd['coldsnap']=self.time+600;self.log('cold_snap')
         k=self.choose()
         if k is None:
@@ -226,6 +228,10 @@ class Fight:
         ctx=dict(key=k,id=self.castid,sp=self.power(),frozen=frozen,basecost=basecost)
         cd=max(0,row['cd']-r('improvedfireblast')) if k=='fireblast' else row['cd']
         self.cd[k]=self.time+(duration if cast else 0)+cd
+        if k in ('icelance','fireblast'):
+            # Sharing is official; talent/category duration needs server validation.
+            ready=self.time+(8 if o['shared_blast_lance_base'] else cd)
+            self.cd['icelance']=self.cd['fireblast']=ready
         self.log('cast',spell=k,cast_id=self.castid,duration=duration,cost=cost,mana=self.mana,ab=self.ab,fof=self.fof,hu=self.hu)
         if k=='icebarrier':
             self.aura['barrier']=self.time+60;self.aura['shield']=self.time+min(60,o['shield_lifetime']);self.aura['barrier_policy']=self.time+o['barrier_refresh']
@@ -323,9 +329,13 @@ class Fight:
                 self.gain(mana);self.schedule(t+2,'regen',{})
             elif kind=='dot':
                 dot=self.targets[c['target']]['dots'].get(c['key'],{})
-                if dot.get('token')==c['token']:
+                if dot.get('token')==c['token'] and self.alive(c['target']):
                     crit=self.o['periodic_crit'] and self.random()<c['crit']
-                    self.deal(c['amount']*(1+c['bonus'] if crit else 1),c['key']+'_dot',c['target'])
+                    damage=c['amount']*(1+c['bonus'] if crit else 1)
+                    self.deal(damage,c['key']+'_dot',c['target'])
+                    # Later Flamestrike damage is eligible; periodic crit capability remains a hypothesis.
+                    if crit and c['key']=='flamestrike' and self.o['flamestrike_periodic_ignite'] and self.r('ignite') and self.alive(c['target']):
+                        self.add_ignite(c['target'],damage*.08*self.r('ignite'))
                     if self.comb>=0 and c['school'] in FIRE and self.o['combustion_periodic']:self.comb=min(10,self.comb+1)
             elif kind=='ignite':
                 dot=self.targets[c['target']]['ignite']
@@ -340,6 +350,7 @@ class Fight:
         cycle=duration+self.o['walk_seconds']+drink
         xp=self.o['xp_per_target']*self.o['targets']*(1+self.o['dungeon_xp_bonus'] if self.o['dungeon'] else 1)
         return dict(school=self.school,model='70707-experimental-event-sim',model_current=False,options=self.o,talents=self.build,
+                    defensive_stats=dict(resilience_armor=.25*self.r('arcaneresilience')*self.intel,armor_spell_multiplier=1+.15*self.r('frostwarding'),absorb_multiplier=1+.1*self.r('frostwarding'),ward_negate_chance=.1*self.r('frostwarding')),
                     damage=total,dps=total/duration,elapsed=duration,killed=killed,damage_by_spell=self.parts,casts=self.casts,
                     mana_spent=self.spent,mana_restored=self.restored,mana_end=self.mana,max_mana=self.pool,mana_downtime=self.wait,evocations=self.evos,
                     recovery_seconds=drink,safe_target_xp_per_hour=3600*xp/cycle if killed else None,trace=self.trace)

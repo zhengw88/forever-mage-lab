@@ -97,7 +97,7 @@ function createMageSim(DATA, tree, presets, DEFAULTS) {
         const race=o.race;if(['gnome','orc','troll','skyborne'].includes(race)&&this.ready('racial')){this.aura[race]=this.time+{gnome:8,orc:15,troll:o.berserking_duration,skyborne:15}[race];this.cd.racial=this.time+(race==='troll'?180:120);}}
       if(o.consumables){if(o.level>=49&&this.ready('potion')&&this.pool-this.mana>=2250){this.gain(1350+900*this.random());this.cd.potion=this.time+120;this.log('potion',{mana:this.mana});}
         const gems=this.gems;if(this.gem<gems.length&&this.ready('gem')&&this.pool-this.mana>=gems[this.gem][1]){const [lo,hi]=gems[this.gem];this.gain(lo+(hi-lo)*this.random());this.gem++;this.cd.gem=this.time+120;}}
-      if(o.cooldowns&&r('coldsnap')&&this.ready('coldsnap')&&this.fof&&!this.ready('icelance')){for(const spell of ['icelance','coneofcold','icebarrier'])this.cd[spell]=this.time;this.cd.coldsnap=this.time+600;this.log('cold_snap');}
+      if(o.cooldowns&&r('coldsnap')&&this.ready('coldsnap')&&this.fof&&!this.ready('icelance')){for(const spell of ['icelance','coneofcold','icebarrier'])this.cd[spell]=this.time;if(o.cold_snap_resets_fireblast)this.cd.fireblast=this.time;this.cd.coldsnap=this.time+600;this.log('cold_snap');}
       const k=this.choose();if(k===null){this.wait+=Math.min(1,o.seconds-this.time);this.schedule(this.time+1,'act',{});return;}
       const row=this.spells[k],school=row.school,mb=k==='arcanemissiles'&&this.up('mb'),basecost=k==='arcaneblast'?.15*this.base_mana:row.mana;
       let cost=basecost*(k==='arcaneblast'?1+this.ab:1)*(FROST.includes(school)?1-.05*r('frostchanneling'):1);cost*=1+(this.up('ap')?.3:0);if(this.up('gnome')&&k!=='icebarrier')cost*=.9;
@@ -113,7 +113,9 @@ function createMageSim(DATA, tree, presets, DEFAULTS) {
       const haste=this.haste(),duration=(row.channel?row.channel/(mb?2:1):cast)/haste,frozen=!!(this.fof&&this.up('fof'));
       if(k!=='icebarrier'&&this.fof)this.fof--;this.castid++;this.casts[k]=(this.casts[k]||0)+1;
       const ctx={key:k,id:this.castid,sp:this.power(),frozen,basecost},cd=k==='fireblast'?Math.max(0,row.cd-r('improvedfireblast')):row.cd;
-      this.cd[k]=this.time+(cast?duration:0)+cd;this.log('cast',{spell:k,cast_id:this.castid,duration,cost,mana:this.mana,ab:this.ab,fof:this.fof,hu:this.hu});
+      this.cd[k]=this.time+(cast?duration:0)+cd;
+      if(['icelance','fireblast'].includes(k)){const ready=this.time+(o.shared_blast_lance_base?8:cd);this.cd.icelance=this.cd.fireblast=ready;}
+      this.log('cast',{spell:k,cast_id:this.castid,duration,cost,mana:this.mana,ab:this.ab,fof:this.fof,hu:this.hu});
       if(k==='icebarrier'){this.aura.barrier=this.time+60;this.aura.shield=this.time+Math.min(60,o.shield_lifetime);this.aura.barrier_policy=this.time+o.barrier_refresh;}
       else {if(k==='arcaneblast'&&o.ab_apply==='complete')this.schedule(this.time+duration,'ab',{});
         if(row.channel){for(let i=0;i<row.ticks;i++)this.schedule(this.time+duration*(i+1)/row.ticks,'hit',ctx);}
@@ -152,11 +154,11 @@ function createMageSim(DATA, tree, presets, DEFAULTS) {
         if(kind==='act'&&t<end)this.act();else if(kind==='ab')this.apply_ab();else if(kind==='hit')this.hit(c);
         else if(kind==='wand'){let i=this.targets.findIndex((_,i)=>this.alive(i));if(i<0)i=0;this.deal(this.o.wand_dps*this.o.wand_speed*[1,1.13,1.25][this.r('wandspecialization')],'wand',i);}
         else if(kind==='regen'){const spirit=6.25+this.spirit/8,fraction=(this.aura.evo??-1)>=this.time?16:this.time-this.last_spend>=5?1:Math.min(1,(this.o.level>=34?.5:0)+[0,.17,.33,.5][this.r('arcanemeditation')]);this.gain(2*(spirit*fraction+this.o.mp5/5)*(this.up('skyborne')?1.5:1));this.schedule(t+2,'regen',{});}
-        else if(kind==='dot'){const dot=this.targets[c.target].dots[c.key]||{};if(dot.token===c.token){const crit=this.o.periodic_crit&&this.random()<c.crit;this.deal(c.amount*(crit?1+c.bonus:1),c.key+'_dot',c.target);if(this.comb>=0&&FIRE.includes(c.school)&&this.o.combustion_periodic)this.comb=Math.min(10,this.comb+1);}}
+        else if(kind==='dot'){const dot=this.targets[c.target].dots[c.key]||{};if(dot.token===c.token&&this.alive(c.target)){const crit=this.o.periodic_crit&&this.random()<c.crit,damage=c.amount*(crit?1+c.bonus:1);this.deal(damage,c.key+'_dot',c.target);if(crit&&c.key==='flamestrike'&&this.o.flamestrike_periodic_ignite&&this.r('ignite')&&this.alive(c.target))this.add_ignite(c.target,damage*.08*this.r('ignite'));if(this.comb>=0&&FIRE.includes(c.school)&&this.o.combustion_periodic)this.comb=Math.min(10,this.comb+1);}}
         else if(kind==='ignite'){const dot=this.targets[c.target].ignite;if(dot&&dot.token===c.token){const amount=dot.bank/dot.ticks;this.deal(amount,'ignite',c.target);dot.bank-=amount;dot.ticks--;if(this.comb>=0&&this.o.combustion_periodic)this.comb=Math.min(10,this.comb+1);if(dot.ticks){dot.next=t+2;this.schedule(t+2,'ignite',c);}else this.targets[c.target].ignite=null;}}
         if(this.o.target_hp&&this.targets.every(x=>x.hp<=0)){killed=true;end=t;break;}}
       const total=sum(Object.values(this.parts)),duration=Math.max(end,1e-9),drink=(this.pool-this.mana)/this.o.drink_mps,cycle=duration+this.o.walk_seconds+drink,xp=this.o.xp_per_target*this.o.targets*(this.o.dungeon?1+this.o.dungeon_xp_bonus:1);
-      return {school:this.school,model:'70707-experimental-event-sim',model_current:false,options:this.o,talents:this.build,damage:total,dps:total/duration,elapsed:duration,killed,damage_by_spell:this.parts,casts:this.casts,mana_spent:this.spent,mana_restored:this.restored,mana_end:this.mana,max_mana:this.pool,mana_downtime:this.wait,evocations:this.evos,recovery_seconds:drink,safe_target_xp_per_hour:killed?3600*xp/cycle:null,trace:this.trace};
+      return {school:this.school,model:'70707-experimental-event-sim',model_current:false,options:this.o,talents:this.build,defensive_stats:{resilience_armor:.25*this.r('arcaneresilience')*this.intel,armor_spell_multiplier:1+.15*this.r('frostwarding'),absorb_multiplier:1+.1*this.r('frostwarding'),ward_negate_chance:.1*this.r('frostwarding')},damage:total,dps:total/duration,elapsed:duration,killed,damage_by_spell:this.parts,casts:this.casts,mana_spent:this.spent,mana_restored:this.restored,mana_end:this.mana,max_mana:this.pool,mana_downtime:this.wait,evocations:this.evos,recovery_seconds:drink,safe_target_xp_per_hour:killed?3600*xp/cycle:null,trace:this.trace};
     }
   }
   return {Fight,config,levelBuild,simulate:(school,options={},build=null)=>new Fight(school,options,build).run()};
