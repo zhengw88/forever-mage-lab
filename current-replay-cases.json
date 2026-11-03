@@ -150,6 +150,22 @@
         {
           "at": 10,
           "kind": "observe"
+        },
+        {
+          "at": 70,
+          "kind": "fire_hit",
+          "spell": "flamestrike",
+          "crit": true,
+          "periodic": false,
+          "damage": 150
+        },
+        {
+          "at": 72,
+          "kind": "fire_hit",
+          "spell": "flamestrike",
+          "crit": true,
+          "periodic": true,
+          "damage": 150
         }
       ]
     },
@@ -172,7 +188,8 @@
         "coldsnap": 1,
         "winterschill": 5,
         "icebarrier": 1,
-        "incineration": 3
+        "frostwarding": 2,
+        "arcaneresilience": 1
       },
       "options": {
         "intellect": 300,
@@ -253,6 +270,37 @@
         {
           "at": 60,
           "kind": "fireblast_cast"
+        },
+        {
+          "at": 70,
+          "kind": "barrier_apply",
+          "base_absorb": 100
+        },
+        {
+          "at": 70,
+          "kind": "ward_apply",
+          "base_absorb": 50,
+          "expires_at": 100
+        },
+        {
+          "at": 71,
+          "kind": "incoming_damage",
+          "damage": 1000,
+          "school": "frost",
+          "roll": 0.19,
+          "absorb_order": "ward_first"
+        },
+        {
+          "at": 72,
+          "kind": "incoming_damage",
+          "damage": 200,
+          "school": "frost",
+          "roll": 0.2,
+          "absorb_order": "ward_first"
+        },
+        {
+          "at": 130,
+          "kind": "observe"
         }
       ]
     }

@@ -42,6 +42,8 @@ def archive():
        ('shared_cooldown_base8',{'shared_blast_lance_base':True}),('cold_snap_resets_shared',{'cold_snap_resets_fireblast':True}),
        ('periodic_crits',{'periodic_crit':True}),('travel_one_second',{'travel_seconds':1}),('aura_at_impact',{'travel_seconds':1,'ab_apply':'impact'}),
        ('aoe_four_safe_targets',{'targets':4,'distance':8,'target_level_delta':0}),
+       ('aoe_periodic_ignite',{'targets':4,'distance':8,'target_level_delta':0,'periodic_crit':True}),
+       ('aoe_periodic_no_ignite',{'targets':4,'distance':8,'target_level_delta':0,'periodic_crit':True,'flamestrike_periodic_ignite':False}),
        ('level20_safe_target',{'level':20,'sp':30,'intellect':60,'spirit':40,'crit':.05,'hit':0,'mp5':0,'target_hp':800,'target_level_delta':0,'distance':20,'xp_per_target':150}),
        ('level40_safe_pack',{'level':40,'sp':150,'intellect':150,'spirit':80,'crit':.07,'hit':0,'mp5':15,'targets':3,'target_hp':2000,'target_level_delta':0,'distance':8,'xp_per_target':250})]
     scenarios += [('race_'+race,{'race':race}) for race in ('human','gnome','orc','undead','skyborne','troll')]+[('troll_cache_10s',{'race':'troll','berserking_duration':10})]

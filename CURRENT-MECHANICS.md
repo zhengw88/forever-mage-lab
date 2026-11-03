@@ -133,3 +133,18 @@ spell before the shared lockout ends. `fire_hit` remains an explicit hit outcome
 not a cast, and cannot establish cooldown legality. Replay uses the casting
 spell's talent-adjusted duration; the full scheduler exposes alternate category
 and Cold Snap hypotheses. See `MAINTENANCE-2026-11-03.md` for evidence and limits.
+
+## Defensive and Flamestrike outcome replay
+
+`barrier_apply` accepts optional `base_absorb`. `ward_apply` requires `base_absorb`
+and `expires_at`. `incoming_damage` accepts post-mitigation `damage`, a single
+`school`, and a `roll` in [0,1) when Frost Ward covers the hit. Overlapping shields
+require `absorb_order` (`ward_first` or `barrier_first`). Unknown Barrier capacity
+rejects damage replay rather than assuming an infinite shield. `shield_break`
+clears capacity, while the offensive minute remains. Results expose armor,
+shield balances, absorbed/taken damage and negation with zero reflection.
+
+`fire_hit` also accepts `spell=flamestrike`, with observed `damage`, `crit` and
+`periodic`; its detail reports the Ignite bank contribution without inventing
+crit eligibility. This replay does not itself schedule Ignite ticks; the full
+scheduler does. See `MAGE-NOV2-COVERAGE.md` for evidence and limitations.

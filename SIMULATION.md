@@ -109,7 +109,7 @@ only impacts/ticks at or before the limit count as damage.
 
 ## Experiments and uncertainty
 
-`current-experiments.json` is generated with input hashes, 33 matched scenarios,
+`current-experiments.json` is generated with input hashes, 35 matched scenarios,
 200 fights per school, seed range 10001–10200 and alphabetical school order.
 Sampling intervals are mean ± 1.96 standard errors, not a bound on mechanic error.
 The same seed range does not imply paired identical proc draws between schools.
@@ -131,7 +131,7 @@ Do not treat this metric as a leveling recommendation.
 The targeted suite uses independent arithmetic for Fireball, Wrath, Cone, Blast
 costs/expiry, Barrier windows and Ignite bank conservation; it also checks 180
 level/build combinations, resource conservation, channel timing, cooldowns,
-Pyro/Presence of Mind and Barrage, rank availability, input rejection and 51
+Pyro/Presence of Mind and Barrage, rank availability, input rejection and 57
 full Python/JavaScript seeded traces. Generated defaults/data/reports must be
 fresh. Browser tests cover desktop/tablet/phone, local runs, input errors,
 versioned sharing and historical redirect. The untouched historical browser
@@ -159,3 +159,14 @@ not model root breaks, incoming damage, movement, deaths or continuous farming.
 The guide does not use their omission to declare control talents inferior.
 
 November 3 maintenance evidence and comparison deltas: `MAINTENANCE-2026-11-03.md`.
+
+## Complete November 2 Mage audit
+
+See `MAGE-NOV2-COVERAGE.md` for every Mage bullet, its implementation and tests.
+Flamestrike later critical ticks now contribute to Ignite; periodic criticals
+remain disabled by default. The paired AoE sensitivity cases hold all inputs
+fixed and toggle only `flamestrike_periodic_ignite` with periodic criticals enabled.
+Both engines return `defensive_stats` (Resilience armor and Warding multipliers).
+Incoming damage, shield depletion and Warding negation are executable in both
+replay ports using explicit observed inputs, not in the safe-target scheduler.
+This distinction remains a blocker for survival-aware leveling recommendations.

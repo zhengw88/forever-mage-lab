@@ -151,6 +151,62 @@ class Mechanics(unittest.TestCase):
         rows=self.run_replay('fire',[dict(at=0,kind='fireblast_cast'),dict(at=6,kind='fireblast_cast')])
         self.assertEqual([r['fireblast_ready_at'] for r in rows],[6,12])
 
+    def test_november_talent_contract(self):
+        for key, ranks, points in [('missilebarrage',2,5),('arcaneresilience',3,0),
+                ('incineration',5,0),('criticalmass',3,20),('improvedfireblast',2,10),
+                ('precision',3,0),('accelerant',5,0),('frostwarding',2,0)]:
+            self.assertEqual((talents.NODES[key]['max_rank'],talents.NODES[key]['required_points']),(ranks,points))
+        self.assertFalse({'arcanefocus','piercingice','elementalprecision','improvedfireball'} & talents.NODES.keys())
+
+    def test_defensive_rank_values_and_negation_boundaries(self):
+        for resilience in range(4):
+            for warding in range(3):
+                build={k:v for k,v in dict(arcaneresilience=resilience,frostwarding=warding).items() if v}
+                events=[dict(at=0,kind='ward_apply',base_absorb=100,expires_at=30),
+                        dict(at=1,kind='incoming_damage',damage=1000,school='frost',roll=0),
+                        dict(at=2,kind='ward_apply',base_absorb=100,expires_at=30),
+                        dict(at=3,kind='incoming_damage',damage=40,school='frost',roll=.1*warding),
+                        dict(at=30,kind='incoming_damage',damage=40,school='frost')]
+                result=replay(build,events,OPTIONS);self.assertEqual(result,js('current-combat.js','replay',build,events,OPTIONS)['value'])
+                rows=result['events'];self.assertEqual(rows[0]['resilience_armor'],75*resilience)
+                self.assertEqual(rows[0]['ward_remaining'],100*(1+.1*warding))
+                self.assertEqual(rows[1]['detail']['negated'],warding>0)
+                self.assertEqual(rows[1]['detail']['reflected_damage'],0)
+                self.assertEqual(rows[1]['ward_remaining'],100*(1+.1*warding) if warding else 0)
+                self.assertFalse(rows[3]['detail']['negated']);self.assertEqual(rows[3]['detail']['ward_absorbed'],40)
+                self.assertEqual(rows[4]['detail']['damage_taken'],40)
+
+    def test_barrier_absorption_and_overlap(self):
+        build=dict(BUILDS['frost']);del build['incineration'];build.update(frostwarding=2,arcaneresilience=1)
+        events=[dict(at=0,kind='barrier_apply',base_absorb=100),
+                dict(at=0,kind='ward_apply',base_absorb=50,expires_at=30),
+                dict(at=1,kind='incoming_damage',damage=1000,school='frost',roll=.19,absorb_order='ward_first'),
+                dict(at=2,kind='incoming_damage',damage=100,school='fire'),
+                dict(at=3,kind='incoming_damage',damage=100,school='frost',roll=.2,absorb_order='ward_first'),
+                dict(at=60,kind='observe')]
+        result=replay(build,events,OPTIONS);self.assertEqual(result,js('current-combat.js','replay',build,events,OPTIONS)['value'])
+        rows=result['events'];self.assertEqual(rows[2]['barrier_remaining'],120)
+        self.assertEqual(rows[3]['ward_remaining'],60);self.assertEqual(rows[3]['barrier_remaining'],20)
+        self.assertEqual(rows[4]['detail'],dict(negated=False,reflected_damage=0,ward_absorbed=60,barrier_absorbed=20,damage_taken=20))
+        self.assertEqual(rows[4]['barrier_damage_bonus'],.15);self.assertEqual(rows[5]['barrier_damage_bonus'],0)
+        for malformed in [events[:2]+[dict(events[2],absorb_order='unknown')],
+                [dict(at=0,kind='barrier_apply'),dict(at=1,kind='incoming_damage',damage=1,school='fire')],
+                [dict(at=0,kind='ward_apply',base_absorb=-1,expires_at=30)],
+                [dict(at=0,kind='incoming_damage',damage=1,school='frostfire')]]:
+            with self.assertRaises(ValueError):replay(build,malformed,OPTIONS)
+            self.assertFalse(js('current-combat.js','replay',build,malformed,OPTIONS)['ok'])
+        opposite=events[:2]+[dict(at=1,kind='incoming_damage',damage=100,school='frost',roll=.2,absorb_order='barrier_first')]
+        result=replay(build,opposite,OPTIONS);self.assertEqual(result,js('current-combat.js','replay',build,opposite,OPTIONS)['value'])
+        self.assertEqual(result['events'][-1]['ward_remaining'],60)
+        self.assertEqual(result['events'][-1]['barrier_remaining'],20)
+
+    def test_flamestrike_explicit_outcomes(self):
+        events=[dict(at=i,kind='fire_hit',spell='flamestrike',crit=crit,periodic=periodic,damage=150)
+                for i,(crit,periodic) in enumerate([(True,False),(True,False),(True,True),(False,True)])]
+        rows=self.run_replay('fire',events)
+        self.assertEqual([r['detail']['ignite_bank_added'] for r in rows],[60,60,60,0])
+        self.assertTrue(all(r['heating_stacks']==0 for r in rows))
+
     def test_invalid_replays_fail_in_both_ports(self):
         cases=[('frost',[dict(at=0,kind='lance_cast',frozen=True),dict(at=7.999,kind='lance_cast',frozen=True)]),
                ('fire',[dict(at=0,kind='barrier_apply')]),('fire',[dict(at=-1,kind='observe')]),

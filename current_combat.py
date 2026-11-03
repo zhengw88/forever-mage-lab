@@ -26,6 +26,7 @@ def replay(build, events, options):
     applications, effects, output = [], {}, []
     heating, heating_until, wc, barrage_until, barrier_until, shield_until = 0, 0, 0, 0, 0, 0
     lance_ready, fireblast_ready, previous = 0, 0, -1
+    shield_amount, ward_amount, ward_until = None, 0, 0
     p = lambda key: build.get(key, 0)
     for event in events:
         now = number(event.get('at'), 'event time')
@@ -75,8 +76,12 @@ def replay(build, events, options):
             barrage_until = 0
         elif kind == 'fire_hit':
             spell, crit, periodic = event.get('spell'), flag('crit'), flag('periodic')
-            if spell not in HEATING_TRIGGERS | {'pyroblast', 'ignite'}:
+            if spell not in HEATING_TRIGGERS | {'pyroblast', 'ignite', 'flamestrike'}:
                 raise ValueError('unsupported fire hit')
+            if spell == 'flamestrike':
+                # Explicit observed critical damage, not a claim that periodic ticks can crit.
+                damage = number(event.get('damage'), 'Flamestrike damage')
+                detail = dict(ignite_bank_added=damage * 0.08 * p('ignite') if crit else 0)
             added = (int(crit) + int(spell == 'fireblast')) if not periodic and spell in HEATING_TRIGGERS else 0
             if p('heatingup') and added:
                 if heating == 0 or options['heating_refresh'] == 'refresh':
@@ -136,13 +141,51 @@ def replay(build, events, options):
             require('icebarrier')
             # An aura application, not a cast: refresh legality is caller-owned.
             barrier_until, shield_until = now + 60, now + 60
+            shield_amount = (number(event['base_absorb'], 'base absorb') * (1 + .1*p('frostwarding'))
+                             if 'base_absorb' in event else None)
+            if shield_amount == 0:
+                shield_until = 0
+        elif kind == 'ward_apply':
+            ward_amount = number(event.get('base_absorb'), 'base absorb') * (1 + .1*p('frostwarding'))
+            ward_until = expiry()
+        elif kind == 'incoming_damage':
+            # Damage is AFTER armor/resistance. Caller chooses ordering if shields overlap.
+            amount, school = number(event.get('damage'), 'incoming damage'), event.get('school')
+            if school not in ('physical','arcane','fire','frost','nature','shadow','holy'):
+                raise ValueError('single incoming school required')
+            ward_active = school == 'frost' and now < ward_until and ward_amount > 0
+            barrier_active = now < shield_until
+            if barrier_active and shield_amount is None:
+                raise ValueError('supply base_absorb before replaying incoming damage')
+            if ward_active and barrier_active and event.get('absorb_order') not in ('ward_first','barrier_first'):
+                raise ValueError('explicit absorb_order required for overlapping shields')
+            negated = ward_active and roll() < .1*p('frostwarding')
+            remaining, ward_absorbed, barrier_absorbed = (0 if negated else amount), 0, 0
+            if not negated:
+                order = ('barrier','ward') if event.get('absorb_order') == 'barrier_first' else ('ward','barrier')
+                for shield in order:
+                    if shield == 'ward' and ward_active:
+                        ward_absorbed = min(ward_amount, remaining)
+                        ward_amount -= ward_absorbed; remaining -= ward_absorbed
+                    elif shield == 'barrier' and barrier_active:
+                        barrier_absorbed = min(shield_amount, remaining)
+                        shield_amount -= barrier_absorbed; remaining -= barrier_absorbed
+                if barrier_active and shield_amount == 0:
+                    shield_until = 0
+            detail = dict(negated=negated, reflected_damage=0, ward_absorbed=ward_absorbed,
+                          barrier_absorbed=barrier_absorbed, damage_taken=remaining)
         elif kind == 'shield_break':
-            shield_until = 0
+            shield_until, shield_amount = 0, 0
         elif kind != 'observe':
             raise ValueError('unknown event kind')
         blast = arcane_blast_snapshot(applications, now, options['intellect'], options['base_mana'])
         output.append(dict(at=now, kind=kind, detail=detail, blast=blast,
                            precision_hit=precision_hit(p('precision')),
+                           resilience_armor=.25*p('arcaneresilience')*options['intellect'],
+                           armor_spell_multiplier=1+.15*p('frostwarding'),
+                           absorb_multiplier=1+.1*p('frostwarding'),
+                           barrier_remaining=shield_amount if now < shield_until else 0,
+                           ward_remaining=ward_amount if now < ward_until else 0,
                            wrath_cast_seconds=accelerant_cast_seconds('arcaneWrath', 3.5, p('accelerant')),
                            heating_stacks=heating, heating_expires_at=heating_until if heating else None,
                            fire_effects=sorted(effects), fire_power_multiplier=1 + 0.01*p('firepower')*min(4,len(effects)),

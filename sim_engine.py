@@ -20,7 +20,7 @@ DEFAULTS=dict(level=60,seconds=120,sp=500,intellect=300,spirit=120,crit=.10,hit=
               winter_duration=15,winter_order='inside',cone_consume_on_miss=False,
               heating_refresh=True,barrage_duration=15,berserking_duration=15,berserking_haste=.10,
               shared_blast_lance_base=False,cold_snap_resets_fireblast=False,
-              periodic_crit=False,combustion_periodic=True,snapshot_sp=True,ab_apply='complete',
+              periodic_crit=False,flamestrike_periodic_ignite=True,combustion_periodic=True,snapshot_sp=True,ab_apply='complete',
               ab_stacks=2,use_wrath=True,use_barrage=True,use_fireblast=True,use_scorch=True,
               pyro_stacks=3,use_cone=True,filler='auto',wand_dps=60,wand_speed=1.5,
               walk_seconds=8,drink_mps=100,xp_per_target=300,dungeon=False,dungeon_xp_bonus=.20,
@@ -329,9 +329,13 @@ class Fight:
                 self.gain(mana);self.schedule(t+2,'regen',{})
             elif kind=='dot':
                 dot=self.targets[c['target']]['dots'].get(c['key'],{})
-                if dot.get('token')==c['token']:
+                if dot.get('token')==c['token'] and self.alive(c['target']):
                     crit=self.o['periodic_crit'] and self.random()<c['crit']
-                    self.deal(c['amount']*(1+c['bonus'] if crit else 1),c['key']+'_dot',c['target'])
+                    damage=c['amount']*(1+c['bonus'] if crit else 1)
+                    self.deal(damage,c['key']+'_dot',c['target'])
+                    # Later Flamestrike damage is eligible; periodic crit capability remains a hypothesis.
+                    if crit and c['key']=='flamestrike' and self.o['flamestrike_periodic_ignite'] and self.r('ignite') and self.alive(c['target']):
+                        self.add_ignite(c['target'],damage*.08*self.r('ignite'))
                     if self.comb>=0 and c['school'] in FIRE and self.o['combustion_periodic']:self.comb=min(10,self.comb+1)
             elif kind=='ignite':
                 dot=self.targets[c['target']]['ignite']
@@ -346,6 +350,7 @@ class Fight:
         cycle=duration+self.o['walk_seconds']+drink
         xp=self.o['xp_per_target']*self.o['targets']*(1+self.o['dungeon_xp_bonus'] if self.o['dungeon'] else 1)
         return dict(school=self.school,model='70707-experimental-event-sim',model_current=False,options=self.o,talents=self.build,
+                    defensive_stats=dict(resilience_armor=.25*self.r('arcaneresilience')*self.intel,armor_spell_multiplier=1+.15*self.r('frostwarding'),absorb_multiplier=1+.1*self.r('frostwarding'),ward_negate_chance=.1*self.r('frostwarding')),
                     damage=total,dps=total/duration,elapsed=duration,killed=killed,damage_by_spell=self.parts,casts=self.casts,
                     mana_spent=self.spent,mana_restored=self.restored,mana_end=self.mana,max_mana=self.pool,mana_downtime=self.wait,evocations=self.evos,
                     recovery_seconds=drink,safe_target_xp_per_hour=3600*xp/cycle if killed else None,trace=self.trace)

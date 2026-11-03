@@ -18,7 +18,7 @@
       "retrieved_utc": "2026-11-03"
     },
     "datamine": {
-      "label": "Talents Forever: first-hand client and hotfix-cache comparison",
+      "label": "Client/cache comparison plus November 2 announced changes and China-only 70753 comparison",
       "url": "https://wowforevertalents.com/patch-notes/",
       "kind": "community client extraction; not independently reproduced here",
       "retrieved_utc": "2026-11-03"
@@ -83,6 +83,21 @@
       "url": "https://worldofwarcraft.blizzard.com/en-us/content-update-notes",
       "retrieved_utc": "2026-11-03",
       "kind": "Official index; October 30 generic hotfix entry covers other WoW products and was not imported into Forever"
+    },
+    "frost_warding": {
+      "url": "https://wowforevertalents.com/mage/talents/frost-warding/",
+      "kind": "Community extraction; 70707, October 30 cache on defensive talent pages; no server validation",
+      "retrieved_utc": "2026-11-03"
+    },
+    "arcane_resilience": {
+      "url": "https://wowforevertalents.com/mage/talents/arcane-resilience/",
+      "kind": "Community extraction; 70707, October 30 cache on defensive talent pages; no server validation",
+      "retrieved_utc": "2026-11-03"
+    },
+    "ignite": {
+      "url": "https://wowforevertalents.com/mage/talents/ignite/",
+      "kind": "Community extraction; 70707, October 30 cache on defensive talent pages; no server validation",
+      "retrieved_utc": "2026-11-03"
     }
   },
   "changes": [
@@ -130,7 +145,8 @@
       "implementation": "partial",
       "implemented_components": [
         "One-minute offensive aura, separate shield-break transition and tooltip bonus components in both replay ports",
-        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md",
+        "Frost Warding capacity and negation replay with explicit hit/capacity/order inputs; depletion removes shield bonus only"
       ],
       "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
@@ -166,7 +182,8 @@
       "implemented_components": [
         "Heating Up stack/cap/expiry, Pyroblast consumption and Presence of Mind interaction in both replay ports",
         "Unique personal Fire effect tracking and Fire Power cap with mixed-school exclusion",
-        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md"
+        "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md",
+        "Flamestrike later critical ticks feed Ignite in both schedulers, conditional on explicit periodic-crit hypothesis; replay accepts observed outcomes"
       ],
       "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
@@ -247,13 +264,13 @@
       "sources": [
         "blizzard"
       ],
-      "current": "Flamestrike/Ignite follow-up, proc-root diminishing returns, race base-stat fixes and increased high-level creature health require additional data.",
-      "remaining": "No exact replacement creature-health table, racial base-stat array, root DR timing or Flamestrike proc scope established. These remain limitations, not silent numerical changes. Downranked Blizzard proc penalties are also not quantified; current scheduler selects the highest available rank."
+      "current": "Later Flamestrike critical Ignite eligibility and defensive talent replay implemented; server proc scope, proc-root diminishing returns, racial base-stat fixes and higher-level creature health remain unvalidated.",
+      "remaining": "No exact racial/creature tables, root DR parameters or periodic critical capability established. Warding percentages have dated extraction evidence; incoming hits and shield base capacities are explicit replay inputs. Downranked Blizzard proc penalties unquantified; scheduler uses highest available rank."
     }
   ],
   "last_checked_utc": "2026-11-03",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "November 2 official supplement reviewed. Shared Ice Lance/Fire Blast cooldown added to both experimental engines and replay ports; Clearcasting behavior corroborated and regression-tested. No newer upstream commit or dated extraction found. See MAINTENANCE-2026-11-03.md. No merge or deployment.",
+  "maintenance_note": "All 21 November 2 Mage bullets audited. Added later Flamestrike critical Ignite eligibility, defensive replay for Frost Warding and Resilience, boundary/parity tests and 35 matched scenarios. See MAGE-NOV2-COVERAGE.md for model scope and unresolved server behavior. No upstream changes, merge or deployment.",
   "current_research_layer": {
     "version": "70707-20261030",
     "talent_nodes": 53,
@@ -275,7 +292,7 @@
     "rankings_blocked": true,
     "source_hotfix": "2026-10-30",
     "source_review_utc": "2026-11-03",
-    "comparisons": "33 matched scenarios; 200 held-out fights per school; 26 finite policy candidates trained on disjoint seeds",
+    "comparisons": "35 matched scenarios; 200 held-out fights per school; 26 finite policy candidates trained on disjoint seeds",
     "remaining": [
       "Complete 70707 spell/rank coefficient snapshot",
       "Server validation of talent prerequisites, resource/proc timing, charge consumption, Ignite and mixed-school rules",
@@ -289,5 +306,18 @@
     "point_order_checked": "Python and JavaScript; 51 consecutive full-budget allocations",
     "scope": "first-character Frost solo questing; no Legacy bonus points; Barrier at 40; no required respec",
     "remaining": "User race/faction and group plan needed for an exact zone route; survival and launch-server mechanics unvalidated"
+  },
+  "mage_supplement_coverage": {
+    "file": "MAGE-NOV2-COVERAGE.md",
+    "bullets": 21,
+    "scope": "20 computational bullets covered by executable models with explicit hypotheses; one client visual-only change recorded",
+    "model_current": false
+  },
+  "newer_reported_client": {
+    "build": "1.60.1.70753",
+    "date": "2026-11-02",
+    "region": "China only per extraction source",
+    "mage_tree": "Same as October 30 hotfix cache per source; retained pinned 70707 Mage contract",
+    "source": "datamine"
   }
 }

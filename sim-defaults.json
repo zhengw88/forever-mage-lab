@@ -56,5 +56,6 @@
   "dungeon": false,
   "dungeon_xp_bonus": 0.2,
   "seed": 1,
-  "trace": false
+  "trace": false,
+  "flamestrike_periodic_ignite": true
 }
