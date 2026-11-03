@@ -7,6 +7,16 @@ sys.path.insert(0,str(ROOT))
 from sim_engine import simulate
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
+    def do_GET(self):
+        # Simulate a CDN/browser retaining pre-release assets at bare URLs.
+        # The published HTML, worker and data loaders must all request versions.
+        if self.path.endswith(('.js','.json')):
+            body=(b'throw new Error("Stale pre-release script");' if self.path.endswith('.js') else b'{}')
+            self.send_response(200)
+            self.send_header('Cache-Control','public, max-age=3600')
+            self.send_header('Content-Type','text/javascript' if self.path.endswith('.js') else 'application/json')
+            self.end_headers();self.wfile.write(body);return
+        super().do_GET()
 server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'_site')))
 threading.Thread(target=server.serve_forever,daemon=True).start()
 url=f'http://127.0.0.1:{server.server_port}/'
