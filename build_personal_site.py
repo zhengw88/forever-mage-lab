@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parent
 out=ROOT/'_site';out.mkdir(exist_ok=True)
 shutil.copyfile(ROOT/'current.html',out/'index.html')
 shutil.copyfile(ROOT/'index.html',out/'historical.html')
-for name in ('leveling.html','leveling-plan.json','current-app.js','sim-engine.js','sim-worker.js','sim-data.json','sim-defaults.json','current-talents.js','current-talents.json','current-builds.json','current-experiments.json','provisional-rankings.json','PROVISIONAL-RANKING.md','RANKING-REVIEW-2026-11-03.md','lab-state.json','CURRENT-MECHANICS.md','MAGE-NOV2-COVERAGE.md','SIMULATION.md','LICENSE'):
+for name in ('leveling.html','leveling-plan.json','current-app.js','sim-engine.js','sim-worker.js','sim-data.json','sim-defaults.json','current-talents.js','current-talents.json','current-builds.json','current-experiments.json','provisional-rankings.json','PROVISIONAL-RANKING.md','RANKING-REVIEW-2026-11-03.md','FROST-ROTATION-REVIEW-2026-11-03.md','lab-state.json','CURRENT-MECHANICS.md','MAGE-NOV2-COVERAGE.md','SIMULATION.md','LICENSE'):
     shutil.copyfile(ROOT/name,out/name)
 (out/'.nojekyll').write_text('')
 # One release key covers HTML loaders, worker imports and fetched model data.

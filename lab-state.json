@@ -305,7 +305,13 @@
     "file": "leveling-plan.json",
     "point_order_checked": "Python and JavaScript; 51 consecutive full-budget allocations",
     "scope": "first-character Frost solo questing; no Legacy bonus points; Barrier at 40; no required respec",
-    "remaining": "User race/faction and group plan needed for an exact zone route; survival and launch-server mechanics unvalidated"
+    "remaining": "User race/faction and group plan needed for an exact zone route; survival and launch-server mechanics unvalidated",
+    "rotation_review": {
+      "date": "2026-11-03",
+      "report": "FROST-ROTATION-REVIEW-2026-11-03.md",
+      "scope": "Practical priorities plus separately labeled 17/3/31 exploratory candidates; no leveling point-order or production engine changes",
+      "remaining": "Expanded Frost rotation policies not selectable in the live sim or incorporated into three-school rankings; Ice Lance scaling and server proc timing unvalidated"
+    }
   },
   "mage_supplement_coverage": {
     "file": "MAGE-NOV2-COVERAGE.md",
