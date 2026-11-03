@@ -4,7 +4,7 @@ Personal fork initialized on 2 November 2026 from upstream commit
 `a3315522e2f1b085b6118d62891bc5db4ac6101e` (v1.3).
 The original Python engines, JavaScript ports, source data, tests, and history are
 preserved. This is a runnable foundation; the late-October mechanics migration is
-**not complete**, and no current spec winner is claimed.
+**not complete**, and no certified in-game spec winner is claimed.
 
 ## What runs today
 
@@ -109,3 +109,14 @@ The original work and historical findings are preserved in `UPSTREAM.md` and
 the repository history. The MIT license remains unchanged. Blizzard's icon art
 is not covered by that license. Original source assumptions borrowed from other
 sims still require independent review; the new runner does not remove that debt.
+
+## Authorized provisional ranking
+
+The owner requested a best-effort ranking on November 3. `PROVISIONAL-RANKING.md`
+and `provisional-rankings.json` now rank the implemented presets per encounter.
+This does not change `model_current=false` or the certification guard. Regenerate
+with `python ranking_report.py` after changing the mechanics or experiment archive;
+`python ranking_report.py --check` checks provenance/derived content and
+`--recompute-check` independently repeats all seeded search/evaluation runs.
+The research homepage shows the provisional estimates, starting with Troll at
+120 seconds. No merge or deployment is authorized by this artifact update.

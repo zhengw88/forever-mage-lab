@@ -319,5 +319,15 @@
     "region": "China only per extraction source",
     "mage_tree": "Same as October 30 hotfix cache per source; retained pinned 70707 Mage contract",
     "source": "datamine"
+  },
+  "provisional_ranking": {
+    "authorized_date": "2026-11-03",
+    "status": "best-effort model estimate",
+    "artifact": "provisional-rankings.json",
+    "report": "PROVISIONAL-RANKING.md",
+    "model_current": false,
+    "certified_rankings_blocked": true,
+    "method": "Nine encounter-specific finite policy searches; 100 training and 500 held-out fights per school; separate 35-case fixed-policy sensitivity archive",
+    "limitations": "Fixed talent builds; incomplete current spell data, server behavior and survival. No universal or practical leveling winner. Existing rankings_blocked fields continue to mean certification is blocked."
   }
 }

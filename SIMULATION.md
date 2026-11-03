@@ -170,3 +170,14 @@ Both engines return `defensive_stats` (Resilience armor and Warding multipliers)
 Incoming damage, shield depletion and Warding negation are executable in both
 replay ports using explicit observed inputs, not in the safe-target scheduler.
 This distinction remains a blocker for survival-aware leveling recommendations.
+
+## Provisional ranking artifact
+
+`ranking_report.py` reselects each school's best tested policy for nine encounters,
+using 100 training fights and 500 separate evaluation fights per school. It keeps
+the three source-contract legal talent presets fixed; this is not exhaustive
+build/rotation optimization. `provisional-rankings.json` and `PROVISIONAL-RANKING.md`
+include ranks, sampling intervals, mana downtime, spell breakdowns and a separate
+view of the existing 35 fixed-policy scenarios. No mechanics or calibration values
+change for this report. The owner explicitly requested these provisional rankings;
+certified rankings and the historical comparison release guard remain blocked.
