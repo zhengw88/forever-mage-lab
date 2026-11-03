@@ -58,7 +58,7 @@ leveling and AoE integration are still unfinished work.
 ## Source decisions and unresolved behavior
 
 Primary official evidence:
-[Blizzard development notes](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696).
+[Blizzard development notes — November 2 update, post 9](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696/9).
 The 15 October Mage section explains Wrath, Pyroblast/Presence of Mind and the
 five qualifying personal Fire effects. Later client/cache evidence overrides
 older notes for Blast, Barrage, Critical Mass, Ice Lance and Winter's Chill.

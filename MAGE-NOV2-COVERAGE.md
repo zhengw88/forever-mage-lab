@@ -2,7 +2,7 @@
 
 Audited 2026-11-03 against [Blizzard post 9](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696/9).
 Scope: all 21 Mage bullets in that supplement. Implemented means executable
-source-contract behavior, **not server validation**. Rankings remain blocked.
+source-contract behavior, **not server validation**. Certified in-game rankings remain blocked; the separately labeled provisional estimates do not remove these limits.
 
 | Change | Executable coverage | Verification |
 | --- | --- | --- |
