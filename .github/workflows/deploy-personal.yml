@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: 9e62493727da4e81d64e254ceb8bdefdb4ecbd1a
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
