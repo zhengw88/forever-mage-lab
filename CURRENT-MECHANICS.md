@@ -123,3 +123,13 @@ and a personal browser interface. See `SIMULATION.md` for the complete contract,
 source ages, per-mechanic alternatives and remaining limits. Replay fixtures
 remain unit-level references; new DPS outputs are explicitly experimental.
 No ledger entry has been promoted to server-validated.
+
+
+## November 3 review
+
+The November 2 official supplement adds evidence for the shared Ice Lance / Fire
+Blast cooldown. Both replay ports now accept `fireblast_cast` and reject either
+spell before the shared lockout ends. `fire_hit` remains an explicit hit outcome,
+not a cast, and cannot establish cooldown legality. Replay uses the casting
+spell's talent-adjusted duration; the full scheduler exposes alternate category
+and Cold Snap hypotheses. See `MAINTENANCE-2026-11-03.md` for evidence and limits.

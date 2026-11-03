@@ -97,7 +97,7 @@ function createMageSim(DATA, tree, presets, DEFAULTS) {
         const race=o.race;if(['gnome','orc','troll','skyborne'].includes(race)&&this.ready('racial')){this.aura[race]=this.time+{gnome:8,orc:15,troll:o.berserking_duration,skyborne:15}[race];this.cd.racial=this.time+(race==='troll'?180:120);}}
       if(o.consumables){if(o.level>=49&&this.ready('potion')&&this.pool-this.mana>=2250){this.gain(1350+900*this.random());this.cd.potion=this.time+120;this.log('potion',{mana:this.mana});}
         const gems=this.gems;if(this.gem<gems.length&&this.ready('gem')&&this.pool-this.mana>=gems[this.gem][1]){const [lo,hi]=gems[this.gem];this.gain(lo+(hi-lo)*this.random());this.gem++;this.cd.gem=this.time+120;}}
-      if(o.cooldowns&&r('coldsnap')&&this.ready('coldsnap')&&this.fof&&!this.ready('icelance')){for(const spell of ['icelance','coneofcold','icebarrier'])this.cd[spell]=this.time;this.cd.coldsnap=this.time+600;this.log('cold_snap');}
+      if(o.cooldowns&&r('coldsnap')&&this.ready('coldsnap')&&this.fof&&!this.ready('icelance')){for(const spell of ['icelance','coneofcold','icebarrier'])this.cd[spell]=this.time;if(o.cold_snap_resets_fireblast)this.cd.fireblast=this.time;this.cd.coldsnap=this.time+600;this.log('cold_snap');}
       const k=this.choose();if(k===null){this.wait+=Math.min(1,o.seconds-this.time);this.schedule(this.time+1,'act',{});return;}
       const row=this.spells[k],school=row.school,mb=k==='arcanemissiles'&&this.up('mb'),basecost=k==='arcaneblast'?.15*this.base_mana:row.mana;
       let cost=basecost*(k==='arcaneblast'?1+this.ab:1)*(FROST.includes(school)?1-.05*r('frostchanneling'):1);cost*=1+(this.up('ap')?.3:0);if(this.up('gnome')&&k!=='icebarrier')cost*=.9;
@@ -113,7 +113,9 @@ function createMageSim(DATA, tree, presets, DEFAULTS) {
       const haste=this.haste(),duration=(row.channel?row.channel/(mb?2:1):cast)/haste,frozen=!!(this.fof&&this.up('fof'));
       if(k!=='icebarrier'&&this.fof)this.fof--;this.castid++;this.casts[k]=(this.casts[k]||0)+1;
       const ctx={key:k,id:this.castid,sp:this.power(),frozen,basecost},cd=k==='fireblast'?Math.max(0,row.cd-r('improvedfireblast')):row.cd;
-      this.cd[k]=this.time+(cast?duration:0)+cd;this.log('cast',{spell:k,cast_id:this.castid,duration,cost,mana:this.mana,ab:this.ab,fof:this.fof,hu:this.hu});
+      this.cd[k]=this.time+(cast?duration:0)+cd;
+      if(['icelance','fireblast'].includes(k)){const ready=this.time+(o.shared_blast_lance_base?8:cd);this.cd.icelance=this.cd.fireblast=ready;}
+      this.log('cast',{spell:k,cast_id:this.castid,duration,cost,mana:this.mana,ab:this.ab,fof:this.fof,hu:this.hu});
       if(k==='icebarrier'){this.aura.barrier=this.time+60;this.aura.shield=this.time+Math.min(60,o.shield_lifetime);this.aura.barrier_policy=this.time+o.barrier_refresh;}
       else {if(k==='arcaneblast'&&o.ab_apply==='complete')this.schedule(this.time+duration,'ab',{});
         if(row.channel){for(let i=0;i<row.ticks;i++)this.schedule(this.time+duration*(i+1)/row.ticks,'hit',ctx);}

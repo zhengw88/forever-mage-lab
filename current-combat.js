@@ -14,7 +14,7 @@ function createCurrentCombat(talents, rules) {
     if (!['cast','hit'].includes(options.cone_consumption)) throw new Error('select cone_consumption');
     number(options.intellect,'intellect'); number(options.base_mana,'base mana');
     const applications = [], output = []; let effects = {};
-    let heating=0, heatingUntil=0, wc=0, barrageUntil=0, barrierUntil=0, shieldUntil=0, lanceReady=0, previous=-1;
+    let heating=0, heatingUntil=0, wc=0, barrageUntil=0, barrierUntil=0, shieldUntil=0, lanceReady=0, fireblastReady=0, previous=-1;
     const p = key => build[key] || 0;
     for (const event of events) {
       const now = number(event.at,'event time');
@@ -66,9 +66,12 @@ function createCurrentCombat(talents, rules) {
         const used=inRange&&(hit||options.cone_consumption==='cast')?wc:0;
         detail={landed:hit&&inRange,stacks_used:used,damage_taken_multiplier:1+(hit&&inRange?0.2*wc:0),extra_sp_coefficient:hit&&inRange?0.07*wc:0};
         if(used) wc=0;
+      } else if(kind==='fireblast_cast') {
+        if(now<fireblastReady)throw new Error('Fire Blast shared cooldown');
+        lanceReady=fireblastReady=now+8-p('improvedfireblast');
       } else if(kind==='lance_cast') {
         requireTalent('icelance');const frozen=flag('frozen');if(now<lanceReady) throw new Error('Ice Lance cooldown');
-        lanceReady=now+8;detail={damage_multiplier:frozen?4:1};
+        lanceReady=fireblastReady=now+8;detail={damage_multiplier:frozen?4:1};
       } else if(kind==='barrier_apply') {
         requireTalent('icebarrier');barrierUntil=now+60;shieldUntil=now+60;
       } else if(kind==='shield_break') shieldUntil=0;
@@ -78,7 +81,7 @@ function createCurrentCombat(talents, rules) {
         wrath_cast_seconds:rules.accelerantCastSeconds('arcaneWrath',3.5,p('accelerant')),
         heating_stacks:heating,heating_expires_at:heating?heatingUntil:null,
         fire_effects:Object.keys(effects).sort(),fire_power_multiplier:1+0.01*p('firepower')*Math.min(4,Object.keys(effects).length),
-        winter_stacks:wc,lance_ready_at:lanceReady,
+        winter_stacks:wc,lance_ready_at:lanceReady,fireblast_ready_at:fireblastReady,
         barrier_damage_bonus:(now<barrierUntil?0.15:0)+(now<shieldUntil?0.05:0),barrage_active:now<barrageUntil});
     }
     return {schema:1,model:'current-mechanics-replay',model_current:false,options:JSON.parse(JSON.stringify(options)),

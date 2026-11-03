@@ -139,6 +139,18 @@ class Mechanics(unittest.TestCase):
         rows=self.run_replay('frost',events)
         self.assertEqual([r['winter_stacks'] for r in rows],[0,1,1,1,0])
 
+    def test_shared_lance_fireblast_cooldown(self):
+        for first,second in [('lance_cast','fireblast_cast'),('fireblast_cast','lance_cast')]:
+            events=[dict(at=0,kind=first,frozen=True),dict(at=8,kind=second,frozen=False)]
+            rows=self.run_replay('frost',events)
+            self.assertEqual([r['lance_ready_at'] for r in rows],[8,16])
+            self.assertEqual([r['fireblast_ready_at'] for r in rows],[8,16])
+            events[1]['at']=7.999
+            with self.assertRaises(ValueError):replay(BUILDS['frost'],events,OPTIONS)
+            self.assertFalse(js('current-combat.js','replay',BUILDS['frost'],events,OPTIONS)['ok'])
+        rows=self.run_replay('fire',[dict(at=0,kind='fireblast_cast'),dict(at=6,kind='fireblast_cast')])
+        self.assertEqual([r['fireblast_ready_at'] for r in rows],[6,12])
+
     def test_invalid_replays_fail_in_both_ports(self):
         cases=[('frost',[dict(at=0,kind='lance_cast',frozen=True),dict(at=7.999,kind='lance_cast',frozen=True)]),
                ('fire',[dict(at=0,kind='barrier_apply')]),('fire',[dict(at=-1,kind='observe')]),

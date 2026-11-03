@@ -25,7 +25,7 @@ def replay(build, events, options):
         number(options.get(key), key)
     applications, effects, output = [], {}, []
     heating, heating_until, wc, barrage_until, barrier_until, shield_until = 0, 0, 0, 0, 0, 0
-    lance_ready, previous = 0, -1
+    lance_ready, fireblast_ready, previous = 0, 0, -1
     p = lambda key: build.get(key, 0)
     for event in events:
         now = number(event.get('at'), 'event time')
@@ -121,12 +121,16 @@ def replay(build, events, options):
                           extra_sp_coefficient=0.07 * wc if hit and in_range else 0)
             if used:
                 wc = 0
+        elif kind == 'fireblast_cast':
+            if now < fireblast_ready:
+                raise ValueError('Fire Blast shared cooldown')
+            lance_ready = fireblast_ready = now + 8 - p('improvedfireblast')
         elif kind == 'lance_cast':
             require('icelance')
             frozen = flag('frozen')
             if now < lance_ready:
                 raise ValueError('Ice Lance cooldown')
-            lance_ready = now + 8
+            lance_ready = fireblast_ready = now + 8
             detail = dict(damage_multiplier=4 if frozen else 1)
         elif kind == 'barrier_apply':
             require('icebarrier')
@@ -142,7 +146,7 @@ def replay(build, events, options):
                            wrath_cast_seconds=accelerant_cast_seconds('arcaneWrath', 3.5, p('accelerant')),
                            heating_stacks=heating, heating_expires_at=heating_until if heating else None,
                            fire_effects=sorted(effects), fire_power_multiplier=1 + 0.01*p('firepower')*min(4,len(effects)),
-                           winter_stacks=wc, lance_ready_at=lance_ready,
+                           winter_stacks=wc, lance_ready_at=lance_ready, fireblast_ready_at=fireblast_ready,
                            barrier_damage_bonus=(0.15 if now < barrier_until else 0) + (0.05 if now < shield_until else 0),
                            barrage_active=now < barrage_until))
     return dict(schema=1, model='current-mechanics-replay', model_current=False,

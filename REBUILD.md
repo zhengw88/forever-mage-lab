@@ -53,7 +53,7 @@ state. See `CURRENT-MECHANICS.md` for commands, evidence and unresolved behavior
 A new experimental layer now runs full cast schedules in `sim_engine.py` and
 `sim-engine.js`: damage, mana, procs, cooldowns, rank selection and multi-target
 throughput. `python lab.py experiment` compares all three schools with matched
-settings. `current-experiments.json` contains a finite policy search and 31
+settings. `current-experiments.json` contains a finite policy search and 33
 sensitivity scenarios evaluated on held-out seeds. `current.html` runs the
 JavaScript model in a local worker and exposes versioned build/settings links.
 See `SIMULATION.md` for reproducibility, coverage and explicit hypotheses.

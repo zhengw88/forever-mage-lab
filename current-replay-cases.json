@@ -249,6 +249,10 @@
         {
           "at": 60,
           "kind": "observe"
+        },
+        {
+          "at": 60,
+          "kind": "fireblast_cast"
         }
       ]
     }

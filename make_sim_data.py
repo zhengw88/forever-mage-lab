@@ -37,6 +37,6 @@ out=dict(schema=1,version='70707-20261030-experimental',spells=spells,**arrays,s
  'coefficient_check':{'url':'https://wowforeverhelper.com/spells/mage','build':'1.60.1.70532','status':'direct client extraction; later server coefficients unverified'},
  'blast_reduction':{'url':'https://foreverdb.net/article/build-1-60-1-70425-game-files','build':'1.60.1.70425','fact':'Blast coefficient 0.429; previous 0.714'},
  'racials':{'url':'https://wowforevertalents.com/racials/','build':'1.60.1.70707'},
- 'official':{'url':'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696','status':'announced rules distinguished from cache'}},
+ 'official':{'url':'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696','reviewed_utc':'2026-11-03','notes_date':'2026-11-02','status':'announced rules distinguished from October 30 cache; shared Blast/Lance cooldown confirmed'}},
  caveats=['Not a fully verified current spell snapshot. No simulator rankings are imported.', 'Ice Lance client coefficient zero is the default; alternative coefficients are sensitivity inputs, not calibration.', 'Lower-rank growth, mana regeneration, hit/resistance and server proc ordering remain assumptions.', 'Safe-target leveling and AoE throughput do not simulate player survival, pathing or group XP sharing.'])
 (ROOT/'sim-data.json').write_text(json.dumps(out,indent=2)+'\n')

@@ -4,12 +4,12 @@
   "purpose": "Deterministic outcome fixtures, not legal cast schedules, gear sets, DPS comparisons or game logs. Equal Intellect and base mana are hand-checkable test inputs.",
   "model_current": false,
   "input_sha256": {
-    "current-replay-cases.json": "a5af34f525786f47e02418d18f2ee2b5131a545d981df701fcd0ad1823621fff",
+    "current-replay-cases.json": "80df4394092a80c1035053c9c695de653a8510d85285d61870b970364527af98",
     "current-talents.json": "b8e4995b9c5e65f0b9b02856b73e066073d5552914a8931d5a88f10e7b9a02a1",
     "current_talents.py": "a15375d03a1198ddc7df32c92fd3cbb6121d7a9539c577c0ced40045fdef4541",
     "current-talents.js": "088075212a9cbca514fff4bd8fd6f235262eca73bf7cb402adf69be2641cc26e",
-    "current_combat.py": "663d495f1fb0440230346c151da15fd4827dcce3c8ce6ffa2612b9175e89563a",
-    "current-combat.js": "8e03178fd8815e92b942011c4a7c33eee6a4c24dae39574fabafbc7ce9a1c4b8",
+    "current_combat.py": "95dd6feae3256f934ed758998e06fd52984469bad699fc4b9e82a2519f154318",
+    "current-combat.js": "ab5ae8184cf450e37d80149c9c28a98507a0efb977b3a1ff58f64b8ddc48e382",
     "patch_rules.py": "a1d85b4fc72721ac9361cfc291f6e50db0c5244fe2fd0881c8b21b47da1ec6ee",
     "patch-rules.js": "22f6f6ce8dd25aa9d8a4d4e58817f252b2f95243cfd3058629d680a67179dc56",
     "patch-rules.json": "57965d1df48ec6839cc3c0fa9fd3ce546307740b6931136b45d1288e53f1c43b"
@@ -66,6 +66,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -88,6 +89,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -110,6 +112,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -132,6 +135,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -154,6 +158,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -179,6 +184,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": true
         },
@@ -212,6 +218,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -234,6 +241,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -267,6 +275,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         }
@@ -324,6 +333,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -346,6 +356,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -371,6 +382,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -395,6 +407,7 @@
           "fire_power_multiplier": 1.03,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -420,6 +433,7 @@
           "fire_power_multiplier": 1.06,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -446,6 +460,7 @@
           "fire_power_multiplier": 1.09,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -473,6 +488,7 @@
           "fire_power_multiplier": 1.12,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         },
@@ -495,6 +511,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         }
@@ -552,6 +569,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 0,
+          "fireblast_ready_at": 0,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -576,6 +594,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 8,
+          "fireblast_ready_at": 8,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -600,6 +619,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 1,
           "lance_ready_at": 8,
+          "fireblast_ready_at": 8,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -624,6 +644,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 2,
           "lance_ready_at": 8,
+          "fireblast_ready_at": 8,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -648,6 +669,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 3,
           "lance_ready_at": 8,
+          "fireblast_ready_at": 8,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -672,6 +694,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 4,
           "lance_ready_at": 8,
+          "fireblast_ready_at": 8,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -696,6 +719,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 5,
           "lance_ready_at": 8,
+          "fireblast_ready_at": 8,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -723,6 +747,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 5,
           "lance_ready_at": 8,
+          "fireblast_ready_at": 8,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -747,6 +772,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 5,
           "lance_ready_at": 16,
+          "fireblast_ready_at": 16,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -774,6 +800,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 16,
+          "fireblast_ready_at": 16,
           "barrier_damage_bonus": 0.2,
           "barrage_active": false
         },
@@ -796,6 +823,7 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 16,
+          "fireblast_ready_at": 16,
           "barrier_damage_bonus": 0.15,
           "barrage_active": false
         },
@@ -818,6 +846,30 @@
           "fire_power_multiplier": 1.0,
           "winter_stacks": 0,
           "lance_ready_at": 16,
+          "fireblast_ready_at": 16,
+          "barrier_damage_bonus": 0,
+          "barrage_active": false
+        },
+        {
+          "at": 60,
+          "kind": "fireblast_cast",
+          "detail": {},
+          "blast": {
+            "stacks": 0,
+            "expires_at": null,
+            "spell_damage_bonus": 0.0,
+            "mana_cost": 150.0,
+            "cast_seconds": 1.5
+          },
+          "precision_hit": 0.06,
+          "wrath_cast_seconds": 3.5,
+          "heating_stacks": 0,
+          "heating_expires_at": null,
+          "fire_effects": [],
+          "fire_power_multiplier": 1.0,
+          "winter_stacks": 0,
+          "lance_ready_at": 68,
+          "fireblast_ready_at": 68,
           "barrier_damage_bonus": 0,
           "barrage_active": false
         }

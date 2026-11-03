@@ -71,6 +71,44 @@ class SimulationTests(unittest.TestCase):
             self.assertEqual(f.trace[0]['spell'],'pyroblast');self.assertEqual(f.hu,3 if pom else 0)
         f=Fight('arcane',{'cooldowns':False,'use_wrath':False,'ab_stacks':0})
         f.cc=True;f.aura['mb']=15;f.act();self.assertTrue(f.cc);self.assertFalse(f.up('mb'))
+    def test_shared_cooldown_boundaries_and_ports(self):
+        cases=[]
+        for school in ('fire','frost'):
+            for first in ('fireblast','icelance'):
+                if first=='icelance' and school=='fire':continue
+                for base in (False,True):
+                    f=Fight(school,{'cooldowns':False,'shared_blast_lance_base':base})
+                    f.choose=lambda:first;f.act()
+                    expected=6 if first=='fireblast' and school=='fire' and not base else 8
+                    self.assertEqual([f.cd[k] for k in ('fireblast','icelance')],[expected,expected])
+                    f.time=expected-.001
+                    self.assertFalse(f.ready('fireblast'));self.assertFalse(f.ready('icelance'))
+                    f.time=expected
+                    self.assertTrue(f.ready('fireblast'));self.assertTrue(f.ready('icelance'))
+                    cases.append(dict(school=school,first=first,base=base,expected=expected))
+        script="""const {Fight}=require('./sim-engine.js');let s='';process.stdin.on('data',d=>s+=d);process.stdin.on('end',()=>console.log(JSON.stringify(JSON.parse(s).map(c=>{const f=new Fight(c.school,{cooldowns:false,shared_blast_lance_base:c.base});f.choose=()=>c.first;f.act();f.time=c.expected-.001;const before=[f.ready('fireblast'),f.ready('icelance')];f.time=c.expected;return [f.cd.fireblast,f.cd.icelance,before,[f.ready('fireblast'),f.ready('icelance')]];}))));"""
+        actual=json.loads(subprocess.check_output(['node','-e',script],input=json.dumps(cases).encode(),cwd=ROOT))
+        self.assertEqual(actual,[[c['expected'],c['expected'],[False,False],[True,True]] for c in cases])
+
+    def test_cold_snap_shared_reset_hypotheses(self):
+        for shared in (False,True):
+            f=Fight('frost',{'cold_snap_resets_fireblast':shared});f.time=1
+            f.fof=1;f.aura['fof']=15;f.cd.update(icelance=8,fireblast=8)
+            f.choose=lambda:None;f.act()
+            self.assertTrue(f.ready('icelance'));self.assertEqual(f.ready('fireblast'),shared)
+            self.assertEqual(f.cd['coldsnap'],601)
+        script="""const {Fight}=require('./sim-engine.js');console.log(JSON.stringify([false,true].map(shared=>{const f=new Fight('frost',{cold_snap_resets_fireblast:shared});f.time=1;f.fof=1;f.aura.fof=15;Object.assign(f.cd,{icelance:8,fireblast:8});f.choose=()=>null;f.act();return [f.ready('icelance'),f.ready('fireblast'),f.cd.coldsnap];})));"""
+        self.assertEqual(json.loads(subprocess.check_output(['node','-e',script],cwd=ROOT)),[[True,False,601],[True,True,601]])
+
+    def test_missiles_clearcasting_proc_and_preservation(self):
+        f=Fight('arcane',{'cooldowns':False,'use_wrath':False,'ab_stacks':0,'hit':1,'miss_floor':0})
+        f.cc=True;f.aura['mb']=15;f.act()
+        self.assertTrue(f.cc);self.assertFalse(f.up('mb'));self.assertEqual(f.spent,0)
+        f.time=2.5;f.act();self.assertFalse(f.cc);self.assertEqual(f.spent,0)
+        f.random=lambda:0
+        f.hit(dict(key='arcanemissiles',id=100,sp=0,frozen=False,basecost=f.spells['arcanemissiles']['mana']))
+        self.assertTrue(f.cc)
+
     def test_range_travel_and_book_availability(self):
         f=Fight('frost',{'distance':30});self.assertFalse(f.in_range('coneofcold'))
         self.assertEqual(f.spells['frostbolt']['rank'],10);self.assertEqual(Fight('frost',{'books':True}).spells['frostbolt']['rank'],11)
@@ -91,7 +129,7 @@ class SimulationTests(unittest.TestCase):
     def test_seeded_javascript_parity(self):
         cases=[]
         for school in ('arcane','fire','frost'):
-            for options in [{},{'seconds':300,'seed':13},{'targets':4,'distance':8,'seed':3},{'race':'human'},{'race':'gnome'},{'race':'orc'},{'race':'undead'},{'race':'troll'},{'race':'skyborne'},{'level':20,'target_hp':1000,'target_level_delta':0},{'level':40,'targets':3,'distance':8,'target_hp':3000,'target_level_delta':0},{'unlimited_mana':True,'periodic_crit':True,'snapshot_sp':False,'ab_apply':'impact','seed':42},{'ice_lance_coef':.429,'shield_lifetime':60,'winter_order':'outside','distance':8},{'cooldowns':False,'distance':100},{'seconds':3.5,'travel_seconds':1}]:
+            for options in [{'shared_blast_lance_base':True},{'cold_snap_resets_fireblast':True},{},{'seconds':300,'seed':13},{'targets':4,'distance':8,'seed':3},{'race':'human'},{'race':'gnome'},{'race':'orc'},{'race':'undead'},{'race':'troll'},{'race':'skyborne'},{'level':20,'target_hp':1000,'target_level_delta':0},{'level':40,'targets':3,'distance':8,'target_hp':3000,'target_level_delta':0},{'unlimited_mana':True,'periodic_crit':True,'snapshot_sp':False,'ab_apply':'impact','seed':42},{'ice_lance_coef':.429,'shield_lifetime':60,'winter_order':'outside','distance':8},{'cooldowns':False,'distance':100},{'seconds':3.5,'travel_seconds':1}]:
                 cases.append(dict(school=school,options=dict(options,trace=True)))
         script="const sim=require('./sim-engine.js');let s='';process.stdin.on('data',d=>s+=d);process.stdin.on('end',()=>console.log(JSON.stringify(JSON.parse(s).map(c=>sim.simulate(c.school,c.options)))));"
         js=json.loads(subprocess.check_output(['node','-e',script],input=json.dumps(cases).encode(),cwd=ROOT))

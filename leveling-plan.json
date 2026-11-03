@@ -1,7 +1,7 @@
 {
   "version": "70707-20261030",
-  "reviewed_local_date": "2026-11-01",
-  "reviewed_utc": "2026-11-02",
+  "reviewed_local_date": "2026-11-02",
+  "reviewed_utc": "2026-11-03",
   "status": "Authored practical recommendation; every point checked against the extracted tree, not a simulation-certified optimum. Verify launch tooltips.",
   "assumptions": [
     "First character; mostly solo questing with occasional dungeons",
