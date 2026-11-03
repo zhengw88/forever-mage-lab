@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "status": "Partial spell evidence; not a complete simulator spellbook",
+  "client_build": "1.60.1.70707",
+  "hotfix_date": "2026-10-30",
+  "retrieved_utc": "2026-11-02",
+  "source": "https://wowforevertalents.com/abilities/mage/",
+  "spells": {
+    "arcaneblast": {
+      "rank": 5,
+      "level": 60,
+      "damage_min": 218,
+      "damage_max": 254,
+      "cast_seconds": 1.5,
+      "base_mana_fraction": 0.15,
+      "current_coefficient": null
+    },
+    "arcanewrath": {
+      "rank": 4,
+      "level": 60,
+      "damage_min": 406,
+      "damage_max": 496,
+      "mana": 395,
+      "cast_seconds": 3.5,
+      "cooldown_seconds": 6,
+      "max_mana_spell_power_fraction": 0.05,
+      "current_coefficient": null
+    }
+  },
+  "coefficient_candidate": {
+    "spell": "arcanewrath",
+    "coefficient": 1,
+    "client_build": "1.60.1.70532",
+    "source": "https://ladderly.gg/forever/ranks?class=mage&spell=arcane-wrath",
+    "status": "First-hand client extraction for an older build; later hotfix coverage not established here. Not a simulator-ranking input."
+  }
+}

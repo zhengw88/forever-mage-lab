@@ -44,9 +44,28 @@ outputs are historical too. Baseline presets are not optimized for the new tree.
    survival, and both mana-limited and unlimited-mana diagnostics. Re-run
    leveling and AoE separately; raid winners do not imply leveling winners.
 
-Every item is pending in `lab-state.json`; a source review is not an implementation.
-When complete, replace the historical presets and banner, update model identity,
-and set the status current only with supporting tests and reproducible reports.
+A separate current research layer now loads all 53 talent nodes with source URLs,
+checks three 51-point candidate builds, and provides a versioned keyed build codec.
+Python and JavaScript event replay connect the Blast/Precision/Accelerant helpers
+to Barrage, Heating Up, personal Fire effects, Winter's Chill, Ice Lance and Barrier
+state. See `CURRENT-MECHANICS.md` for commands, evidence and unresolved behavior.
+
+A new experimental layer now runs full cast schedules in `sim_engine.py` and
+`sim-engine.js`: damage, mana, procs, cooldowns, rank selection and multi-target
+throughput. `python lab.py experiment` compares all three schools with matched
+settings. `current-experiments.json` contains a finite policy search and 31
+sensitivity scenarios evaluated on held-out seeds. `current.html` runs the
+JavaScript model in a local worker and exposes versioned build/settings links.
+See `SIMULATION.md` for reproducibility, coverage and explicit hypotheses.
+
+This advances the migration but does not certify current rankings. The full
+70707 spell snapshot, server behavior, wider rotation/talent optimization and
+realistic leveling survival remain unresolved. All mechanic entries remain
+partial. The original page and its engines remain a labeled historical archive.
+
+The owner explicitly requested a personal deployment in the current session.
+Only `zhengw88/forever-mage-lab` may be published; no upstream write or automatic
+PR merge is authorized. Subsequent routine maintenance must not auto-deploy.
 
 ## Updating the fork
 
@@ -67,7 +86,9 @@ Follow `AGENTS.md` for maintenance. Open PRs against **this fork**, not upstream
 Python 3.12+ and Node 22+ are sufficient for numerical checks; no third-party
 simulation dependency is required. `python lab.py validate` runs the existing
 parity, option, weights, talent-builder and AoE checks, checks the current-version
-guard and seeded reproducibility, and rebuilds the page.
+guard and seeded reproducibility, tests the new mechanic primitives, and rebuilds
+the page. The AoE suite skips an optional assumption-register check because that
+external sibling-project file was never included upstream.
 
 Browser testing additionally needs Python Playwright and Chromium:
 

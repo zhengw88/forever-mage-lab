@@ -35,6 +35,10 @@ without `--historical` is blocked while the migration is incomplete.
 - [Dot / agent maintenance instructions](AGENTS.md)
 - [Original documentation and historical findings](UPSTREAM.md)
 
+The new `patch_rules.py` / `patch-rules.js` primitives cover sourced Arcane Blast
+stack timing, Precision hit and Accelerant cast-time changes, with boundary and
+port-parity tests. They are not yet wired into the combat engines.
+
 The next work is to update the talent tree and spell data, then Arcane Blast /
 Wrath, Fire Power / Heating Up, and Ice Lance / Winter's Chill / Ice Barrier.
 All three schools must be re-optimized with matched inputs before a current

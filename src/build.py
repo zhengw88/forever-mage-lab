@@ -27,7 +27,7 @@ def rd(*p):
 
 
 def wr(rel, text):
-    with open(os.path.join(ROOT, rel), 'w', encoding='utf-8', newline='\r\n') as f:
+    with open(os.path.join(ROOT, rel), 'w', encoding='utf-8', newline='\n') as f:
         f.write(text)
 
 

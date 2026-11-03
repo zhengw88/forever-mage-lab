@@ -1,0 +1,23 @@
+name: Validate personal simulator
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Numerical regression, provenance and reproducibility
+        run: python lab.py validate
+      - name: Check generated page is committed
+        run: git diff --exit-code --ignore-space-at-eol -- index.html
