@@ -148,3 +148,36 @@ shield balances, absorbed/taken damage and negation with zero reflection.
 `periodic`; its detail reports the Ignite bank contribution without inventing
 crit eligibility. This replay does not itself schedule Ignite ticks; the full
 scheduler does. See `MAGE-NOV2-COVERAGE.md` for evidence and limitations.
+
+
+## November 3 evening evidence review (November 4 UTC)
+
+The [dated extraction](https://wowforevertalents.com/patch-notes/) now reports
+launch client **1.60.1.70755** and its November 3 hotfix cache through push 113596.
+Its Mage delta removes the obsolete Frost Blast name from Missile Barrage's
+trigger list. Python and JavaScript already allow only Arcane Blast, Arcane
+Wrath, Fireball, Frostbolt and Frostfire Bolt; no damage/proc changes are needed.
+The [70755 racial extraction](https://wowforevertalents.com/racials/) now gives
+Troll Berserking 15 seconds at 10% haste, corroborating the implemented default.
+The 10-second generated sensitivity case is retained as an older-data comparison.
+These are community extraction observations, not server validation, and do not
+promote the partial 70707-based model to a complete 70755 snapshot.
+
+The latest official supplement found remains the [November 2 post 9](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696/9).
+The main thread was readable; the generic official update index returned 403.
+No newer official Mage changes were found. Arcane Blast and Ice Barrier source
+values still match the implemented contracts. The extracted reset counters do
+not establish player-facing respec prices or a reliable reset policy.
+
+Reviewed the current homepage, day-one template, comparison reports and racial
+assumptions. No new evidence changes the 12/0/39 point order, Barrier at 40 or
+Barrage at 46–47. The order has not been optimized. Current pages contain no
+profession ranking to revise; the 70755 profession catalog alone does not prove
+a new optimal profession pair. All three schools keep matched existing scenarios
+and provisional labels; certified rankings remain blocked. The expanded Frost
+rotation candidates still require paired implementation and matched reruns.
+
+Upstream remains `a3315522e2f1b085b6118d62891bc5db4ac6101e`, with no new commits.
+Before these evidence edits, all 22 live release files matched personal main
+`385ec5925c7a9e1dc2e3107e53fda8587f1c28eb`. This review is prepared in a PR;
+it does not itself change the deployed site. Merge authorization is still required.

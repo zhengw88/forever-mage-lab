@@ -75,7 +75,7 @@ Important limitations and explicit alternatives:
 | Fire effects | caster-owned effects, Scorch and Ignite; up to four | DoTs snapshot modifiers; mixed Frostfire benefits but does not count as a unique Fire Power effect |
 | Hit/resistance | 83% base hit vs +3, 1% miss floor, 6% average partial resistance | separate controls; resistance is an average multiplier, not a sampled resist table |
 | Mana | inherited base-mana/Intellect and Spirit formula, 2-second ticks, Mage Armor from level 34 | regeneration and tick phase need server validation; all input stats are after buffs, before talent/racial modifiers |
-| Troll Berserking | 15 seconds, 10% haste | extracted tooltip says 10 seconds; announced change says 15; `berserking_duration` and `berserking_haste` |
+| Troll Berserking | 15 seconds, 10% haste | 70755 extraction now corroborates 15 seconds; the archived 10-second case tests older data; `berserking_duration` and `berserking_haste` |
 | Other racials | Human crit/Spirit, Gnome pool and eight-second direct bonus/cost reduction, Orc SP, Skyborne haste/regen, Undead caster proc with 15-second ICD | direct/periodic scope and proc rules need logs; no out-of-raid attunement bonus assumed |
 | Periodic crits | off | `periodic_crit`; periodic events can advance Combustion without consuming its three direct crits |
 | Wand | first shot after at least 0.5 seconds stationary; fixed DPS, no miss/crit/procs | simple mana-recovery fallback; no movement model |

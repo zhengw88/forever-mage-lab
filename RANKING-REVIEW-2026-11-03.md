@@ -31,7 +31,7 @@ full precision, spell breakdowns and mana diagnostics are in the generated JSON.
 | 300 seconds | Frost 433; Arcane 395 ≈ Fire 392 | Frost 431.72–434.95; Arcane 392.89–397.02; Fire 389.62–394.27 |
 
 The tests use 15-second Berserking. The separate existing archive retains the
-10-second extracted-tooltip alternative. Neither racial timing nor all baseline
+10-second older extracted-tooltip alternative. The November 3 build 70755 racial extraction now corroborates 15 seconds (see CURRENT-MECHANICS.md). Neither in-game racial timing nor all baseline
 stats are independently server-validated.
 
 ## Why this is not a universal tier list

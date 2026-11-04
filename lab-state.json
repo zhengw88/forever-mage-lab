@@ -5,7 +5,7 @@
   "baseline_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
   "model": "70707-experimental-event-sim + historical archive",
   "model_current": false,
-  "source_review_date": "2026-11-03",
+  "source_review_date": "2026-11-04",
   "model_data_build": "1.60.1.69893 with selected fixes through 1 October",
   "migration_target_reported_client": "1.60.1.70707",
   "migration_target_hotfix_date": "2026-10-30",
@@ -98,6 +98,16 @@
       "url": "https://wowforevertalents.com/mage/talents/ignite/",
       "kind": "Community extraction; 70707, October 30 cache on defensive talent pages; no server validation",
       "retrieved_utc": "2026-11-03"
+    },
+    "launch_cache": {
+      "url": "https://wowforevertalents.com/patch-notes/",
+      "kind": "Community extraction of build 70755 and November 3 cache through push 113596; not independently extracted or server validated",
+      "retrieved_utc": "2026-11-04"
+    },
+    "launch_racials": {
+      "url": "https://wowforevertalents.com/racials/",
+      "kind": "Community extraction labeled build 70755; Troll tooltip now corroborates 15-second Berserking",
+      "retrieved_utc": "2026-11-04"
     }
   },
   "changes": [
@@ -212,7 +222,7 @@
     {
       "topic": "Race rankings",
       "old": "Human sword crit, 1% Skyborne haste, charge-based Eureka!, frequent Undead procs.",
-      "current": "Human: 1% crit, 10% Spirit. Skyborne: 2% haste; raid attunement removed. Eureka!: eight seconds. Undead: 30% caster proc chance, 15-second internal cooldown. Troll: 15-second Berserking. Troll extracted tooltip still says 10 seconds versus announced 15; both durations are tested.",
+      "current": "Human: 1% crit, 10% Spirit. Skyborne: 2% haste; raid attunement removed. Eureka!: eight seconds. Undead: 30% caster proc chance, 15-second internal cooldown. Troll: 15-second Berserking. Build 70755 racial extraction now corroborates the announced 15-second Troll duration. The archived 10-second case remains an older-data sensitivity test.",
       "impact": "Withdraw old racial percentages. New rankings depend on the rebuilt rotations and mana model.",
       "sources": [
         "blizzard"
@@ -268,9 +278,9 @@
       "remaining": "No exact racial/creature tables, root DR parameters or periodic critical capability established. Warding percentages have dated extraction evidence; incoming hits and shield base capacities are explicit replay inputs. Downranked Blizzard proc penalties unquantified; scheduler uses highest available rank."
     }
   ],
-  "last_checked_utc": "2026-11-03",
+  "last_checked_utc": "2026-11-04",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "All 21 November 2 Mage bullets audited. Added later Flamestrike critical Ignite eligibility, defensive replay for Frost Warding and Resilience, boundary/parity tests and 35 matched scenarios. See MAGE-NOV2-COVERAGE.md for model scope and unresolved server behavior. No upstream changes, merge or deployment.",
+  "maintenance_note": "November 3 Pacific / November 4 UTC review: upstream unchanged at a331552; launch extraction 70755 and November 3 hotfixes reviewed. Missile Barrage cleanup already matches both ports; Troll 15-second tooltip now corroborates the default. No numerical or talent-order changes. Evidence PR only; not merged or deployed.",
   "current_research_layer": {
     "version": "70707-20261030",
     "talent_nodes": 53,
@@ -320,11 +330,10 @@
     "model_current": false
   },
   "newer_reported_client": {
-    "build": "1.60.1.70753",
-    "date": "2026-11-02",
-    "region": "China only per extraction source",
-    "mage_tree": "Same as October 30 hotfix cache per source; retained pinned 70707 Mage contract",
-    "source": "datamine"
+    "build": "1.60.1.70755",
+    "date": "2026-11-03",
+    "source": "launch_cache",
+    "mage_delta": "November 3 cache removes obsolete Frost Blast from Missile Barrage tooltip. Both simulation ports already exclude it; no numerical change. Full snapshot migration remains pending."
   },
   "provisional_ranking": {
     "authorized_date": "2026-11-03",
