@@ -5,7 +5,7 @@
   "baseline_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
   "model": "70707-experimental-event-sim + historical archive",
   "model_current": false,
-  "source_review_date": "2026-11-04",
+  "source_review_date": "2026-11-05",
   "model_data_build": "1.60.1.69893 with selected fixes through 1 October",
   "migration_target_reported_client": "1.60.1.70707",
   "migration_target_hotfix_date": "2026-10-30",
@@ -108,6 +108,16 @@
       "url": "https://wowforevertalents.com/racials/",
       "kind": "Community extraction labeled build 70755; Troll tooltip now corroborates 15-second Berserking",
       "retrieved_utc": "2026-11-04"
+    },
+    "nov4_cache": {
+      "url": "https://wowforevertalents.com/patch-notes/",
+      "kind": "Community extraction: November 4 cache over 70755 through push 113605; reports global client 70790 carrying the Mage tooltip cleanup. Not independently extracted or server validated.",
+      "retrieved_utc": "2026-11-05"
+    },
+    "blizzard_ui_nov4": {
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696/10",
+      "kind": "Official November 4 UI/accessibility addendum; no Mage combat tuning",
+      "retrieved_utc": "2026-11-05"
     }
   },
   "changes": [
@@ -278,9 +288,9 @@
       "remaining": "No exact racial/creature tables, root DR parameters or periodic critical capability established. Warding percentages have dated extraction evidence; incoming hits and shield base capacities are explicit replay inputs. Downranked Blizzard proc penalties unquantified; scheduler uses highest available rank."
     }
   ],
-  "last_checked_utc": "2026-11-04",
+  "last_checked_utc": "2026-11-05",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "November 3 Pacific / November 4 UTC review: upstream unchanged at a331552; launch extraction 70755 and November 3 hotfixes reviewed. Missile Barrage cleanup already matches both ports; Troll 15-second tooltip now corroborates the default. No numerical or talent-order changes. Evidence PR only; not merged or deployed.",
+  "maintenance_note": "November 4 Pacific / November 5 UTC review: upstream unchanged at a331552. Reviewed 70790 and November 4 cache; three Frost tooltip cleanups already match both ports. Official post 10 adds UI/accessibility notes only. PR #5 was merged and published at 346571f by owner authorization; this new review is prepared on a branch and awaits separate merge authorization. No numerical, ranking or talent-order change; certified rankings remain blocked.",
   "current_research_layer": {
     "version": "70707-20261030",
     "talent_nodes": 53,
@@ -330,10 +340,10 @@
     "model_current": false
   },
   "newer_reported_client": {
-    "build": "1.60.1.70755",
-    "date": "2026-11-03",
-    "source": "launch_cache",
-    "mage_delta": "November 3 cache removes obsolete Frost Blast from Missile Barrage tooltip. Both simulation ports already exclude it; no numerical change. Full snapshot migration remains pending."
+    "build": "1.60.1.70790",
+    "date": "2026-11-04",
+    "source": "nov4_cache",
+    "mage_delta": "Improved Frostbolt, Arctic Reach and Winter's Chill remove obsolete Frost Blast references. Existing models already exclude the removed spell; no numerical changes. Source reports 70755 cache through push 113605, with Mage changes also in 70790 files. Full snapshot migration remains pending."
   },
   "provisional_ranking": {
     "authorized_date": "2026-11-03",
