@@ -181,3 +181,36 @@ Upstream remains `a3315522e2f1b085b6118d62891bc5db4ac6101e`, with no new commits
 Before these evidence edits, all 22 live release files matched personal main
 `385ec5925c7a9e1dc2e3107e53fda8587f1c28eb`. This review is prepared in a PR;
 it does not itself change the deployed site. Merge authorization is still required.
+
+
+## November 4 launch review (November 5 UTC)
+
+The [dated extraction](https://wowforevertalents.com/patch-notes/) reports global
+client **1.60.1.70790**, plus a November 4 cache over 70755 through push 113605.
+Improved Frostbolt, Arctic Reach and Winter's Chill now omit the removed Frost
+Blast from their descriptions. The existing Python/JavaScript replay and full
+schedulers already exclude that spell. No changed damage, proc chance, cast-time
+reduction, range bonus, talent rank limit or prerequisite is established by these
+three wording changes. The original extracted talent contract remains versioned;
+this review does not replace it with an unverified complete 70790 snapshot.
+
+Blizzard's [November 4 post 10](https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696/10)
+adds UI/accessibility fixes to post 9, including nameplates, bags and spellbook
+panels; it adds no Mage combat tuning. Post 9 remains the combat supplement.
+The generic official hotfix index returned 403; the complete official thread was
+readable. Community extraction remains evidence, not server validation.
+
+Arcane Blast and Ice Barrier values still match the existing contracts. Current
+leveling guidance, the 51-point order (Barrier at 40, Barrage at 46–47), Frost
+rotation review, racial comparisons and profession claims were reviewed. These
+sources justify no numerical change or new best-profession claim. The point order
+remains practical guidance, not an evaluated leveling optimum. The newer tank
+threat changes do not validate this simulator's safe-target AoE assumptions.
+
+No new upstream commit beyond `a331552` was found. Rankings retain matched inputs
+and explicit uncertainty; certified current rankings and the full snapshot
+migration remain blocked. Historical reports retain their original dates.
+PR #5 was owner-authorized, merged and published at `346571f`; the earlier
+November 3 review's prepared-only statement records its status at that time.
+This November 4 update is prepared for review and is not automatically merged or
+published. The homepage and simulation documentation point to this review.
