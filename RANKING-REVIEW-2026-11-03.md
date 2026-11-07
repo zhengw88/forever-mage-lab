@@ -62,3 +62,11 @@ Source review: the November 2 official supplement and dated extraction index wer
 rechecked; no new numerical Mage delta was adopted. Upstream remains a331552.
 The prior mechanics PR passed both GitHub checks before this ranking branch.
 Validation details for this branch are recorded in its PR. No merge or deployment.
+
+
+## November 6 evidence follow-up
+
+The official Arcane Blast duration correction matches the modeled 18 seconds.
+It does not establish pre-fix server performance or a new ranking. Numerical
+results retain their original inputs and dates; no talent-order optimization is
+claimed. See [the source review and remaining limits](CURRENT-MECHANICS.md#november-6-mage-hotfix-review-november-7-utc).

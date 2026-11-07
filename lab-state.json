@@ -5,7 +5,7 @@
   "baseline_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
   "model": "70707-experimental-event-sim + historical archive",
   "model_current": false,
-  "source_review_date": "2026-11-05",
+  "source_review_date": "2026-11-07",
   "model_data_build": "1.60.1.69893 with selected fixes through 1 October",
   "migration_target_reported_client": "1.60.1.70707",
   "migration_target_hotfix_date": "2026-10-30",
@@ -118,6 +118,21 @@
       "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-november-2/2360696/10",
       "kind": "Official November 4 UI/accessibility addendum; no Mage combat tuning",
       "retrieved_utc": "2026-11-05"
+    },
+    "blizzard_nov6": {
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-hotfixes-november-6-2026/2403040",
+      "kind": "Official Forever hotfix list dated November 6; Arcane Blast duration correction and Study/Research clarification",
+      "retrieved_utc": "2026-11-07"
+    },
+    "nov6_cache": {
+      "url": "https://wowforevertalents.com/patch-notes/",
+      "kind": "Community 70790 client/cache extraction dated November 6, through push 113689; reports unchanged talent/spellbook fields vs November 4. Does not establish server behavior.",
+      "retrieved_utc": "2026-11-07"
+    },
+    "nov10_announcement": {
+      "url": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-november-10/2404092",
+      "kind": "Official future tuning announcement; not applied to the model",
+      "retrieved_utc": "2026-11-07"
     }
   },
   "changes": [
@@ -177,7 +192,8 @@
       "impact": "The old cycle optimizer describes a different ability. Evaluate buff maintenance, Wrath, Missiles and mana together; cheap stacks alone do not establish Arcane as best.",
       "sources": [
         "arcane",
-        "blizzard"
+        "blizzard",
+        "blizzard_nov6"
       ],
       "implementation": "partial",
       "implemented_components": [
@@ -185,7 +201,8 @@
         "Barrage eligibility and single-channel consumption in both languages",
         "Latest Blast/Wrath rank facts and separately dated Wrath coefficient candidate recorded",
         "Experimental Python/JavaScript cast scheduler with damage/mana integration and generated sensitivity experiments; see SIMULATION.md",
-        "Officially corroborated Missile Barrage consumption at channel start, Clearcasting preservation and Missiles proc eligibility; targeted tests"
+        "Officially corroborated Missile Barrage consumption at channel start, Clearcasting preservation and Missiles proc eligibility; targeted tests",
+        "November 6 official 18-second duration correction matches existing Python/JavaScript behavior; exact expiry/non-refresh boundaries remain covered by tests; no claim that older live servers matched the model"
       ],
       "remaining": "Current spell snapshot and server validation remain incomplete; see SIMULATION.md for per-mechanic assumptions, implemented scope and controls. No current rankings certified."
     },
@@ -288,9 +305,9 @@
       "remaining": "No exact racial/creature tables, root DR parameters or periodic critical capability established. Warding percentages have dated extraction evidence; incoming hits and shield base capacities are explicit replay inputs. Downranked Blizzard proc penalties unquantified; scheduler uses highest available rank."
     }
   ],
-  "last_checked_utc": "2026-11-05",
+  "last_checked_utc": "2026-11-07",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "November 4 Pacific / November 5 UTC review: upstream unchanged at a331552. Reviewed 70790 and November 4 cache; three Frost tooltip cleanups already match both ports. Official post 10 adds UI/accessibility notes only. PR #5 was merged and published at 346571f by owner authorization; this new review is prepared on a branch and awaits separate merge authorization. No numerical, ranking or talent-order change; certified rankings remain blocked.",
+  "maintenance_note": "November 6 Pacific / November 7 UTC review: upstream unchanged at a331552; personal published main ec7a37c includes owner-merged PR #6. November 6 official AB duration correction matches both ports; Study guidance and source evidence updated on a review branch. No numerical or leveling-order change. This new PR is prepared, not merged or deployed.",
   "current_research_layer": {
     "version": "70707-20261030",
     "talent_nodes": 53,
@@ -325,7 +342,7 @@
     "file": "leveling-plan.json",
     "point_order_checked": "Python and JavaScript; 51 consecutive full-budget allocations",
     "scope": "first-character Frost solo questing; no Legacy bonus points; Barrier at 40; no required respec",
-    "remaining": "User race/faction and group plan needed for an exact zone route; survival and launch-server mechanics unvalidated",
+    "remaining": "Exact zone routing, survival and launch-server mechanics remain unvalidated; no Legacy bonus points are modeled.",
     "rotation_review": {
       "date": "2026-11-03",
       "report": "FROST-ROTATION-REVIEW-2026-11-03.md",
@@ -342,8 +359,8 @@
   "newer_reported_client": {
     "build": "1.60.1.70790",
     "date": "2026-11-04",
-    "source": "nov4_cache",
-    "mage_delta": "Improved Frostbolt, Arctic Reach and Winter's Chill remove obsolete Frost Blast references. Existing models already exclude the removed spell; no numerical changes. Source reports 70755 cache through push 113605, with Mage changes also in 70790 files. Full snapshot migration remains pending."
+    "source": "nov6_cache",
+    "mage_delta": "70790 cache dated November 6 through push 113689 reports no talent/spellbook field changes vs November 4. Separate official server hotfix corrects Arcane Blast duration to 18 seconds, already modeled. No complete snapshot migration or server validation claimed."
   },
   "provisional_ranking": {
     "authorized_date": "2026-11-03",

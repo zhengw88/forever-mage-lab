@@ -214,3 +214,40 @@ PR #5 was owner-authorized, merged and published at `346571f`; the earlier
 November 3 review's prepared-only statement records its status at that time.
 This November 4 update is prepared for review and is not automatically merged or
 published. The homepage and simulation documentation point to this review.
+
+
+## November 6 Mage hotfix review (November 7 UTC)
+
+The [official Forever hotfix list](https://us.forums.blizzard.com/en/wow/t/wow-forever-hotfixes-november-6-2026/2403040)
+corrects Arcane Blast's duration to 18 seconds. Both scheduler ports already use
+that duration, with expiry and non-refresh boundaries tested. The note does not
+identify the previous server duration or prove every stack/timing rule. Earlier
+outputs remain model estimates, not measurements of the pre-fix server.
+
+The [November 6 client/cache extraction](https://wowforevertalents.com/patch-notes/)
+now reads 70790 through push 113689 and reports no talent/spellbook field changes
+against the November 4 cache. Unchanged tooltips do not rule out server fixes.
+The model remains a partial 70707-based migration, not a complete 70790 snapshot.
+
+The hotfix also clarifies that the quest should leave Mages with Study only;
+Research is obsolete. This is reflected in the day-one guide. The Quick and the
+Dead fix has no quantified effect here because the guide assumes zero Legacy
+bonus points. The Orc Command correction concerns Warlock pets; it does not
+establish a change to our Orc/Troll Mage comparison. The Leatherworking station
+requirement correction does not establish a best profession pair for a Mage.
+
+Arcane, Fire and Frost numerical rankings and the practical 12/0/39 leveling
+order are unchanged. Barrier at 40 and Barrage at 46–47 remain the authored path,
+not an optimized leveling result. Expanded Frost searches remain separate from
+the published ranking. Ice Barrier and racial extraction were rechecked; no
+supported numerical delta was found. Certified rankings remain blocked.
+
+A [November 6 player report](https://us.forums.blizzard.com/en/wow/t/mage-clearcasting-flamestrike/2404027)
+claims Flamestrike ticks can generate and consume Clearcasting. This is an
+unconfirmed observation without logs or an official determination, not a new
+model rule. Verify it with cast/tick traces before changing Fire or AoE behavior.
+The [November 10 tuning announcement](https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-november-10/2404092)
+concerns other classes and remains future work, not implemented tuning.
+
+Upstream remains `a331552`. PR #6 was owner-merged and published at `ec7a37c`;
+this review is prepared separately and awaits owner merge authorization.
