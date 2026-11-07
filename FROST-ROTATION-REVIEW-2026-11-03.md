@@ -111,3 +111,11 @@ changes over comparable real pulls including drinking, deaths and travel. Moving
 the new policies into the interactive simulator will require paired Python/JS
 implementation, cast-by-cast parity, matched three-school reruns and evidence
 review; that is still open.
+
+
+## November 6 evidence follow-up
+
+The official Arcane Blast duration correction matches the modeled 18 seconds.
+It does not establish pre-fix server performance or a new ranking. Numerical
+results retain their original inputs and dates; no talent-order optimization is
+claimed. See [the source review and remaining limits](CURRENT-MECHANICS.md#november-6-mage-hotfix-review-november-7-utc).

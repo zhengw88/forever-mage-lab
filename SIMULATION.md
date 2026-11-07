@@ -5,10 +5,11 @@ This personal fork now runs independent Python (`sim_engine.py`) and JavaScript
 engine locally in a worker. No ranking service or external simulator is called.
 The historical engines and their share links remain in the historical archive.
 
-**Current rankings remain blocked.** A runnable model is not a verified model of
+**Certified in-game rankings remain blocked; provisional model estimates are available.**
+A runnable model is not a verified model of
 the live server. The October 30 hotfix target is 1.60.1.70707; source review is
-November 4, 2026 Pacific / November 5 UTC (including the November 2 Mage notes,
-November 4 UI addendum and 70790 tooltip cleanup; see CURRENT-MECHANICS.md). No newer upstream commit than `a331552` was found.
+November 6, 2026 Pacific / November 7 UTC, including the official 18-second
+Arcane Blast correction and 70790 cache through push 113689 (see CURRENT-MECHANICS.md). No newer upstream commit than `a331552` was found.
 
 ## Reproduce
 
