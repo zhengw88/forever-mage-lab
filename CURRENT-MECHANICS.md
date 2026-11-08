@@ -251,3 +251,37 @@ concerns other classes and remains future work, not implemented tuning.
 
 Upstream remains `a331552`. PR #6 was owner-merged and published at `ec7a37c`;
 this review is prepared separately and awaits owner merge authorization.
+
+
+## November 7 client review (November 8 UTC)
+
+The [dated extraction](https://wowforevertalents.com/patch-notes/) now reports
+client **1.60.1.70862**, with the November 7 cache through **push 113763**,
+compared with 70790 and its November 6 cache. Its listed class changes concern
+other classes; no new Mage talent or spellbook delta is reported. This is a
+community extraction, not an independently reproduced snapshot or server test.
+The partial 70707 model and versioned talent links retain their original labels.
+
+Spot checks of [Arcane Blast](https://wowforevertalents.com/mage/talents/arcane-blast/),
+[Winter's Chill](https://wowforevertalents.com/mage/talents/winter-s-chill/) and
+[Ice Barrier](https://wowforevertalents.com/mage/talents/ice-barrier/) retain the
+existing contract. The [official November 6 hotfix](https://us.forums.blizzard.com/en/wow/t/wow-forever-hotfixes-november-6-2026/2403040)
+still supplies the server-side 18-second Blast correction and Study clarification.
+No new numerical rule is justified for either Python or JavaScript.
+
+The [racial](https://wowforevertalents.com/racials/) and
+[profession](https://wowforevertalents.com/professions/) extractions were reviewed.
+No supported change to Orc/Troll guidance or a Mage profession winner follows.
+The Tanning Rack discrepancy remains other-profession evidence, not Mage tuning.
+Legacy bonus points, racial base stats, survival and economic value remain
+unvalidated. November 10 tuning is still prospective and concerns other classes.
+
+All three schools retain the same matched provisional comparisons and uncertainty.
+The practical Barrier-at-40 leveling order was checked for legality/freshness,
+not optimized. Expanded Frost policies remain research-only. Historical outputs
+keep their dates; no rankings or simulated spell values were regenerated merely
+to make them appear current. Certified rankings remain blocked.
+
+Upstream is unchanged at `a331552`. Owner-merged PR #7 is published on personal
+main at `d867d2c`. This evidence update is prepared separately for review, with
+no automatic merge or publication.
