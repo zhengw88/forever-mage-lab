@@ -251,3 +251,61 @@ concerns other classes and remains future work, not implemented tuning.
 
 Upstream remains `a331552`. PR #6 was owner-merged and published at `ec7a37c`;
 this review is prepared separately and awaits owner merge authorization.
+
+
+## November 7 client review (November 8 UTC)
+
+The [dated extraction](https://wowforevertalents.com/patch-notes/) now reports
+client **1.60.1.70862**, with the November 7 cache through **push 113763**,
+compared with 70790 and its November 6 cache. Its listed class changes concern
+other classes; no new Mage talent or spellbook delta is reported. This is a
+community extraction, not an independently reproduced snapshot or server test.
+The partial 70707 model and versioned talent links retain their original labels.
+
+Spot checks of [Arcane Blast](https://wowforevertalents.com/mage/talents/arcane-blast/),
+[Winter's Chill](https://wowforevertalents.com/mage/talents/winter-s-chill/) and
+[Ice Barrier](https://wowforevertalents.com/mage/talents/ice-barrier/) retain the
+existing contract. The [official November 6 hotfix](https://us.forums.blizzard.com/en/wow/t/wow-forever-hotfixes-november-6-2026/2403040)
+still supplies the server-side 18-second Blast correction and Study clarification.
+No new numerical rule is justified for either Python or JavaScript.
+
+The [racial](https://wowforevertalents.com/racials/) and
+[profession](https://wowforevertalents.com/professions/) extractions were reviewed.
+No supported change to Orc/Troll guidance or a Mage profession winner follows.
+The Tanning Rack discrepancy remains other-profession evidence, not Mage tuning.
+Legacy bonus points, racial base stats, survival and economic value remain
+unvalidated. November 10 tuning is still prospective and concerns other classes.
+
+All three schools retain the same matched provisional comparisons and uncertainty.
+The practical Barrier-at-40 leveling order was checked for legality/freshness,
+not optimized. Expanded Frost policies remain research-only. Historical outputs
+keep their dates; no rankings or simulated spell values were regenerated merely
+to make them appear current. Certified rankings remain blocked.
+
+Upstream is unchanged at `a331552`. Owner-merged PR #7 is published on personal
+main at `d867d2c`. This evidence update is prepared separately for review, with
+no automatic merge or publication.
+
+
+## November 8 leveling recommendation correction
+
+Wowhead (Porom, November 4) and Icy Veins (Teloril, November 4) were rechecked.
+They favor early wand investment; Icy Veins also prioritizes early Barrage. Both
+use early Frostbite. Our original no-respec/Barrier-at-40 constraints were authored,
+not user requirements or evaluated optima. The homepage and day-one guide now
+identify the original 12/0/39 point order as an alternative, with a linked guide
+comparison. The interactive allocation is preserved to avoid silently changing
+existing build handoffs. A full replacement order/respec flow remains open.
+
+Seven retained Arcane points delay the earliest 31st Frost point to level 47
+without Legacy points or a respec. Legal allocation checks do not establish
+leveling speed or survival. No numerical engine or ranking changes are justified
+by this guide comparison. Certified current rankings remain blocked.
+
+Sources: [Wowhead](https://www.wowhead.com/forever/guide/classes/mage/frost/dps-leveling-tips),
+[Icy Veins](https://www.icy-veins.com/wow-forever/frost-mage-leveling/), and
+[Barrier tier requirement](https://wowforevertalents.com/mage/talents/ice-barrier/).
+Official November 6 notes, the November 7 70862/cache 113763 extraction and the
+future November 10 announcement were rechecked; no new Mage numerical delta was
+found. Race and profession evidence supplies no supported recommendation change.
+Upstream remains a331552; these corrections extend unmerged personal PR #8.

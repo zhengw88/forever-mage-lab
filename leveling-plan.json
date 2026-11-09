@@ -2,7 +2,7 @@
   "version": "70707-20261030",
   "reviewed_local_date": "2026-11-02",
   "reviewed_utc": "2026-11-03",
-  "status": "Authored practical recommendation; every point checked against the extracted tree, not a simulation-certified optimum. Verify launch tooltips.",
+  "status": "Original Barrier-first alternative; not the default solo-leveling recommendation. Legal under extracted tree; no comparative leveling optimization.",
   "assumptions": [
     "First character; mostly solo questing with occasional dungeons",
     "One normal talent point per level from 10; no bonus Legacy points",
@@ -146,5 +146,14 @@
     "https://wowforevertalents.com/mage/talents/frost-channeling/",
     "https://wowforevertalents.com/mage/talents/missile-barrage/",
     "https://wowforevertalents.com/mage/talents/improved-blizzard/"
-  ]
+  ],
+  "guide_review": {
+    "reviewed_utc": "2026-11-09",
+    "sources": [
+      "https://www.wowhead.com/forever/guide/classes/mage/frost/dps-leveling-tips",
+      "https://www.icy-veins.com/wow-forever/frost-mage-leveling/"
+    ],
+    "finding": "Early mana and Frostbite recommendations differ materially from this alternative. No-respec and Barrier-at-40 constraints were authored, not requested or optimized.",
+    "remaining": "Evaluate complete alternative orders and respec timing before changing the interactive allocation. No claim that guide popularity establishes optimality."
+  }
 }

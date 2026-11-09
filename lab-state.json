@@ -5,7 +5,7 @@
   "baseline_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
   "model": "70707-experimental-event-sim + historical archive",
   "model_current": false,
-  "source_review_date": "2026-11-07",
+  "source_review_date": "2026-11-08",
   "model_data_build": "1.60.1.69893 with selected fixes through 1 October",
   "migration_target_reported_client": "1.60.1.70707",
   "migration_target_hotfix_date": "2026-10-30",
@@ -133,6 +133,16 @@
       "url": "https://us.forums.blizzard.com/en/wow/t/class-tuning-incoming-november-10/2404092",
       "kind": "Official future tuning announcement; not applied to the model",
       "retrieved_utc": "2026-11-07"
+    },
+    "nov7_cache": {
+      "url": "https://wowforevertalents.com/patch-notes/",
+      "kind": "Community extraction of client 1.60.1.70862 with November 7 cache through push 113763, compared with 70790/November 6. No reported Mage talent/spellbook delta. Not independently extracted or server validated.",
+      "retrieved_utc": "2026-11-08"
+    },
+    "nov7_mage_spotchecks": {
+      "url": "https://wowforevertalents.com/abilities/mage/",
+      "kind": "70862/November 7 spellbook and linked Arcane Blast, Winter's Chill and Ice Barrier pages rechecked; racial and profession indexes also reviewed. No supported Mage numerical change adopted.",
+      "retrieved_utc": "2026-11-08"
     }
   },
   "changes": [
@@ -305,9 +315,9 @@
       "remaining": "No exact racial/creature tables, root DR parameters or periodic critical capability established. Warding percentages have dated extraction evidence; incoming hits and shield base capacities are explicit replay inputs. Downranked Blizzard proc penalties unquantified; scheduler uses highest available rank."
     }
   ],
-  "last_checked_utc": "2026-11-07",
+  "last_checked_utc": "2026-11-09",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "November 6 Pacific / November 7 UTC review: upstream unchanged at a331552; personal published main ec7a37c includes owner-merged PR #6. November 6 official AB duration correction matches both ports; Study guidance and source evidence updated on a review branch. No numerical or leveling-order change. This new PR is prepared, not merged or deployed.",
+  "maintenance_note": "November 8 Pacific / November 9 UTC: upstream unchanged a331552; main remains d867d2c. No new numerical Mage delta found beyond PR #8 evidence. Corrected leveling recommendation after guide comparison. PR #8 extended for review, not merged or deployed.",
   "current_research_layer": {
     "version": "70707-20261030",
     "talent_nodes": 53,
@@ -338,7 +348,7 @@
     "official_notes_date": "2026-11-02"
   },
   "day_one_companion": {
-    "status": "practical authored recommendation, not validated optimum",
+    "status": "Original Barrier-first alternative; default recommendation withdrawn pending comparative leveling evaluation",
     "file": "leveling-plan.json",
     "point_order_checked": "Python and JavaScript; 51 consecutive full-budget allocations",
     "scope": "first-character Frost solo questing; no Legacy bonus points; Barrier at 40; no required respec",
@@ -348,7 +358,8 @@
       "report": "FROST-ROTATION-REVIEW-2026-11-03.md",
       "scope": "Practical priorities plus separately labeled 17/3/31 exploratory candidates; no leveling point-order or production engine changes",
       "remaining": "Expanded Frost rotation policies not selectable in the live sim or incorporated into three-school rankings; Ice Lance scaling and server proc timing unvalidated"
-    }
+    },
+    "guide_review": "November 8 Pacific: Wowhead and Icy Veins emphasize early wand/mana talents and Frostbite; no-respec and Barrier-at-40 constraints were not user requirements. Guide and homepage corrected; interactive points preserved as a named alternative."
   },
   "mage_supplement_coverage": {
     "file": "MAGE-NOV2-COVERAGE.md",
@@ -357,10 +368,10 @@
     "model_current": false
   },
   "newer_reported_client": {
-    "build": "1.60.1.70790",
-    "date": "2026-11-04",
-    "source": "nov6_cache",
-    "mage_delta": "70790 cache dated November 6 through push 113689 reports no talent/spellbook field changes vs November 4. Separate official server hotfix corrects Arcane Blast duration to 18 seconds, already modeled. No complete snapshot migration or server validation claimed."
+    "build": "1.60.1.70862",
+    "date": "2026-11-07",
+    "source": "nov7_cache",
+    "mage_delta": "Dated extraction compares 70862/November 7 cache through push 113763 with 70790/November 6. Reported class changes concern other classes; no new Mage talent/spellbook delta. Arcane Blast still reads 18 seconds; the separate November 6 official fix concerns server application. Model remains a partial 70707-based migration, not a complete 70862 snapshot."
   },
   "provisional_ranking": {
     "authorized_date": "2026-11-03",

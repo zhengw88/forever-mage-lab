@@ -8,8 +8,10 @@ The historical engines and their share links remain in the historical archive.
 **Certified in-game rankings remain blocked; provisional model estimates are available.**
 A runnable model is not a verified model of
 the live server. The October 30 hotfix target is 1.60.1.70707; source review is
-November 6, 2026 Pacific / November 7 UTC, including the official 18-second
-Arcane Blast correction and 70790 cache through push 113689 (see CURRENT-MECHANICS.md). No newer upstream commit than `a331552` was found.
+November 7, 2026 Pacific / November 8 UTC, including the official 18-second
+Arcane Blast correction and reported 70862/November 7 cache through push 113763
+(see CURRENT-MECHANICS.md). No new Mage numerical delta was adopted; this is not
+a complete 70862 snapshot. No newer upstream commit than `a331552` was found.
 
 ## Reproduce
 
