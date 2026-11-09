@@ -285,3 +285,27 @@ to make them appear current. Certified rankings remain blocked.
 Upstream is unchanged at `a331552`. Owner-merged PR #7 is published on personal
 main at `d867d2c`. This evidence update is prepared separately for review, with
 no automatic merge or publication.
+
+
+## November 8 leveling recommendation correction
+
+Wowhead (Porom, November 4) and Icy Veins (Teloril, November 4) were rechecked.
+They favor early wand investment; Icy Veins also prioritizes early Barrage. Both
+use early Frostbite. Our original no-respec/Barrier-at-40 constraints were authored,
+not user requirements or evaluated optima. The homepage and day-one guide now
+identify the original 12/0/39 point order as an alternative, with a linked guide
+comparison. The interactive allocation is preserved to avoid silently changing
+existing build handoffs. A full replacement order/respec flow remains open.
+
+Seven retained Arcane points delay the earliest 31st Frost point to level 47
+without Legacy points or a respec. Legal allocation checks do not establish
+leveling speed or survival. No numerical engine or ranking changes are justified
+by this guide comparison. Certified current rankings remain blocked.
+
+Sources: [Wowhead](https://www.wowhead.com/forever/guide/classes/mage/frost/dps-leveling-tips),
+[Icy Veins](https://www.icy-veins.com/wow-forever/frost-mage-leveling/), and
+[Barrier tier requirement](https://wowforevertalents.com/mage/talents/ice-barrier/).
+Official November 6 notes, the November 7 70862/cache 113763 extraction and the
+future November 10 announcement were rechecked; no new Mage numerical delta was
+found. Race and profession evidence supplies no supported recommendation change.
+Upstream remains a331552; these corrections extend unmerged personal PR #8.

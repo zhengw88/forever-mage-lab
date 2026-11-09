@@ -315,9 +315,9 @@
       "remaining": "No exact racial/creature tables, root DR parameters or periodic critical capability established. Warding percentages have dated extraction evidence; incoming hits and shield base capacities are explicit replay inputs. Downranked Blizzard proc penalties unquantified; scheduler uses highest available rank."
     }
   ],
-  "last_checked_utc": "2026-11-08",
+  "last_checked_utc": "2026-11-09",
   "upstream_checked_commit": "a3315522e2f1b085b6118d62891bc5db4ac6101e",
-  "maintenance_note": "November 7 Pacific / November 8 UTC review: upstream unchanged at a331552; personal main d867d2c includes owner-merged PR #7. Reviewed reported 70862 client/cache through push 113763, official November 6 hotfixes and November 10 announcement. No new supported Mage mechanics, numerical ranking, race/profession recommendation or leveling-order delta. Evidence update prepared on a separate review branch, not merged or published; live main remains d867d2c.",
+  "maintenance_note": "November 8 Pacific / November 9 UTC: upstream unchanged a331552; main remains d867d2c. No new numerical Mage delta found beyond PR #8 evidence. Corrected leveling recommendation after guide comparison. PR #8 extended for review, not merged or deployed.",
   "current_research_layer": {
     "version": "70707-20261030",
     "talent_nodes": 53,
@@ -348,7 +348,7 @@
     "official_notes_date": "2026-11-02"
   },
   "day_one_companion": {
-    "status": "practical authored recommendation, not validated optimum",
+    "status": "Original Barrier-first alternative; default recommendation withdrawn pending comparative leveling evaluation",
     "file": "leveling-plan.json",
     "point_order_checked": "Python and JavaScript; 51 consecutive full-budget allocations",
     "scope": "first-character Frost solo questing; no Legacy bonus points; Barrier at 40; no required respec",
@@ -358,7 +358,8 @@
       "report": "FROST-ROTATION-REVIEW-2026-11-03.md",
       "scope": "Practical priorities plus separately labeled 17/3/31 exploratory candidates; no leveling point-order or production engine changes",
       "remaining": "Expanded Frost rotation policies not selectable in the live sim or incorporated into three-school rankings; Ice Lance scaling and server proc timing unvalidated"
-    }
+    },
+    "guide_review": "November 8 Pacific: Wowhead and Icy Veins emphasize early wand/mana talents and Frostbite; no-respec and Barrier-at-40 constraints were not user requirements. Guide and homepage corrected; interactive points preserved as a named alternative."
   },
   "mage_supplement_coverage": {
     "file": "MAGE-NOV2-COVERAGE.md",

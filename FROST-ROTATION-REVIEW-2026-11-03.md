@@ -127,3 +127,8 @@ Reported client 70862 / November 7 cache push 113763 supplies no new Mage
 numerical delta. Existing results keep their original model inputs and dates,
 with certification still blocked. No leveling optimization is claimed. See the
 [dated review](CURRENT-MECHANICS.md#november-7-client-review-november-8-utc).
+
+
+November 8 correction: the original leveling allocation is now labeled an
+unevaluated Barrier-first alternative. No numerical comparison changed. See
+[the guide audit](CURRENT-MECHANICS.md#november-8-leveling-recommendation-correction).
